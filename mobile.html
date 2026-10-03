@@ -622,6 +622,11 @@ class Component extends DCLogic {
   observers = {};
 
   componentDidMount() {
+    // Deep links (QR codes in catalogs): lianagini.ru/#consultation opens the
+    // Contacts tab and scrolls to the consultation block.
+    this.applyHash();
+    this.onHash = () => this.applyHash();
+    window.addEventListener('hashchange', this.onHash);
     this.onResize = () => { const w = window.innerWidth; if (w !== this.state.vw) this.setState({ vw: w }); };
     this.onResize();
     window.addEventListener('resize', this.onResize);
@@ -646,6 +651,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('hashchange', this.onHash);
     Object.values(this.observers).forEach(io => io && io.disconnect());
   }
 
@@ -676,6 +682,16 @@ class Component extends DCLogic {
   // of leaving the user at the top of the tab (consultation block, service
   // list) to scroll through manually. Used by CTAs whose intent is "go fill
   // in the form", not just "go to the Contacts tab".
+  applyHash = () => {
+    if (location.hash !== '#consultation') return;
+    this.setState({ tab: 'contact', heroPassed: false, revealed: { ...this.state.revealed, consult: true } }, () => {
+      const go = () => { if (this.consultRef.current) this.consultRef.current.scrollIntoView({ block: 'start' }); };
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        [0, 40, 100, 200, 350, 550, 800, 1200].forEach((ms) => setTimeout(go, ms));
+      }));
+    });
+  };
+
   goContactForm = (e) => {
     e.preventDefault();
     this.setState({ tab: 'contact', heroPassed: false }, () => {

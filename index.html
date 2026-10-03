@@ -19,6 +19,30 @@
 </script>
 <script src="assets/js/dc-runtime.js"></script>
 <script src="assets/js/cookie-banner.js" defer></script>
+<script>
+// Deep links (QR codes in catalogs): sections are mounted by dc-runtime after
+// load, so the browser can't jump to #consultation by itself. Wait for the
+// target, then scroll to it a few times while the layout settles; stop as soon
+// as the visitor scrolls on their own.
+(function(){
+  function go(){
+    var id = decodeURIComponent((location.hash || '').slice(1));
+    if (!id) return;
+    var tries = 0, found = -1, stop = false;
+    function quit(){ stop = true; }
+    ['wheel','touchstart','keydown'].forEach(function(ev){ window.addEventListener(ev, quit, { once: true, passive: true }); });
+    var t = setInterval(function(){
+      tries++;
+      var el = document.getElementById(id);
+      if (el && !stop) { if (found < 0) found = tries; el.scrollIntoView({ block: 'start' }); }
+      if (stop || (found > 0 && tries - found >= 10) || tries > 80) clearInterval(t);
+    }, 120);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', go);
+})();
+</script>
+
 </head>
 <body>
 <x-dc>
