@@ -601,12 +601,41 @@ class Component extends DCLogic {
   lianaVideoElRef = React.createRef();
 
   // Click-to-play video card (real audio, unlike the muted background loops)
+  // Tap opens the video card full screen with native controls (iPhone uses
+  // webkitEnterFullscreen, others the Fullscreen API). Leaving full screen
+  // pauses it and returns the small preview.
   toggleLianaVideo = (e) => {
     if (e) e.preventDefault();
     const v = this.lianaVideoElRef.current;
     if (!v) return;
-    if (v.paused) { v.play(); this.setState({ lianaPlaying: true }); }
-    else { v.pause(); this.setState({ lianaPlaying: false }); }
+    if (!v.paused) { v.pause(); this.setState({ lianaPlaying: false }); return; }
+    const onExit = () => { v.pause(); v.controls = false; this.setState({ lianaPlaying: false }); };
+    const onFsChange = () => {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        document.removeEventListener('fullscreenchange', onFsChange);
+        document.removeEventListener('webkitfullscreenchange', onFsChange);
+        onExit();
+      }
+    };
+    v.controls = true;
+    const p = v.play(); if (p && p.catch) p.catch(() => {});
+    this.setState({ lianaPlaying: true });
+    try {
+      const iPhone = /iPhone|iPod/.test(navigator.userAgent);
+      if (iPhone && v.webkitEnterFullscreen) {
+        v.addEventListener('webkitendfullscreen', onExit, { once: true });
+        v.webkitEnterFullscreen();
+      } else if (v.requestFullscreen) {
+        document.addEventListener('fullscreenchange', onFsChange);
+        v.requestFullscreen().catch(() => { document.removeEventListener('fullscreenchange', onFsChange); });
+      } else if (v.webkitRequestFullscreen) {
+        document.addEventListener('webkitfullscreenchange', onFsChange);
+        v.webkitRequestFullscreen();
+      } else if (v.webkitEnterFullscreen) {
+        v.addEventListener('webkitendfullscreen', onExit, { once: true });
+        v.webkitEnterFullscreen();
+      }
+    } catch (_) {}
   };
   onLianaVideoEnded = () => this.setState({ lianaPlaying: false });
 
