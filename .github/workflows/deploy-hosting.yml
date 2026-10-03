@@ -1,6 +1,6 @@
 # Автовыгрузка сайта lianagini.ru на хостинг reg.ru (Host-0) при каждом пуше в main.
 # Секреты репозитория (Settings → Secrets and variables → Actions → New repository secret):
-#   FTP_USERNAME — FTP-пользователь из ISPmanager (раздел «FTP-пользователи»)
+#   FTP_USERNAME — отдельный FTP-пользователь с домашней папкой /www/lianagini.ru
 #   FTP_PASSWORD — его пароль
 # Пока секретов нет, выгрузка просто пропускается.
 name: Deploy to hosting
@@ -36,7 +36,7 @@ jobs:
           port: 21
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./lianagini.ru/
+          server-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
