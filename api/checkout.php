@@ -1,7 +1,7 @@
 <?php
 // POST {productId, name?, contact?, marketingConsent?} -> {checkoutUrl, orderId}
 require __DIR__ . '/lib.php';
-cfg(); // без конфига заказ не создаём
+if (!rk('login') || !rk('pass1')) { http_response_code(503); exit('{"error":"not_configured"}'); } // пока нет данных Робокассы, заказ не создаём
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
