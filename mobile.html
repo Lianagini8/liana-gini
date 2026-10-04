@@ -833,7 +833,9 @@ class Component extends DCLogic {
         });
         this.setState({ consultationOrder: order });
       }
-      const res = await mod.startCheckout(product.productId);
+      const res = await mod.startCheckout(product.productId, isConsultation
+        ? { name, contact, marketingConsent: this.state.checkoutMarketingConsent }
+        : { marketingConsent: this.state.checkoutMarketingConsent });
       this.setState({ buyState: res.state });
       if (res.checkoutUrl) window.location.href = res.checkoutUrl;
     } catch (err) { this.setState({ buyState: 'idle' }); }
@@ -1011,7 +1013,7 @@ class Component extends DCLogic {
       onCheckoutPdConsentChange: this.onCheckoutPdConsentChange,
       onCheckoutMarketingConsentChange: this.onCheckoutMarketingConsentChange,
       checkoutPdErrorDisplay: this.state.checkoutPdConsentError ? 'block' : 'none',
-      checkoutNote: this.state.buyState === 'pending' ? 'Переходим к оплате…' : '',
+      checkoutNote: this.state.buyState === 'pending' ? 'Переходим к оплате…' : this.state.buyState === 'error' ? 'Оплата временно недоступна. Попробуйте позже.' : '',
       checkoutIsConsultation: !!(this.state.checkoutProduct && this.state.checkoutProduct.productId === 'personal-consultation'),
       checkoutBuyerName: this.state.checkoutBuyerName,
       checkoutBuyerContact: this.state.checkoutBuyerContact,

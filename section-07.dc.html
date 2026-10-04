@@ -205,11 +205,12 @@ class Component extends DCLogic {
     if (!product) return;
     try {
       const mod = await import('/assets/js/payments.js');
-      const res = await mod.startCheckout(product.productId);
+      this.setState({ orderState: 'pending' });
+      const res = await mod.startCheckout(product.productId, { marketingConsent: this.state.marketingConsent });
       this.setState({ orderState: res.state });
       if (res.checkoutUrl) window.location.href = res.checkoutUrl;
     } catch (err) {
-      this.setState({ orderState: 'idle' });
+      this.setState({ orderState: 'error' });
     }
   };
 
@@ -219,7 +220,7 @@ class Component extends DCLogic {
     const orderNotes = {
       idle: '',
       pending: 'Переходим к оплате…',
-      error: 'Оплата временно недоступна.',
+      error: 'Оплата временно недоступна. Попробуйте позже.',
     };
     return {
       orderState: this.state.orderState,

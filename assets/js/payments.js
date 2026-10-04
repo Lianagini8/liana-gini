@@ -17,23 +17,32 @@ export const PRODUCTS = {
     kind: 'service', collect: ['name', 'contact'] },
 };
 
-// Backend endpoints to be implemented server-side (paths are placeholders, not live).
+// Backend endpoints (PHP on the hosting, see /api). Secrets live only on the server.
 export const ENDPOINTS = {
-  createCheckout: '/api/payments/checkout',   // POST {productId} -> {checkoutUrl, orderId}
-  orderStatus:    '/api/payments/status',     // GET  ?orderId    -> {status}
-  issueDownload:  '/api/orders/download',     // GET  ?orderId    -> {signedUrl} (paid only)
-  createBooking:  '/api/bookings',            // POST {productId, fields} -> {bookingId}
-  bookingConfirm: '/api/bookings/confirm',    // GET  ?bookingId  -> {scheduling} (paid only)
+  createCheckout: '/api/checkout.php',   // POST {productId, name?, contact?, marketingConsent?} -> {checkoutUrl, orderId}
+  // Robokassa then calls /api/result.php (ResultURL) and returns the buyer to
+  // /api/success.php (SuccessURL) -> /api/access.php with download buttons.
 };
 
 export const STATES = { IDLE: 'idle', PENDING: 'pending', SUCCESS: 'success', ERROR: 'error' };
 
-// CTA -> checkout. Until a provider is connected this resolves to a no-op marker
-// so the UI never fakes a payment.
-export async function startCheckout(productId) {
+// CTA -> checkout: our backend creates the order and returns a signed Robokassa URL.
+// extra: {name, contact} for the consultation, {marketingConsent} for everything.
+export async function startCheckout(productId, extra = {}) {
   const product = PRODUCTS[productId];
   if (!product) throw new Error('Unknown product: ' + productId);
-  return { state: STATES.IDLE, product, reason: 'payment-provider-not-connected' };
+  try {
+    const r = await fetch(ENDPOINTS.createCheckout, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId, ...extra }),
+    });
+    const data = await r.json();
+    if (!r.ok || !data.checkoutUrl) return { state: STATES.ERROR, product };
+    return { state: STATES.PENDING, product, checkoutUrl: data.checkoutUrl, orderId: data.orderId };
+  } catch (e) {
+    return { state: STATES.ERROR, product };
+  }
 }
 
 // Future Robokassa payload for the consultation service — data model only, not
