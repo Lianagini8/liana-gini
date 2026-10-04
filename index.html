@@ -13,7 +13,7 @@
     if (location.search.indexOf('nored') !== -1) return;
     var w = Math.min(window.innerWidth || 9999, screen.width || 9999);
     var touch = matchMedia('(pointer:coarse)').matches;
-    if ((w < 1100) || touch) location.replace('mobile.html' + location.hash);
+    if ((w < 1100) || touch) location.replace('mobile.html' + location.search + location.hash);
   }catch(e){}
 })();
 </script>
