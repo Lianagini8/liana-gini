@@ -1,6 +1,7 @@
 <?php
 // POST {productId, name?, contact?, marketingConsent?} -> {checkoutUrl, orderId}
 require __DIR__ . '/lib.php';
+cfg(); // без конфига заказ не создаём
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
