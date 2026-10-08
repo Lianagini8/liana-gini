@@ -43,8 +43,42 @@
 })();
 </script>
 
+<style id="lg-splash-css">
+#lg-splash{position:fixed;inset:0;z-index:2147483647;background:#F2EFE8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .45s ease;}
+#lg-splash .lg-s-logo{font-family:'Manrope',-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:15px;letter-spacing:6px;color:#181715;padding-left:6px;}
+#lg-splash .lg-s-bar{width:120px;height:2px;background:rgba(84,31,43,.15);overflow:hidden;position:relative;}
+#lg-splash .lg-s-bar:after{content:"";position:absolute;left:-40%;top:0;width:40%;height:100%;background:#541F2B;animation:lgSplash 1.1s ease-in-out infinite;}
+@keyframes lgSplash{to{left:100%}}
+@media (prefers-reduced-motion: reduce){#lg-splash .lg-s-bar:after{animation:none;left:0;width:100%}}
+</style>
 </head>
 <body>
+<div id="lg-splash" aria-hidden="true"><div class="lg-s-logo">LIANA GINI</div><div class="lg-s-bar"></div></div>
+<script>
+// Заставка на время загрузки: страница собирается в браузере (dc-runtime),
+// поэтому прячем тёмный фон и «голое» видео, пока не готов первый экран.
+(function(){
+  var s = document.getElementById('lg-splash'); if (!s) return;
+  var t0 = Date.now(), done = false, seen = 0;
+  function hide(){ if (done) return; done = true; s.style.opacity = '0'; setTimeout(function(){ if (s.parentNode) s.parentNode.removeChild(s); }, 500); }
+  function heroReady(root){
+    var v = root.querySelector('video');
+    if (!v) return true;
+    if (v.readyState >= 2) return true;
+    var p = v.getAttribute('poster'); if (!p) return true;
+    var img = heroReady.img || (heroReady.img = new Image()); if (!img.src) img.src = p;
+    return img.complete && img.naturalWidth > 0;
+  }
+  var t = setInterval(function(){
+    var root = document.getElementById('dc-root');
+    if (root && root.children.length) {
+      if (!seen) seen = Date.now();
+      if (heroReady(root) || Date.now() - seen > 1500) { clearInterval(t); setTimeout(hide, 150); }
+    }
+    if (Date.now() - t0 > 8000) { clearInterval(t); hide(); }
+  }, 80);
+})();
+</script>
 <x-dc>
 <template id="__bundler_thumbnail" data-bg-color="#541F2B">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">

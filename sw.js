@@ -1,7 +1,7 @@
 // Minimal service worker: caches the app shell (HTML/JS, not media) so the
 // installed icon opens instantly and the shell survives brief offline gaps.
 // Does not cache videos/photos — those stay network-only.
-const CACHE = 'liana-gini-shell-v4';
+const CACHE = 'liana-gini-shell-v5';
 const SHELL = [
   'mobile.html',
   'assets/js/dc-runtime.js',
