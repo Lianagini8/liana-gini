@@ -14,6 +14,8 @@ $clean = fn($v) => mb_substr(trim(strip_tags((string)$v)), 0, 200);
 $name = $clean($in['name'] ?? '');
 $contact = $clean($in['contact'] ?? '');
 if ($pid === 'personal-consultation' && ($name === '' || $contact === '')) { http_response_code(400); exit('{"error":"fields"}'); }
+$email = mb_substr(trim((string)($in['email'] ?? '')), 0, 200);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { http_response_code(400); exit('{"error":"email"}'); }
 
 $o = [
   'id'         => next_order_id(),
@@ -24,6 +26,7 @@ $o = [
   'token'      => bin2hex(random_bytes(20)),
   'name'       => $name,
   'contact'    => $contact,
+  'email'      => $email,
   'marketing'  => !empty($in['marketingConsent']),
   'downloads'  => 0,
 ];

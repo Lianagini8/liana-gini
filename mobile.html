@@ -505,6 +505,11 @@
             <div id="mcheckout-contact-error" role="alert" style="display:{{ checkoutContactErrorDisplay }};font-size:11px;color:{{ accent }};margin-bottom:14px;">Укажите контакт для связи, чтобы продолжить.</div>
           </sc-if>
 
+          <label for="mcheckout-email" style="display:block;font-size:11px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;">E-mail для получения файлов</label>
+          <input id="mcheckout-email" type="email" required="true" autocomplete="email" inputmode="email" value="{{ checkoutBuyerEmail }}" onChange="{{ onCheckoutEmailChange }}" placeholder="name@mail.ru" aria-describedby="mcheckout-email-error" style="width:100%;box-sizing:border-box;font-family:'Manrope',sans-serif;font-size:16px;padding:11px 13px;border:1px solid rgba(24,23,21,0.25);background:{{ ivory }};color:{{ ink }};margin-bottom:4px;"/>
+          <div id="mcheckout-email-error" role="alert" style="display:{{ checkoutEmailErrorDisplay }};font-size:11px;color:{{ accent }};margin-bottom:8px;">Укажите e-mail: на него придёт ссылка.</div>
+          <div style="height:10px;"></div>
+
           <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;margin-bottom:8px;">
             <input type="checkbox" name="checkoutPdConsent" required="true" checked="{{ checkoutPdConsent }}" onChange="{{ onCheckoutPdConsentChange }}" aria-describedby="mcheckout-pd-error" style="margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
             <span>Я даю согласие на <a href="pd-consent.html" target="_blank" rel="noopener" style="color:{{ ink }};text-decoration:underline;">обработку персональных данных</a> — <a href="privacy-policy.html" target="_blank" rel="noopener" style="color:{{ ink }};text-decoration:underline;">Политика ПДн</a>.</span>
@@ -596,6 +601,7 @@ class Component extends DCLogic {
     pdConsent: false, marketingConsent: false, pdConsentError: false,
     checkoutOpen: false, checkoutProduct: null, checkoutPdConsent: false, checkoutMarketingConsent: false, checkoutPdConsentError: false,
     checkoutBuyerName: '', checkoutBuyerContact: '', checkoutNameError: false, checkoutContactError: false, consultationOrder: null,
+    checkoutBuyerEmail: '', checkoutEmailError: false,
     revealed: { services: false, teamVideo: false, cred: false, cases: false, catalog: false, consult: false }, lianaPlaying: false };
   teamVideoRef = React.createRef();
   lianaVideoElRef = React.createRef();
@@ -784,6 +790,7 @@ class Component extends DCLogic {
       checkoutBuyerContact: '',
       checkoutNameError: false,
       checkoutContactError: false,
+      checkoutEmailError: false,
       buyState: 'idle',
       consultationOrder: null,
     });
@@ -794,6 +801,7 @@ class Component extends DCLogic {
   onCheckoutMarketingConsentChange = (e) => this.setState({ checkoutMarketingConsent: e.target.checked });
   onCheckoutNameChange = (e) => this.setState({ checkoutBuyerName: e.target.value, checkoutNameError: false });
   onCheckoutContactChange = (e) => this.setState({ checkoutBuyerContact: e.target.value, checkoutContactError: false });
+  onCheckoutEmailChange = (e) => this.setState({ checkoutBuyerEmail: e.target.value, checkoutEmailError: false });
 
   onBook = (e) => {
     e.preventDefault();
@@ -811,10 +819,13 @@ class Component extends DCLogic {
     const contact = this.state.checkoutBuyerContact.trim();
     const nameOk = !isConsultation || name.length > 0;
     const contactOk = !isConsultation || contact.length > 0;
-    if (!nameOk || !contactOk || !this.state.checkoutPdConsent) {
+    const email = (this.state.checkoutBuyerEmail || '').trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!nameOk || !contactOk || !emailOk || !this.state.checkoutPdConsent) {
       this.setState({
         checkoutNameError: !nameOk,
         checkoutContactError: !contactOk,
+        checkoutEmailError: !emailOk,
         checkoutPdConsentError: !this.state.checkoutPdConsent,
       });
       return;
@@ -834,8 +845,8 @@ class Component extends DCLogic {
         this.setState({ consultationOrder: order });
       }
       const res = await mod.startCheckout(product.productId, isConsultation
-        ? { name, contact, marketingConsent: this.state.checkoutMarketingConsent }
-        : { marketingConsent: this.state.checkoutMarketingConsent });
+        ? { name, contact, email, marketingConsent: this.state.checkoutMarketingConsent }
+        : { email, marketingConsent: this.state.checkoutMarketingConsent });
       this.setState({ buyState: res.state });
       if (res.checkoutUrl) window.location.href = res.checkoutUrl;
     } catch (err) { this.setState({ buyState: 'idle' }); }
@@ -1019,6 +1030,9 @@ class Component extends DCLogic {
       checkoutBuyerContact: this.state.checkoutBuyerContact,
       onCheckoutNameChange: this.onCheckoutNameChange,
       onCheckoutContactChange: this.onCheckoutContactChange,
+      checkoutBuyerEmail: this.state.checkoutBuyerEmail,
+      onCheckoutEmailChange: this.onCheckoutEmailChange,
+      checkoutEmailErrorDisplay: this.state.checkoutEmailError ? 'block' : 'none',
       checkoutNameErrorDisplay: this.state.checkoutNameError ? 'block' : 'none',
       checkoutContactErrorDisplay: this.state.checkoutContactError ? 'block' : 'none',
       // Success view is prepared but unreachable: buyState only ever becomes

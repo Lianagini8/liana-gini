@@ -111,6 +111,11 @@
         <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:{{ accent }};margin-bottom:10px;">{{ checkoutName }}</div>
         <div id="checkout-title" style="font-size:32px;font-weight:700;letter-spacing:-1px;margin-bottom:26px;">{{ checkoutPriceLabel }}</div>
 
+        <label for="checkout-email" style="display:block;font-size:11px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;">E-mail для получения файлов</label>
+        <input id="checkout-email" type="email" required="true" autocomplete="email" value="{{ checkoutEmail }}" onChange="{{ onEmailChange }}" placeholder="name@mail.ru" aria-describedby="checkout-email-error" style="width:100%;box-sizing:border-box;font-family:'Manrope',sans-serif;font-size:15px;padding:12px 14px;border:1px solid rgba(24,23,21,0.25);background:{{ ivory }};color:{{ ink }};margin-bottom:4px;"/>
+        <div id="checkout-email-error" role="alert" style="display:{{ emailErrorDisplay }};font-size:11px;color:{{ accent }};margin-bottom:10px;">Укажите e-mail: на него придёт ссылка на файлы.</div>
+        <div style="height:14px;"></div>
+
         <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;cursor:pointer;margin-bottom:10px;">
           <input type="checkbox" name="pdConsent" required="true" checked="{{ pdConsent }}" onChange="{{ onPdConsentChange }}" aria-describedby="checkout-pd-error" style="margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
           <span>Я даю согласие на <a href="pd-consent.html" target="_blank" rel="noopener" style="text-decoration:underline;">обработку персональных данных</a> в соответствии с <a href="privacy-policy.html" target="_blank" rel="noopener" style="text-decoration:underline;">Политикой ПДн</a>.</span>
@@ -152,7 +157,7 @@
 class Component extends DCLogic {
   rootRef = React.createRef();
   state = { orderState: 'idle', revealed: false,
-    checkoutOpen: false, checkoutProduct: null, pdConsent: false, marketingConsent: false, pdConsentError: false };
+    checkoutOpen: false, checkoutProduct: null, pdConsent: false, marketingConsent: false, pdConsentError: false, email: '', emailError: false };
 
   componentDidMount() {
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -182,6 +187,7 @@ class Component extends DCLogic {
       pdConsent: false,
       marketingConsent: false,
       pdConsentError: false,
+      emailError: false,
       checkoutProduct: {
         productId: el.dataset.productId,
         name: el.dataset.productName,
@@ -194,19 +200,22 @@ class Component extends DCLogic {
   stopPropagation = (e) => e.stopPropagation();
   onPdConsentChange = (e) => this.setState({ pdConsent: e.target.checked, pdConsentError: false });
   onMarketingConsentChange = (e) => this.setState({ marketingConsent: e.target.checked });
+  onEmailChange = (e) => this.setState({ email: e.target.value, emailError: false });
 
   // Actual payment trigger — only reachable from the consent gate, only once
   // required personal-data consent is checked. Hands off to the payment layer,
   // which will call our own backend once a provider is chosen. No keys, no
   // download URLs here.
   onProceedCheckout = async () => {
-    if (!this.state.pdConsent) { this.setState({ pdConsentError: true }); return; }
+    const email = (this.state.email || '').trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOk || !this.state.pdConsent) { this.setState({ emailError: !emailOk, pdConsentError: !this.state.pdConsent }); return; }
     const product = this.state.checkoutProduct;
     if (!product) return;
     try {
       const mod = await import('/assets/js/payments.js');
       this.setState({ orderState: 'pending' });
-      const res = await mod.startCheckout(product.productId, { marketingConsent: this.state.marketingConsent });
+      const res = await mod.startCheckout(product.productId, { email, marketingConsent: this.state.marketingConsent });
       this.setState({ orderState: res.state });
       if (res.checkoutUrl) window.location.href = res.checkoutUrl;
     } catch (err) {
@@ -237,6 +246,9 @@ class Component extends DCLogic {
       onProceedCheckout: this.onProceedCheckout,
       onPdConsentChange: this.onPdConsentChange,
       onMarketingConsentChange: this.onMarketingConsentChange,
+      onEmailChange: this.onEmailChange,
+      checkoutEmail: this.state.email,
+      emailErrorDisplay: this.state.emailError ? 'block' : 'none',
       checkoutOpen: this.state.checkoutOpen,
       checkoutName: product ? product.name : '',
       checkoutPriceLabel: product ? product.price.toLocaleString('ru-RU') + ' ₽' : '',

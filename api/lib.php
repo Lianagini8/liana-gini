@@ -127,6 +127,7 @@ function payment_url(array $o): string {
   }
   $parts[] = rk('pass1');
   $q['SignatureValue'] = rk_hash(implode(':', $parts));
+  if (!empty($o['email'])) $q['Email'] = $o['email']; // подставится на странице оплаты, туда же уйдёт чек
   if (rk('test')) $q['IsTest'] = 1;
   return 'https://auth.robokassa.ru/Merchant/Index.aspx?' . http_build_query($q);
 }

@@ -15,7 +15,8 @@ if (abs((float)$sum - (float)$o['amount']) > 0.01) { http_response_code(400); ex
 if ($o['status'] !== 'paid') {
   $o['status']  = 'paid';
   $o['paid_at'] = time();
-  $o['email']   = mb_substr(trim((string)($_REQUEST['EMail'] ?? '')), 0, 200);
+  $rkEmail = mb_substr(trim((string)($_REQUEST['EMail'] ?? '')), 0, 200);
+  if (empty($o['email'])) $o['email'] = $rkEmail; // основной источник: поле на сайте; Робокасса передаёт почту не всегда
   order_save($o);
 
   $p = PRODUCTS[$o['product']];
