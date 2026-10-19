@@ -150,8 +150,8 @@
 
       <div style="margin:0 20px 36px 20px;border:1px solid rgba(24,23,21,0.12);padding:24px 22px;">
         <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;margin-bottom:10px;">ЛИЧНАЯ КОНСУЛЬТАЦИЯ</div>
-        <h3 style="margin:0 0 10px 0;font-size:20px;font-weight:700;line-height:1.25;text-transform:uppercase;">Разберём вашу&nbsp;ситуацию&nbsp;лично</h3>
-        <p style="margin:0 0 18px 0;font-size:13px;line-height:1.55;max-width:{{ measure }};opacity:0.7;">Личная консультация с&nbsp;Лианой Гини по&nbsp;вашей задаче, продукту или&nbsp;производству.</p>
+        <h3 style="margin:0 0 10px 0;font-size:20px;font-weight:700;line-height:1.25;text-transform:uppercase;">Сформирую и&nbsp;посчитаю вашу партию в&nbsp;Китае</h3>
+        <p style="margin:0 0 18px 0;font-size:13px;line-height:1.55;max-width:{{ measure }};opacity:0.7;">60 минут продуктивного разговора с&nbsp;Лианой Гини, который закроет ВСЕ ваши вопросы, сформирует персональную дорожную карту от&nbsp;продукта до&nbsp;карго.</p>
         <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;border-top:1px solid rgba(24,23,21,0.1);">
           <span style="font-size:26px;font-weight:700;letter-spacing:-1px;">15 000 ₽</span>
           <button type="button" onClick="{{ goContact }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:14px {{ secPadX }};white-space:nowrap;">Записаться →</button>
@@ -357,42 +357,44 @@
     <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
 
       <div ref="{{ consultRef }}" style="padding:28px {{ secPadX }} 8px {{ secPadX }};opacity:{{ consultOpacity }};transform:translateY({{ consultY }}px);transition:opacity 0.5s ease, transform 0.5s ease;">
-        <h2 style="margin:0 0 12px 0;font-size:26px;line-height:1.2;font-weight:700;letter-spacing:-0.5px;text-transform:uppercase;">Разберём вашу<br/>ситуацию&nbsp;лично.</h2>
-        <p style="margin:0 0 20px 0;font-size:13px;line-height:1.55;max-width:{{ measure }};opacity:0.7;">Личная консультация с&nbsp;Лианой Гини по вашей задаче, продукту или производству в&nbsp;Китае.</p>
-        <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(24,23,21,0.12);padding-top:16px;margin-bottom:20px;">
-          <sc-for list="{{ consultReasons }}" as="r" hint-placeholder-count="4">
-            <div style="display:flex;gap:14px;align-items:baseline;">
-              <span style="font-size:9px;opacity:0.4;width:18px;flex-shrink:0;">{{ r.num }}</span>
-              <span style="font-size:12px;font-weight:700;text-transform:uppercase;line-height:1.4;">{{ r.text }}</span>
-            </div>
-          </sc-for>
-        </div>
-
-        <!-- contextual Q&A: don't know what to produce yet -->
-        <div style="border-left:2px solid {{ accent }};padding:4px 0 4px 16px;margin-bottom:20px;">
-          <div style="font-size:13px;font-weight:700;text-transform:uppercase;line-height:1.3;margin-bottom:6px;color:{{ accent }};">Что если вы ещё<br/>не определились с продуктом?</div>
-          <p style="margin:0;font-size:12px;line-height:1.55;max-width:{{ measure }};opacity:0.65;">Мы не выбираем за вас, что будет продаваться — вы знаете свой рынок. Наша задача — помочь превратить её в производимый продукт.</p>
-        </div>
-
-        <div style="border-top:2px solid {{ accent }};padding-top:18px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;">
-            <span style="font-size:30px;font-weight:700;letter-spacing:-1px;">15 000 ₽</span>
-            <button type="button" onClick="{{ onBook }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:14px 18px;white-space:nowrap;">Записаться →</button>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:{{ accent }};margin-bottom:10px;">Как грамотно начать с&nbsp;Китаем?</div>
+        <h2 style="margin:0 0 12px 0;font-size:24px;line-height:1.2;font-weight:700;letter-spacing:-0.5px;text-transform:uppercase;">Сформирую и&nbsp;посчитаю вашу партию в&nbsp;Китае</h2>
+        <p style="margin:0 0 22px 0;font-size:13px;line-height:1.55;max-width:{{ measure }};opacity:0.75;">60 минут продуктивного разговора с&nbsp;Лианой Гини, который закроет ВСЕ ваши вопросы, сформирует персональную дорожную карту от&nbsp;продукта до&nbsp;карго.</p>
+        <div style="border-top:1px solid rgba(24,23,21,0.12);padding-top:18px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:{{ accent }};margin-bottom:8px;">Уже продаёте одежду</div>
+          <h3 style="margin:0 0 10px 0;font-size:18px;font-weight:700;line-height:1.25;text-transform:uppercase;">Формирование ассортимента и&nbsp;расчёт партии</h3>
+          <div style="display:flex;flex-direction:column;gap:4px;"><p style="margin:0;font-size:13px;line-height:1.5;max-width:{{ measure }};opacity:0.7;">Для брендов, шоурумов и селлеров, которые хотят:</p><p style="margin:0;font-size:13px;line-height:1.5;max-width:{{ measure }};opacity:0.7;">— перенести или расширить производство в Китае</p><p style="margin:0;font-size:13px;line-height:1.5;max-width:{{ measure }};opacity:0.7;">— добрать ассортимент к сезону или уйти от своего цеха, который невыгоден и не держит качество</p><p style="margin:0;font-size:13px;line-height:1.5;max-width:{{ measure }};opacity:0.7;">— снизить себестоимость товара и др.</p></div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;opacity:0.5;margin:16px 0 8px 0;">Что получите:</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— расчёт партии с доставкой до вашего склада</p>
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— подходящий формат: своё производство, готовые дизайны закрытых шоурумов, товар в наличии или др.</p>
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— подбор артикулов из готовых решений под ваш стиль и ценовой сегмент</p>
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— если есть образец: подбор ткани, цена и доставка под него</p>
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— сроки по этапам и красные флаги вашей модели</p>
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— как легализовать партию под ваш объём</p>
           </div>
-          <p style="margin:0;font-size:11px;line-height:1.5;max-width:{{ measure }};opacity:0.45;">Сначала разберём задачу. Потом решим, какой следующий шаг нужен.</p>
         </div>
-      </div>
-
-      <div style="padding:24px {{ secPadX }} 8px {{ secPadX }};border-top:1px solid rgba(24,23,21,0.1);margin-top:8px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;opacity:0.45;margin-bottom:12px;">Что входит</div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
-          <p style="margin:0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.75;">— Подбираю артикулы из готовых решений под вашу задачу</p>
-          <p style="margin:0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.75;">— Считаю стоимость с учётом доставки</p>
-          <p style="margin:0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.75;">— Отвечаю по конкретным моделям: можно ли поменять цвет, добавить бирку, изменить деталь</p>
-          <p style="margin:0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.75;">— Если у вас есть образец — подбираю ткань, считаю цену и доставку под него</p>
-          <p style="margin:0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.75;">— Говорю честно: стоит ли заходить в Китай с этим продуктом и как</p>
+        <div style="border-top:1px solid rgba(24,23,21,0.12);padding-top:18px;margin-top:22px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:{{ accent }};margin-bottom:8px;">Хотите зайти в нишу</div>
+          <h3 style="margin:0 0 10px 0;font-size:18px;font-weight:700;line-height:1.25;text-transform:uppercase;">Формирование коллекции и&nbsp;расчёт первой партии</h3>
+          <p style="margin:0;font-size:13px;line-height:1.5;max-width:{{ measure }};opacity:0.7;">Для предпринимателей, у которых есть идея, эскиз или образец и бюджет на первую партию, а опыта с производством ещё нет.</p>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;opacity:0.5;margin:16px 0 8px 0;">Что получите:</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— состав первой коллекции: сколько моделей, какие, в каком количестве</p>
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— расчёт первой партии с доставкой</p>
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— формат старта: разработка с нуля или готовые дизайны под вашу бирку</p>
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— подбор ткани и фурнитуры под ваш эскиз или образец</p>
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— план по шагам: что делать до того, как платить фабрике</p>
+            <p style="margin:0;font-size:13px;line-height:1.5;opacity:0.85;">— честный ответ, стоит ли заходить в Китай с этим продуктом, или пока нет</p>
+          </div>
         </div>
-        <p style="margin:0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.6;">Вы уходите с расчётом и планом, а не с новыми вопросами. Каталоги готовых коллекций прилагаются.</p>
+        <div style="border-top:2px solid {{ accent }};padding-top:18px;margin-top:24px;">
+          <div style="text-align:center;font-size:30px;font-weight:700;letter-spacing:-1px;margin-bottom:14px;">15 000 ₽</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <button type="button" onClick="{{ onBook }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Посчитать партию →</button>
+            <button type="button" onClick="{{ onBook }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Посчитать первую партию →</button>
+          </div>
+        </div>
       </div>
 
       <div style="padding:32px {{ secPadX }} 8px {{ secPadX }};border-top:1px solid rgba(24,23,21,0.1);margin-top:20px;">

@@ -23,49 +23,62 @@
 <div id="consultation" ref="{{ rootRef }}" style="width:1440px;margin:0 auto;background:{{ ivory }};font-family:'Manrope',sans-serif;color:{{ ink }};position:relative;padding:32px 60px 76px 60px;box-sizing:border-box;">
 
 
-  <div style="display:flex;gap:56px;align-items:stretch;">
-
-    <!-- PORTRAIT -->
-    <div data-anim style="width:560px;flex-shrink:0;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);">
-      <img loading="lazy" decoding="async" src="assets/media/portrait.jpg" alt="Лиана Гини" style="width:560px;height:640px;object-fit:cover;object-position:center 18%;display:block;"/>
+  <!-- TOP: photo + offer -->
+  <div style="display:flex;gap:56px;align-items:center;">
+    <div data-anim style="width:380px;flex-shrink:0;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0s, transform .6s cubic-bezier(.16,1,.3,1) 0s;">
+      <img loading="lazy" decoding="async" src="assets/media/portrait.jpg" alt="Лиана Гини" style="width:380px;height:440px;object-fit:cover;object-position:center 18%;display:block;"/>
     </div>
+    <div data-anim style="flex:1;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .06s, transform .6s cubic-bezier(.16,1,.3,1) .06s;">
+      <h2 style="margin:0 0 22px 0;font-size:44px;line-height:1.08;font-weight:700;letter-spacing:-1px;text-transform:uppercase;">СФОРМИРУЮ И ПОСЧИТАЮ<br/>ВАШУ ПАРТИЮ В КИТАЕ</h2>
+      <p style="margin:0;font-size:17px;line-height:1.6;max-width:640px;opacity:0.8;">60 минут продуктивного разговора с Лианой Гини, который закроет ВСЕ ваши вопросы, сформирует персональную дорожную карту от продукта до карго.</p>
+    </div>
+  </div>
 
-    <!-- CONTENT -->
-    <div data-anim style="flex:1;display:flex;flex-direction:column;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .06s, transform .6s cubic-bezier(.16,1,.3,1) .06s;">
-      <h2 style="margin:0 0 18px 0;font-size:44px;line-height:1.08;font-weight:700;letter-spacing:-1px;text-transform:uppercase;">РАЗБЕРЁМ<br/>ВАШУ СИТУАЦИЮ<br/>ЛИЧНО.</h2>
-      <p style="margin:0 0 30px 0;font-size:14px;line-height:1.6;max-width:440px;opacity:0.7;">Личная консультация с Лианой Гини по вашей задаче, продукту или производству в Китае.</p>
-
-      <div style="border-top:1px solid rgba(24,23,21,0.15);padding-top:16px;margin-bottom:28px;">
-        <div style="font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:0.45;margin-bottom:14px;">С ЧЕМ МОЖНО ПРИЙТИ</div>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div data-anim style="display:flex;gap:16px;align-items:baseline;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .5s ease .16s, transform .5s ease .16s;"><span style="font-size:9px;letter-spacing:1.2px;opacity:0.4;width:20px;flex-shrink:0;">01</span><span style="font-size:13px;font-weight:700;text-transform:uppercase;">ЕСТЬ ИДЕЯ — НЕ ПОНИМАЮ, КАК ЗАПУСТИТЬ</span></div>
-          <div data-anim style="display:flex;gap:16px;align-items:baseline;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .5s ease .22s, transform .5s ease .22s;"><span style="font-size:9px;letter-spacing:1.2px;opacity:0.4;width:20px;flex-shrink:0;">02</span><span style="font-size:13px;font-weight:700;text-transform:uppercase;">ЕСТЬ ПРОДУКТ — НУЖНО НАЙТИ ПРОИЗВОДСТВО</span></div>
-          <div data-anim style="display:flex;gap:16px;align-items:baseline;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .5s ease .28s, transform .5s ease .28s;"><span style="font-size:9px;letter-spacing:1.2px;opacity:0.4;width:20px;flex-shrink:0;">03</span><span style="font-size:13px;font-weight:700;text-transform:uppercase;">УЖЕ ПРОИЗВОЖУ — НУЖНО РАЗОБРАТЬ ПРОБЛЕМУ</span></div>
-          <div data-anim style="display:flex;gap:16px;align-items:baseline;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .5s ease .34s, transform .5s ease .34s;"><span style="font-size:9px;letter-spacing:1.2px;opacity:0.4;width:20px;flex-shrink:0;">04</span><span style="font-size:13px;font-weight:700;text-transform:uppercase;">НУЖНО ПОНЯТЬ ЭКОНОМИКУ И СЛЕДУЮЩИЙ ШАГ</span></div>
+  <!-- TWO AUDIENCES -->
+  <div style="margin-top:44px;border-top:1px solid rgba(24,23,21,0.15);padding-top:32px;display:flex;gap:56px;align-items:stretch;">
+      <div data-anim style="flex:1;min-width:0;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .16s, transform .6s cubic-bezier(.16,1,.3,1) .16s;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:{{ accent }};margin-bottom:12px;">Уже продаёте одежду</div>
+        <h3 style="margin:0 0 14px 0;font-size:24px;font-weight:700;line-height:1.2;text-transform:uppercase;">Формирование ассортимента<br/>и расчёт партии</h3>
+        <p style="margin:0 0 8px 0;font-size:14px;line-height:1.55;opacity:0.7;">Для брендов, шоурумов и селлеров, которые хотят:</p>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.7;">— перенести или расширить производство в Китае</p>
+          <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.7;">— добрать ассортимент к сезону или уйти от своего цеха, который невыгоден и не держит качество</p>
+          <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.7;">— снизить себестоимость товара и др.</p>
+        </div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;opacity:0.5;margin:22px 0 12px 0;">Что получите:</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— расчёт партии с доставкой до вашего склада</p>
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— подходящий формат: своё производство, готовые дизайны закрытых шоурумов, товар в наличии или др.</p>
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— подбор артикулов из готовых решений под ваш стиль и ценовой сегмент</p>
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— если есть образец: подбор ткани, цена и доставка под него</p>
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— сроки по этапам и красные флаги вашей модели</p>
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— как легализовать партию под ваш объём</p>
         </div>
       </div>
-
-      <div data-anim style="border-top:1px solid rgba(24,23,21,0.15);padding-top:16px;margin-bottom:30px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .2s, transform .6s cubic-bezier(.16,1,.3,1) .2s;">
-        <div style="font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;opacity:0.5;margin-bottom:12px;">Что входит:</div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;max-width:660px;">
-          <p style="margin:0;font-size:12.5px;line-height:1.55;opacity:0.8;">— Подбираю артикулы из готовых решений под вашу задачу</p>
-          <p style="margin:0;font-size:12.5px;line-height:1.55;opacity:0.8;">— Считаю стоимость с учётом доставки</p>
-          <p style="margin:0;font-size:12.5px;line-height:1.55;opacity:0.8;">— Отвечаю по конкретным моделям: можно ли поменять цвет, добавить бирку, изменить деталь</p>
-          <p style="margin:0;font-size:12.5px;line-height:1.55;opacity:0.8;">— Если у вас есть образец — подбираю ткань, считаю цену и доставку под него</p>
-          <p style="margin:0;font-size:12.5px;line-height:1.55;opacity:0.8;">— Говорю честно: стоит ли заходить в Китай с этим продуктом и как</p>
+      <div style="width:1px;background:rgba(24,23,21,0.15);flex-shrink:0;"></div>
+      <div data-anim style="flex:1;min-width:0;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .22s, transform .6s cubic-bezier(.16,1,.3,1) .22s;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:{{ accent }};margin-bottom:12px;">Хотите зайти в нишу</div>
+        <h3 style="margin:0 0 14px 0;font-size:24px;font-weight:700;line-height:1.2;text-transform:uppercase;">Формирование коллекции<br/>и расчёт первой партии</h3>
+        <p style="margin:0 0 0 0;font-size:14px;line-height:1.55;opacity:0.7;">Для предпринимателей, у которых есть идея, эскиз или образец и бюджет на первую партию, а опыта с производством ещё нет.</p>
+        <div style="font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;opacity:0.5;margin:22px 0 12px 0;">Что получите:</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— состав первой коллекции: сколько моделей, какие, в каком количестве</p>
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— расчёт первой партии с доставкой</p>
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— формат старта: разработка с нуля или готовые дизайны под вашу бирку</p>
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— подбор ткани и фурнитуры под ваш эскиз или образец</p>
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— план по шагам: что делать до того, как платить фабрике</p>
+            <p style="margin:0;font-size:14px;line-height:1.5;opacity:0.85;">— честный ответ, стоит ли заходить в Китай с этим продуктом, или пока нет</p>
         </div>
-        <p style="margin:0;font-size:13px;line-height:1.6;max-width:460px;opacity:0.65;">Вы уходите с расчётом и планом, а не с новыми вопросами. Каталоги готовых коллекций прилагаются.</p>
       </div>
+  </div>
 
-      <div data-anim style="margin-top:auto;border-top:2px solid {{ accent }};padding-top:20px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .3s, transform .6s cubic-bezier(.16,1,.3,1) .3s;">
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;">
-          <div>
-            <div style="font-size:46px;font-weight:700;line-height:0.9;letter-spacing:-2px;">15 000 ₽</div>
-          </div>
-          <button type="button" onClick="{{ openCheckout }}" data-product-id="personal-consultation" data-product-name="Личная консультация с Лианой Гини" data-price="15000" data-currency="RUB" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px 26px;white-space:nowrap;" style-hover="background:{{ ink }};">ЗАПИСАТЬСЯ НА КОНСУЛЬТАЦИЮ →</button>
-        </div>
-        <p style="margin:14px 0 0 0;font-size:11px;line-height:1.6;opacity:0.45;max-width:420px;">Сначала разберём задачу. Потом решим, какой следующий шаг нужен.</p>
-      </div>
+  <!-- PRICE + BUTTONS -->
+  <div data-anim style="margin-top:36px;border-top:2px solid {{ accent }};padding-top:24px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .3s, transform .6s cubic-bezier(.16,1,.3,1) .3s;">
+    <div style="text-align:center;font-size:46px;font-weight:700;line-height:0.9;letter-spacing:-2px;margin-bottom:22px;">15 000 ₽</div>
+    <div style="display:flex;gap:56px;">
+      <div style="flex:1;display:flex;justify-content:center;"><button type="button" onClick="{{ openCheckout }}" data-product-id="personal-consultation" data-product-name="Личная консультация с Лианой Гини" data-price="15000" data-currency="RUB" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px 26px;white-space:nowrap;" style-hover="background:{{ ink }};">Посчитать партию →</button></div>
+      <div style="width:1px;flex-shrink:0;"></div>
+      <div style="flex:1;display:flex;justify-content:center;"><button type="button" onClick="{{ openCheckout }}" data-product-id="personal-consultation" data-product-name="Личная консультация с Лианой Гини" data-price="15000" data-currency="RUB" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px 26px;white-space:nowrap;" style-hover="background:{{ ink }};">Посчитать первую партию →</button></div>
     </div>
   </div>
 
