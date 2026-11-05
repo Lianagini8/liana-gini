@@ -6,3 +6,19 @@
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
+
+# 05.11.2026: один адрес сайта для поиска (www и /index.html → https://lianagini.ru/)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.lianagini\.ru$ [NC]
+  RewriteRule ^(.*)$ https://lianagini.ru/$1 [R=301,L]
+  RewriteCond %{THE_REQUEST} ^[A-Z]+\s/index\.html[\s?]
+  RewriteRule ^index\.html$ https://%{HTTP_HOST}/ [R=301,L]
+</IfModule>
+
+# Шаблоны блоков (*.dc.html) нужны сайту, но не поиску
+<IfModule mod_headers.c>
+  <FilesMatch "\.dc\.html$">
+    Header set X-Robots-Tag "noindex"
+  </FilesMatch>
+</IfModule>
