@@ -24,5 +24,5 @@
 // than showing literal "__________" placeholders.
 
 export const LEGAL_EMAIL = 'liana.Giniyatulina@yandex.com';
-export const SITE_URL = '';           // TODO: confirm with client — see notes above
+export const SITE_URL = 'https://lianagini.ru'; // вписан в оферту п. 1.1 и политику п. 1.3 (05.11.2026)
 export const LEGAL_REVISION_DATE = ''; // TODO: confirm with client — see notes above

@@ -45,3 +45,6 @@ jobs:
             CNAME
             .nojekyll
             README*
+            _tools/**
+            package.json
+            package-lock.json
