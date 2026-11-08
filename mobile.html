@@ -172,9 +172,7 @@
 <!--dc-prerender:head-->
 <script data-dc-pr>document.documentElement.classList.add('dc-js')</script>
 <style data-dc-pr>html.dc-js #dc-prerender{display:none!important}</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
 <style>
   html, body { margin: 0; background: #6E6A63; }
   a { color: #541F2B; text-decoration: none; }
@@ -801,9 +799,7 @@
   </div></div></div></div>
 <template id="dc-tpl"><x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
 <script src="assets/js/image-slot.js"></script>
 <style>
   html, body { margin: 0; background: #6E6A63; }
@@ -1646,7 +1642,7 @@ class Component extends DCLogic {
       const mod = await import('/assets/js/enquiry.js');
       const res = await mod.submitEnquiry(payload);
       this.setState({ formState: res.state });
-      // Only clear the form/consents once FormSubmit has actually confirmed
+      // Only clear the form/consents once the server has actually confirmed
       // delivery — on error the user's entered data must stay exactly as typed.
       if (res.state === 'success') {
         form.reset();

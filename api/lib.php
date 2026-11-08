@@ -186,11 +186,28 @@ function presign(string $key, string $downloadName, int $ttl = 600, ?int $ts = n
 
 // ---------- письма ----------
 
-function send_mail(string $to, string $subject, string $text): void {
-  if (!filter_var($to, FILTER_VALIDATE_EMAIL)) return;
+function send_mail(string $to, string $subject, string $text, string $replyTo = ''): bool {
+  if (!filter_var($to, FILTER_VALIDATE_EMAIL)) return false;
   $from = cfg()['mail_from'] ?? 'no-reply@lianagini.ru';
-  $headers = "From: LIANA GINI <$from>\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: 8bit";
-  @mail($to, '=?UTF-8?B?' . base64_encode($subject) . '?=', $text, $headers, '-f' . $from);
+  $headers = "From: LIANA GINI <$from>\r\n" . ($replyTo !== '' ? "Reply-To: $replyTo\r\n" : '') . "Content-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: 8bit";
+  return @mail($to, '=?UTF-8?B?' . base64_encode($subject) . '?=', $text, $headers, '-f' . $from);
+}
+
+// Не больше $max запросов с одного адреса за $window секунд. IP хранится только в виде хеша.
+function rate_ok(string $name, int $max, int $window): bool {
+  $h = @fopen(data_dir() . '/rate-' . $name . '.php', 'c+');
+  if (!$h) return true;
+  flock($h, LOCK_EX);
+  $all = json_decode(str_replace(GUARD, '', (string)stream_get_contents($h)), true) ?: [];
+  $now = time();
+  $all = array_filter(array_map(fn($hits) => array_values(array_filter($hits, fn($t) => $t > $now - $window)), $all));
+  $id = hash('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? '') . cfg()['site']);
+  $ok = count($all[$id] ?? []) < $max;
+  if ($ok) $all[$id][] = $now;
+  ftruncate($h, 0); rewind($h);
+  fwrite($h, GUARD . json_encode($all));
+  flock($h, LOCK_UN); fclose($h);
+  return $ok;
 }
 
 // ---------- страница в стиле сайта ----------
@@ -204,7 +221,7 @@ function page(string $title, string $body, int $code = 200, string $head = ''): 
   header('X-Robots-Tag: noindex');
   echo '<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
     . '<meta name="robots" content="noindex"><title>' . h($title) . ' — LIANA GINI</title>' . $head
-    . '<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">'
+    . '<link href="/assets/fonts/fonts.css" rel="stylesheet">'
     . '<style>body{margin:0;background:#F2EFE8;color:#181715;font-family:Manrope,system-ui,sans-serif;line-height:1.5}'
     . '.w{max-width:620px;margin:0 auto;padding:56px 20px 72px}.logo{font-weight:700;letter-spacing:3px;font-size:14px;color:#181715;text-decoration:none}'
     . 'h1{font-size:30px;line-height:1.15;text-transform:uppercase;margin:40px 0 16px;letter-spacing:.3px}p{font-size:16px;margin:0 0 14px}'

@@ -8,9 +8,7 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
 <style>
   body { margin: 0; background: #EAE6DC; }
   .brief-input { font-family: 'Manrope', sans-serif; background: transparent; border: none; border-bottom: 1px solid rgba(242,239,232,0.22); outline: none; color: #F2EFE8; font-size: 15px; font-weight: 500; width: 100%; height: 34px; padding: 0; display: block; }
@@ -218,7 +216,7 @@ class Component extends DCLogic {
  const mod = await import('/assets/js/enquiry.js');
  const res = await mod.submitEnquiry(payload);
  this.setState({ formState: res.state });
- // Only clear the form/consents once FormSubmit has actually confirmed delivery —
+ // Only clear the form/consents once the server has actually confirmed delivery —
  // on error the user's entered data must stay exactly as typed.
  if (res.state === 'success') {
  form.reset();

@@ -8,9 +8,7 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
 <style>
   body { margin: 0; background: #EAE6DC; }
   a { color: #541F2B; text-decoration: none; }
@@ -228,7 +226,7 @@ class Component extends DCLogic {
   onFormPhoneChange = (e) => this.setState({ formPhone: e.target.value, formPhoneError: false });
   onFormContactHandleChange = (e) => this.setState({ formContactHandle: e.target.value });
 
-  // Sends the anketa through the same FormSubmit channel as the main contact
+  // Sends the anketa through the same enquiry channel as the main contact
   // form — not a payment call. Tagged with the product name as `source` so
   // Liana can tell in her inbox this came from the consultation CTA.
   onProceedCheckout = async () => {
