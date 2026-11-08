@@ -10,6 +10,10 @@
 # 05.11.2026: один адрес сайта для поиска (www и /index.html → https://lianagini.ru/)
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  # 08.11.2026, временно: пока нет английской версии, lianagini.com ведёт на lianagini.ru
+  RewriteCond %{HTTP_HOST} ^(www\.)?lianagini\.com$ [NC]
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteRule ^(.*)$ https://lianagini.ru/$1 [R=302,L]
   RewriteCond %{HTTP_HOST} ^www\.lianagini\.ru$ [NC]
   RewriteRule ^(.*)$ https://lianagini.ru/$1 [R=301,L]
   RewriteCond %{THE_REQUEST} ^[A-Z]+\s/index\.html[\s?]
