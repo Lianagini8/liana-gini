@@ -19,8 +19,9 @@
   }
 
   function cookiePolicyHref() {
-    // All pages (including the legal pages themselves) live at the site root.
-    return 'cookie-policy.html';
+    // Absolute path: landing pages live in folders (/o-liane-gini/), where a
+    // relative 'cookie-policy.html' would resolve to /o-liane-gini/cookie-policy.html.
+    return '/cookie-policy.html';
   }
 
   // Reports the banner's own rendered height as a CSS custom property, so any

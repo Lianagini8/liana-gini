@@ -18,6 +18,9 @@
   RewriteRule ^(.*)$ https://lianagini.ru/$1 [R=301,L]
   RewriteCond %{THE_REQUEST} ^[A-Z]+\s/index\.html[\s?]
   RewriteRule ^index\.html$ https://%{HTTP_HOST}/ [R=301,L]
+  # Посадочные: /<адрес>/index.html → /<адрес>/. THE_REQUEST не даёт зациклиться на внутреннем DirectoryIndex.
+  RewriteCond %{THE_REQUEST} ^[A-Z]+\s/(o-liane-gini|konsultaciya|baier-v-kitae|detskaya-odezhda|nizhnee-bele|gotovye-kollekcii|svoy-brend-odezhdy|rynki-guanchzhou|kontrol-kachestva|sportivnaya-odezhda|tkani|furnitura|soprovozhdenie-v-guanchzhou|kak-najti-fabriku|furnitura-s-logotipom)/index\.html[\s?]
+  RewriteRule ^(o-liane-gini|konsultaciya|baier-v-kitae|detskaya-odezhda|nizhnee-bele|gotovye-kollekcii|svoy-brend-odezhdy|rynki-guanchzhou|kontrol-kachestva|sportivnaya-odezhda|tkani|furnitura|soprovozhdenie-v-guanchzhou|kak-najti-fabriku|furnitura-s-logotipom)/index\.html$ https://%{HTTP_HOST}/$1/ [R=301,L]
 </IfModule>
 
 # Шаблоны блоков (*.dc.html) нужны сайту, но не поиску
