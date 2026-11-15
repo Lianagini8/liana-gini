@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<!--
+  ШАБЛОН ПОСАДОЧНОЙ СТРАНИЦЫ lianagini.ru (07.11.2026). На хостинг не выгружается (папка _tools).
+  Как использовать:
+  1. Скопировать в папку страницы: /<адрес>/index.html (например /detskaya-odezhda/index.html).
+  2. Заменить всё, что в квадратных скобках [ … ], значениями из ТЗ страницы (файл «2 Карта сайта и ТЗ страниц»).
+  3. Удалить блоки, которых в ТЗ нет. Блок автора оставить на коммерческих страницах.
+  4. Ссылки ставить только на опубликованные страницы.
+  5. Перед публикацией: убрать meta robots noindex, удалить всё с классом draft, добавить адрес в sitemap.xml.
+  Пути к файлам сайта начинаются с «/»: страница лежит во вложенной папке.
+  Готовый HTML (prerender) для этих страниц не нужен: текст сразу в разметке.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ЧЕРНОВИК: noindex убрать при публикации -->
+<meta name="robots" content="noindex">
+<title>[Title из ТЗ]</title>
+<meta name="description" content="[Description из ТЗ]">
+<link rel="canonical" href="https://lianagini.ru/[адрес]/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Liana Gini">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="[Title из ТЗ]">
+<meta property="og:description" content="[Description из ТЗ]">
+<meta property="og:url" content="https://lianagini.ru/[адрес]/">
+<meta property="og:image" content="https://lianagini.ru/assets/media/[главное фото].jpg">
+<meta name="theme-color" content="#541F2B">
+<link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/landing.css">
+<!--
+  Разметка. Лиана, организация и сайт уже описаны на главной: ссылаемся на их @id, новых сущностей не заводим.
+  Коммерческая страница: Service. Статья (свой бренд, рынки, как найти фабрику): Article с author = #liana.
+  Значения должны совпадать с видимым текстом страницы.
+-->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "https://lianagini.ru/[адрес]/#page",
+   "url": "https://lianagini.ru/[адрес]/",
+   "name": "[Title из ТЗ]",
+   "description": "[Description из ТЗ]",
+   "inLanguage": "ru",
+   "isPartOf": { "@id": "https://lianagini.ru/#site" },
+   "about": { "@id": "https://lianagini.ru/[адрес]/#service" },
+   "breadcrumb": { "@id": "https://lianagini.ru/[адрес]/#breadcrumbs" }
+  },
+  {
+   "@type": "Service",
+   "@id": "https://lianagini.ru/[адрес]/#service",
+   "name": "[название услуги, как в H1]",
+   "description": "[капсула ответа из первого экрана]",
+   "provider": { "@id": "https://lianagini.ru/#liana" },
+   "areaServed": "RU",
+   "url": "https://lianagini.ru/[адрес]/"
+  },
+  { "@type": "Person", "@id": "https://lianagini.ru/#liana", "name": "Лиана Гини", "alternateName": "Liana Gini" },
+  { "@type": "Organization", "@id": "https://lianagini.ru/#org", "name": "Liana Gini", "url": "https://lianagini.ru/" },
+  { "@type": "WebSite", "@id": "https://lianagini.ru/#site", "name": "Liana Gini", "url": "https://lianagini.ru/" },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://lianagini.ru/[адрес]/#breadcrumbs",
+   "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://lianagini.ru/" },
+    { "@type": "ListItem", "position": 2, "name": "[название в крошках]", "item": "https://lianagini.ru/[адрес]/" }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+
+<header class="lp-header">
+  <div class="wrap">
+    <a class="mark" href="/">LIANA GINI</a>
+    <nav aria-label="Основная навигация">
+      <a class="home" href="/">На главную</a>
+      <a class="btn small" href="/konsultaciya/">Консультация</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="crumbs wrap" aria-label="Хлебные крошки">
+  <ol>
+    <li><a href="/">Главная</a></li>
+    <li><span aria-current="page">[название в крошках]</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <!-- Первый экран: один H1 и капсула ответа (2–3 предложения с цифрами Лианы) -->
+  <section class="lp-hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">[надзаголовок: группа страницы]</p>
+        <h1>[H1 из ТЗ]</h1>
+        <p class="lead">[Капсула ответа: что, для кого, город, партия, сроки, что входит]</p>
+        <p>[Второй абзац: условия или главный факт]</p>
+        <div class="cta-row">
+          <a class="btn" href="/konsultaciya/">Записаться на консультацию</a>
+          <span class="price-note">30–⁠60 минут · 15&nbsp;000&nbsp;₽</span>
+        </div>
+      </div>
+      <figure>
+        <!-- Содержательное фото: alt описывает, что на снимке. Размеры width и height из файла. -->
+        <img src="/assets/media/[фото].jpg" width="[ширина]" height="[высота]" alt="[что на фото]" fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <!-- Секция с текстом -->
+  <section class="section" aria-labelledby="h-1">
+    <div class="wrap">
+      <h2 id="h-1">[H2 из ТЗ]</h2>
+      <div class="text">
+        <p>[текст]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Текст + фото или видео. Класс media-left ставит фото слева на компьютере. Фон paper чередует секции. -->
+  <section class="section paper" aria-labelledby="h-2">
+    <div class="wrap split">
+      <div>
+        <h2 id="h-2">[H2]</h2>
+        <p>[текст]</p>
+        <!-- Ключевые факты: цифры и условия Лианы -->
+        <ul class="facts">
+          <li><b>[факт]</b><span>[пояснение]</span></li>
+          <li><b>[факт]</b><span>[пояснение]</span></li>
+        </ul>
+      </div>
+      <figure class="proof">
+        <img src="/assets/media/[фото].jpg" width="[ширина]" height="[высота]" loading="lazy" alt="[что на фото]">
+        <figcaption>[подпись: что подтверждает фото]</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Шаги процесса. Класс single: шаги в одну колонку. -->
+  <section class="section" aria-labelledby="h-3">
+    <div class="wrap">
+      <h2 id="h-3">[H2]</h2>
+      <ol class="steps">
+        <li><h3>[шаг]</h3><p>[что происходит]</p></li>
+        <li><h3>[шаг]</h3><p>[что происходит]</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Вопросы: видимым текстом. FAQPage-разметку не добавляем по умолчанию. -->
+  <section class="section" aria-labelledby="h-faq">
+    <div class="wrap">
+      <h2 id="h-faq">Вопросы</h2>
+      <div class="faq">
+        <div class="q"><h3>[вопрос из ТЗ]</h3><p>[ответ из ТЗ]</p></div>
+        <div class="q"><h3>[вопрос из ТЗ]</h3><p>[ответ из ТЗ]</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Внутренние ссылки: только на опубликованные страницы, по списку «Внутренние ссылки» из ТЗ -->
+  <section class="section paper" aria-labelledby="h-links">
+    <div class="wrap">
+      <h2 id="h-links">Смотрите также</h2>
+      <ul class="links">
+        <li><a href="/[адрес]/">[название страницы]<small>[о чём]</small></a></li>
+        <li><a href="/[адрес]/">[название страницы]<small>[о чём]</small></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Блок автора: на коммерческих страницах -->
+  <section class="section" aria-label="Автор">
+    <div class="wrap">
+      <div class="author">
+        <img src="/assets/media/portrait.jpg" width="88" height="88" loading="lazy" alt="Лиана Гини">
+        <p><span class="name">Лиана Гини</span>, байер с&nbsp;производственной командой в&nbsp;Гуанчжоу, больше 14&nbsp;лет в&nbsp;Китае. <a href="/o-liane-gini/">Подробнее о&nbsp;Лиане</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="lp-cta" aria-labelledby="h-cta">
+  <div class="wrap">
+    <div>
+      <h2 id="h-cta">Начните с&nbsp;консультации</h2>
+      <p>30–⁠60 минут с&nbsp;Лианой Гини: расчёт партии с&nbsp;доставкой до&nbsp;склада, формат производства, сроки по этапам и&nbsp;красные флаги.</p>
+    </div>
+    <div>
+      <a class="btn light" href="/konsultaciya/">Записаться на консультацию</a>
+      <span class="price-note">15&nbsp;000&nbsp;₽</span>
+    </div>
+  </div>
+</section>
+
+<footer class="lp-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div class="brand">
+        <a class="mark" href="/">LIANA GINI</a>
+        <p class="tagline">Производство в&nbsp;Китае для fashion-брендов</p>
+        <ul class="about">
+          <li><a href="/">Главная</a></li>
+          <li><a href="/o-liane-gini/">О&nbsp;Лиане Гини</a></li>
+          <li><a href="/konsultaciya/">Консультация</a></li>
+        </ul>
+      </div>
+      <div class="group">
+        <p class="group-title">Услуги</p>
+        <ul>
+          <li><a href="/baier-v-kitae/">Байер одежды в&nbsp;Китае</a></li>
+          <li><a href="/detskaya-odezhda/">Детская одежда</a></li>
+          <li><a href="/nizhnee-bele/">Нижнее бельё</a></li>
+          <li><a href="/gotovye-kollekcii/">Готовые коллекции</a></li>
+          <li><a href="/sportivnaya-odezhda/">Спорт и&nbsp;йога</a></li>
+          <li><a href="/kontrol-kachestva/">Контроль качества</a></li>
+          <li><a href="/soprovozhdenie-v-guanchzhou/">Сопровождение в&nbsp;Гуанчжоу</a></li>
+        </ul>
+      </div>
+      <div class="stack">
+        <div class="group">
+          <p class="group-title">Материалы</p>
+          <ul>
+            <li><a href="/tkani/">Ткани</a></li>
+            <li><a href="/furnitura/">Фурнитура и&nbsp;кружево</a></li>
+            <li><a href="/furnitura-s-logotipom/">Фурнитура с&nbsp;логотипом</a></li>
+          </ul>
+        </div>
+        <div class="group">
+          <p class="group-title">Статьи</p>
+          <ul>
+            <li><a href="/svoy-brend-odezhdy/">Свой бренд одежды</a></li>
+            <li><a href="/rynki-guanchzhou/">Рынки Гуанчжоу</a></li>
+            <li><a href="/kak-najti-fabriku/">Как найти фабрику</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <ul class="docs">
+      <li><a href="/oferta.html">Публичная оферта</a></li>
+      <li><a href="/user-agreement.html">Пользовательское соглашение</a></li>
+      <li><a href="/privacy-policy.html">Политика ПДн</a></li>
+      <li><a href="/pd-consent.html">Согласие на&nbsp;обработку ПДн</a></li>
+      <li><a href="/ad-consent.html">Согласие на&nbsp;рекламные рассылки</a></li>
+      <li><a href="/cookie-policy.html">Cookie</a></li>
+      <li><a href="/requisites.html">Реквизиты</a></li>
+    </ul>
+    <p class="legal">ИП Гиниятулина Лиана Ринатовна · ИНН 861003465408 · ОГРНИП 323861700006196</p>
+  </div>
+</footer>
+
+<script src="/assets/js/cookie-banner.js?v=2" defer></script>
+</body>
+</html>
