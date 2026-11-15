@@ -134,7 +134,7 @@ function payment_url(array $o): string {
     'MerchantLogin' => $login,
     'OutSum'        => $sum,
     'InvId'         => $o['id'],
-    'Description'   => mb_substr($p['name'], 0, 100),
+    'Description'   => mb_substr(t($p['name']), 0, 100), // покупателю с .com название на английском; в чеке остаётся русское
     'Culture'       => lang() === 'en' ? 'en' : 'ru',
     'Encoding'      => 'utf-8',
   ];
