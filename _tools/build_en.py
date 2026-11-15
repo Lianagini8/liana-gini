@@ -314,6 +314,20 @@ def en_reviews(s):
     return re.sub(r"(<div[^\n]*en-review-2\.jpg[^\n]*\n)", lambda m: m.group(1) + note, s, count=1)
 
 
+def drop_ru_pages(s, name):
+    """Посадочные страницы есть только на .ru: на английском подвале их быть не должно."""
+    if name == 'section-10.dc.html':
+        # ссылка на страницу консультации заменяется на блок консультации этой же страницы
+        if 'href="/konsultaciya/"' not in s:
+            issues.append((name, 'footer', 'не найдена ссылка на /konsultaciya/'))
+        s = s.replace('href="/konsultaciya/"', 'href="#consultation"')
+    before = s
+    s = re.sub(r'(?:\s*·)?\s*<a href="/(?:o-liane-gini|konsultaciya)/"[^>]*>[^<]*</a>', '', s)
+    if s == before and name == 'section-10.dc.html':
+        issues.append((name, 'footer', 'не найдена ссылка на /o-liane-gini/'))
+    return s
+
+
 def php_str(s):
     return "'" + s.replace('\\', '\\\\').replace("'", "\\'") + "'"
 
@@ -339,6 +353,8 @@ def main():
                 issues.append((name, 'price', 'не найдена подпись цены в окне оплаты'))
             s = s.replace(*MOBILE_LABEL)
         s = s.replace('name@mail.ru', 'name@example.com')
+        if name in ('section-10.dc.html', 'mobile.html'):
+            s = drop_ru_pages(s, name)
         # Метки этапов и на русском сайте английские. Катя 12.11: «партия» = order, не batch.
         s = s.replace('opacity:0.5;">BATCH</span>', 'opacity:0.5;">ORDER</span>').replace("'QC', 'BATCH'", "'QC', 'ORDER'")
         s = s.replace('/assets/js/payments.js', '/js/payments.js').replace('assets/js/cookie-banner.js', 'js/cookie-banner.js')
