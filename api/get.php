@@ -11,4 +11,5 @@ if ((int)$o['downloads'] >= (int)(cfg()['max_downloads'] ?? 40)) page(t('Лим�
 $o['downloads'] = (int)$o['downloads'] + 1;
 order_save($o);
 header('Cache-Control: no-store');
-header('Location: ' . presign($files[$i]['key'], t($files[$i]['title']) . '.pdf'), true, 302);
+// в имени файла не должно быть косой черты: «2026/27» сломает имя при сохранении
+header('Location: ' . presign($files[$i]['key'], str_replace(['/', '\\'], '-', t($files[$i]['title'])) . '.pdf'), true, 302);

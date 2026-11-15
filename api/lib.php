@@ -17,6 +17,11 @@ const PRODUCTS = [
       ['key' => 'katalog-2.pdf', 'title' => 'Каталог 2', 'size' => '32 МБ'],
       ['key' => 'katalog-3.pdf', 'title' => 'Каталог 3', 'size' => '32 МБ'],
       ['key' => 'lookbook.pdf',  'title' => 'Lookbook', 'size' => '75 МБ'],
+      // добавлены 15.11.2026
+      ['key' => 'katalog-palto-i-kurtki.pdf', 'title' => 'Пальто и куртки 2026/27', 'size' => '17 МБ'],
+      ['key' => 'katalog-verhnyaya-odezhda-vesna.pdf', 'title' => 'Женская верхняя одежда, весна 2026/2027', 'size' => '4 МБ'],
+      ['key' => 'katalog-zamshevye-kozhanye-yubki.pdf', 'title' => 'Замшевые и кожаные юбки 2026/27', 'size' => '3 МБ'],
+      ['key' => 'katalog-brillianty.pdf', 'title' => 'Выращенные бриллианты', 'size' => '5 МБ'],
     ],
   ],
   'factory_check_9' => [

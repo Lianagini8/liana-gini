@@ -46,6 +46,11 @@ EXTRA = {
     'посчитать партию': 'Cost my order',  # термин Кати 12.11: партия = order
     'посчитать первую партию': 'Cost my first order',
     '260 продаж в день': '260 sales a day.',
+    # названия каталогов, добавленных 15.11.2026
+    'пальто и куртки 2026/27': 'Coats and Jackets 2026/27',
+    'женская верхняя одежда, весна 2026/2027': 'Women’s Spring Outerwear 2026/2027',
+    'замшевые и кожаные юбки 2026/27': 'Suede and Leather Skirts 2026/27',
+    'выращенные бриллианты': 'Lab-Grown Diamonds',
     'каталог 2': 'Catalogue 2',
     'каталог 3': 'Catalogue 3',
     'политике cookie': 'Cookie Policy',
