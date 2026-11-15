@@ -228,9 +228,16 @@
     <!-- TOP BAR: scrolls with content, not sticky/fixed -->
     <div style="flex-shrink:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid rgba(24,23,21,0.1);background:{{ ivory }};">
       <div style="font-size:15px;font-weight:700;letter-spacing:1.5px;">LIANA GINI</div>
-      <a href="https://t.me/lianagini" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:{{ accent }};color:{{ ivory }};" style-hover="background:{{ ink }};">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"/></svg>
-      </a>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <!-- lang-switch:top-mobile --><div style="display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:1px;">
+          <a href="https://lianagini.ru/" hreflang="ru" style="color:{{ ink }};opacity:0.5;">RU</a>
+          <span style="opacity:0.25;" aria-hidden="true">/</span>
+          <span aria-current="true">EN</span>
+        </div><!-- /lang-switch:top-mobile -->
+        <a href="https://t.me/lianagini" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:{{ accent }};color:{{ ivory }};" style-hover="background:{{ ink }};">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"/></svg>
+        </a>
+      </div>
     </div>
 
     <!-- ============ TAB: HOME ============ -->
@@ -587,7 +594,7 @@
             <div id="mq-pd-consent-error" role="alert" style="display:{{ pdErrorDisplay }};font-size:11px;color:{{ accent }};padding-left:27px;">Please tick the consent box.</div>
             <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;">
               <input type="checkbox" name="marketingConsent" checked="{{ marketingConsent }}" onChange="{{ onMarketingConsentChange }}" style="margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
-              <span style="opacity:0.6;">I would like to receive news and special offers: <a href="ad-consent.html" target="_blank" rel="noopener" style="text-decoration:underline;">marketing consent</a>.</span>
+              <span style="opacity:0.6;">I would like to receive news and special offers: <a href="ad-consent.html" target="_blank" rel="noopener" style="text-decoration:underline;">Marketing Consent</a>.</span>
             </label>
           </div>
           <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px;margin-bottom:14px;">Discuss your project →</button>
@@ -621,7 +628,8 @@
           <a href="pd-consent.html" style="color:{{ ivory }};opacity:1;">Consent to Personal Data Processing</a> ·
           <a href="cookie-policy.html" style="color:{{ ivory }};opacity:1;">Cookie</a> ·
           <a href="ad-consent.html" style="color:{{ ivory }};opacity:1;">Newsletter</a> ·
-          <a href="requisites.html" style="color:{{ ivory }};opacity:1;">Business and Legal Details</a>
+          <a href="requisites.html" style="color:{{ ivory }};opacity:1;">Business and Legal Details</a> ·
+          <!-- lang-switch:footer-mobile --><a href="https://lianagini.ru/" hreflang="ru" style="color:{{ ivory }};opacity:1;">Русская версия</a><!-- /lang-switch:footer-mobile -->
           © 2026 LIANA GINI · INDIVIDUAL ENTREPRENEUR L. R. GINIYATULINA · INN (TAXPAYER ID) 861003465408 · OGRNIP 323861700006196
         </div>
       </div>
@@ -689,7 +697,7 @@
 
           <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;margin-bottom:22px;">
             <input type="checkbox" name="checkoutMarketingConsent" checked="{{ checkoutMarketingConsent }}" onChange="{{ onCheckoutMarketingConsentChange }}" style="margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
-            <span style="opacity:0.65;">I would like to receive news and special offers: <a href="ad-consent.html" target="_blank" rel="noopener" style="color:{{ ink }};text-decoration:underline;">marketing consent</a>.</span>
+            <span style="opacity:0.65;">I would like to receive news and special offers: <a href="ad-consent.html" target="_blank" rel="noopener" style="color:{{ ink }};text-decoration:underline;">Marketing Consent</a>.</span>
           </label>
 
           <div style="display:flex;gap:14px;align-items:center;">

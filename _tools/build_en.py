@@ -75,6 +75,8 @@ FIXES = {
         '1.1. Website means the Contractor’s internet resource located at https://lianagini.com (including related pages, feedback forms and the chatbot).',
     '1.3. Политика действует в отношении всех персональных данных, обрабатываемых Оператором, в том числе получаемых через сайт Оператора https://lianagini.ru (далее — Сайт), формы обратной связи и чат-бот.':
         '1.3. The Policy applies to all personal data processed by the Operator, including data obtained through the Operator’s website https://lianagini.com (hereinafter referred to as the “Website”), feedback forms and the chatbot.',
+    # В юридическом ряду подвала все ссылки с заглавных, у Кати одна строчными.
+    'Согласие на рассылки': 'Marketing Consent',
 }
 
 SEO_TITLE = 'Turnkey Clothing Manufacturing in China | Liana Gini'
@@ -333,6 +335,34 @@ def drop_ru_pages(s, name):
     return s
 
 
+# Переключатель версий. На русском сайте активен RU и ссылка ведёт на .com,
+# на английском наоборот. Язык в подписи называем на самом этом языке.
+LANG_SWITCH = {
+    'top-desktop': '<div style="width:130px;flex-shrink:0;display:flex;align-items:center;justify-content:flex-end;">\n      <div style="display:flex;align-items:center;gap:9px;font-size:12px;font-weight:500;letter-spacing:1px;background:rgba(14,11,10,0.38);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:7px 13px;">\n        <a href="https://lianagini.ru/" hreflang="ru" style="color:{{ ivory }};opacity:0.6;" style-hover="color:{{ accent }};opacity:1;">RU</a>\n        <span style="color:{{ ivory }};opacity:0.35;" aria-hidden="true">/</span>\n        <span style="color:{{ ivory }};" aria-current="true">EN</span>\n      </div>\n    </div>',
+    'footer-desktop': '<a href="https://lianagini.ru/" hreflang="ru" style="font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:{{ ivory }};opacity:0.7;" style-hover="opacity:1;color:{{ accentLight }};">РУССКАЯ ВЕРСИЯ</a>',
+    'top-mobile': '<div style="display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:1px;">\n          <a href="https://lianagini.ru/" hreflang="ru" style="color:{{ ink }};opacity:0.5;">RU</a>\n          <span style="opacity:0.25;" aria-hidden="true">/</span>\n          <span aria-current="true">EN</span>\n        </div>',
+    'footer-mobile': '<a href="https://lianagini.ru/" hreflang="ru" style="color:{{ ivory }};opacity:1;">Русская версия</a>',
+}
+SWITCH_FILES = ('hero.dc.html', 'section-10.dc.html', 'mobile.html')
+
+
+def lang_switch(s, name):
+    """Меняет переключатель версий на английский вариант. Идёт после перевода:
+    подписи RU/EN и «Русская версия» переводить не нужно."""
+    def rep(m):
+        k = m.group(1)
+        if k not in LANG_SWITCH:
+            issues.append((name, 'switch', 'нет английского варианта для ' + k))
+            return m.group(0)
+        return '<!-- lang-switch:%s -->%s<!-- /lang-switch:%s -->' % (k, LANG_SWITCH[k], k)
+
+    before = s
+    s = re.sub(r'<!-- lang-switch:([a-z-]+) -->.*?<!-- /lang-switch:\1 -->', rep, s, flags=re.S)
+    if s == before and name in SWITCH_FILES:
+        issues.append((name, 'switch', 'переключатель версий не найден'))
+    return s
+
+
 def php_str(s):
     return "'" + s.replace('\\', '\\\\').replace("'", "\\'") + "'"
 
@@ -370,6 +400,7 @@ def main():
         s = tr_html(T, s, name)
         if name == 'section-06.dc.html':
             s = en_reviews(s)
+        s = lang_switch(s, name)
         (OUT / name).write_text(s, encoding='utf-8')
 
     for rel in JS_FILES:
