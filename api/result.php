@@ -20,14 +20,16 @@ if ($o['status'] !== 'paid') {
   order_save($o);
 
   $p = PRODUCTS[$o['product']];
+  if (!empty($o['lang'])) lang($o['lang']);
   if ($p['files']) {
-    send_mail($o['email'], 'Ваши материалы LIANA GINI',
-      "Спасибо за покупку!\n\n«{$p['name']}»\n\nСкачать файлы: " . access_url($o) .
-      "\n\nСсылка действует " . (int)(cfg()['access_days'] ?? 30) . " дней.\n\nLIANA GINI\n" . cfg()['site']);
+    send_mail($o['email'], t('Ваши материалы LIANA GINI'),
+      t('Спасибо за покупку!') . "\n\n«" . t($p['name']) . "»\n\n" . t('Скачать файлы:') . ' ' . access_url($o) .
+      "\n\n" . strtr(t('Ссылка действует {N} дней.'), ['{N}' => (int)(cfg()['access_days'] ?? 30)]) . "\n\nLIANA GINI\n" . site_url());
   }
+  lang('ru'); // уведомление Лиане всегда на русском
   send_mail(cfg()['notify_email'] ?? '', "Оплата №{$o['id']}: {$p['name']}",
     "Заказ №{$o['id']}\nТовар: {$p['name']}\nСумма: {$o['amount']} ₽\nEmail покупателя: {$o['email']}" .
     ($o['name'] !== '' ? "\nИмя: {$o['name']}" : '') . ($o['contact'] !== '' ? "\nКонтакт: {$o['contact']}" : '') .
-    "\nСогласие на рекламу: " . ($o['marketing'] ? 'да' : 'нет'));
+    "\nСогласие на рекламу: " . ($o['marketing'] ? 'да' : 'нет') . (($o['lang'] ?? '') === 'en' ? "\nСайт: lianagini.com" : ''));
 }
 echo 'OK' . $o['id'];

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #EAE6DC; }
+  a { color: #541F2B; text-decoration: none; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-anim] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</helmet>
+
+<div id="cases" ref="{{ rootRef }}" style="width:1440px;margin:0 auto;background:{{ ivory }};font-family:'Manrope',sans-serif;color:{{ ink }};position:relative;padding:56px 60px 44px 60px;box-sizing:border-box;">
+
+  <!-- HEADER -->
+  <div data-anim style="display:flex;justify-content:space-between;align-items:flex-start;gap:60px;margin-bottom:36px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);">
+    <div>
+      <h2 style="margin:0 0 12px 0;font-size:40px;line-height:1.08;font-weight:700;letter-spacing:-1px;text-transform:uppercase;">WE MAKE FOR THE BRANDS YOU WEAR.</h2>
+      <p style="margin:0;font-size:12px;line-height:1.55;max-width:440px;opacity:0.6;">We manufacture for major fashion brands and for labels that are just starting to grow.</p>
+    </div>
+  </div>
+
+  <!-- EVIDENCE WALL: 3 cases side by side -->
+  <div style="display:flex;gap:40px;border-top:1px solid rgba(24,23,21,0.15);padding-top:24px;align-items:flex-start;">
+
+    <!-- CASE 01 -->
+    <div style="flex:1;min-width:0;">
+      <div data-anim style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:{{ accent }};margin-bottom:12px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0s, transform .6s cubic-bezier(.16,1,.3,1) 0s;">01. LINGERIE</div>
+      <h3 data-anim style="margin:0 0 14px 0;font-size:24px;line-height:1.15;font-weight:700;text-transform:uppercase;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0s, transform .6s cubic-bezier(.16,1,.3,1) 0s;">FROM 3 STYLES TO 38.</h3>
+      <p data-anim style="margin:0 0 22px 0;font-size:12px;line-height:1.55;opacity:{{ rO6 }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0s, transform .6s cubic-bezier(.16,1,.3,1) 0s;">They came to us with three styles. We reworked the range, rebuilt the size chart to GOST standards and added original prints.</p>
+
+      <div data-anim style="display:flex;align-items:baseline;gap:12px;margin-bottom:22px;opacity:{{ c1ChainO }};transform:translateY({{ c1ChainY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.16s, transform .6s cubic-bezier(.16,1,.3,1) 0.16s;">
+        <span style="font-size:44px;font-weight:700;line-height:0.9;letter-spacing:-2px;">3</span>
+        <span style="font-size:16px;opacity:0.35;">→</span>
+        <span style="font-size:44px;font-weight:700;line-height:0.9;letter-spacing:-2px;">38</span>
+        <span style="font-size:16px;opacity:0.35;">→</span>
+        <span style="font-size:44px;font-weight:700;line-height:0.9;letter-spacing:-2px;color:{{ accent }};">260</span>
+      </div>
+
+      <div data-anim style="border-top:1px solid rgba(24,23,21,0.12);padding-top:12px;opacity:{{ c1ResultO }};transform:translateY({{ c1ResultY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.34s, transform .6s cubic-bezier(.16,1,.3,1) 0.34s;">
+        <div style="font-size:17px;font-weight:700;line-height:1.25;text-transform:uppercase;">260 SALES A DAY.</div>
+      </div>
+    </div>
+
+    <div style="width:1px;align-self:stretch;background:rgba(24,23,21,0.1);"></div>
+
+    <!-- CASE 02 -->
+    <div style="flex:1;min-width:0;">
+      <div data-anim style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:{{ accent }};margin-bottom:12px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.05s, transform .6s cubic-bezier(.16,1,.3,1) 0.05s;">02. PYJAMAS</div>
+      <h3 data-anim style="margin:0 0 14px 0;font-size:24px;line-height:1.15;font-weight:700;text-transform:uppercase;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.05s, transform .6s cubic-bezier(.16,1,.3,1) 0.05s;">THE FEEL OF LUXURY.</h3>
+      <p data-anim style="margin:0 0 16px 0;font-size:12px;line-height:1.55;opacity:{{ rO6 }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.05s, transform .6s cubic-bezier(.16,1,.3,1) 0.05s;">The goal: keep the feel of an imported product and stay within the brand’s cost targets. We took the original apart and chose the fabric composition and the factory.</p>
+
+      <div data-anim style="font-size:11px;font-weight:600;line-height:1.55;text-transform:uppercase;margin-bottom:18px;opacity:{{ rO7 }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.05s, transform .6s cubic-bezier(.16,1,.3,1) 0.05s;">WE FOUND A SUPPLIER, CHOSE THE FABRIC, BUILT THE SIZE CHART AND RAN QUALITY CONTROL.</div>
+
+      <div data-anim style="border-top:1px solid rgba(24,23,21,0.12);padding-top:12px;margin-bottom:18px;opacity:{{ c2ResultO }};transform:translateY({{ c2ResultY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.3s, transform .6s cubic-bezier(.16,1,.3,1) 0.3s;">
+        <div style="font-size:17px;font-weight:700;line-height:1.25;text-transform:uppercase;">THE LINE CONSISTENTLY HITS ITS TARGET MARGIN.</div>
+      </div>
+
+      <div data-anim style="width:100%;aspect-ratio:1080/335;background-image:url('assets/media/en-review-1.jpg');background-size:100% auto;background-repeat:no-repeat;opacity:{{ c2ResultO }};transform:translateY({{ c2ResultY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.3s, transform .6s cubic-bezier(.16,1,.3,1) 0.3s;"></div>
+      <div data-anim style="font-size:8px;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;opacity:{{ c2Result45 }};transform:translateY({{ c2ResultY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.3s, transform .6s cubic-bezier(.16,1,.3,1) 0.3s;">FROM A CONVERSATION WITH THE CLIENT, TRANSLATED FROM RUSSIAN</div>
+    </div>
+
+    <div style="width:1px;align-self:stretch;background:rgba(24,23,21,0.1);"></div>
+
+    <!-- CASE 03 -->
+    <div style="flex:1.15;min-width:0;">
+      <div data-anim style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:{{ accent }};margin-bottom:12px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.1s, transform .6s cubic-bezier(.16,1,.3,1) 0.1s;">03. CHILDRENSWEAR</div>
+      <h3 data-anim style="margin:0 0 14px 0;font-size:24px;line-height:1.15;font-weight:700;text-transform:uppercase;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.1s, transform .6s cubic-bezier(.16,1,.3,1) 0.1s;">A SIZE THE FACTORY WOULDN’T MAKE.</h3>
+      <p data-anim style="margin:0 0 16px 0;font-size:12px;line-height:1.55;opacity:{{ rO6 }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.1s, transform .6s cubic-bezier(.16,1,.3,1) 0.1s;">The factory refused to make infant sizes. We built a size chart starting at size 66 and got production running.</p>
+
+      <div style="border-top:1px solid rgba(24,23,21,0.12);padding-top:12px;margin-bottom:16px;">
+        <div style="font-size:17px;font-weight:700;line-height:1.25;text-transform:uppercase;">TODAY THE CLIENT’S WHOLE ACTIVE RANGE IS MADE WITH US.</div>
+      </div>
+
+      <!-- proof sequence: produced → worn -->
+      <div data-anim style="display:flex;gap:8px;align-items:center;margin-bottom:16px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.1s, transform .6s cubic-bezier(.16,1,.3,1) 0.1s;">
+        <img loading="lazy" decoding="async" src="assets/media/produced.jpg" alt="" style="width:112px;height:92px;object-fit:cover;display:block;"/>
+        <span style="font-size:13px;opacity:0.3;">→</span>
+        <div style="width:78px;height:92px;background-image:url('assets/media/worn.jpg');background-size:180px auto;background-position:-34px -48px;background-repeat:no-repeat;"></div>
+        <div style="font-size:8px;letter-spacing:1.2px;text-transform:uppercase;opacity:0.45;margin-left:6px;line-height:1.5;">MADE → WORN</div>
+      </div>
+
+      <div data-anim style="font-size:14px;font-weight:700;line-height:1.25;text-transform:uppercase;color:{{ accent }};margin-bottom:14px;opacity:{{ c3ResultO }};transform:translateY({{ c3ResultY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.32s, transform .6s cubic-bezier(.16,1,.3,1) 0.32s;">“NOT A SINGLE BODYSUIT ARRIVED WITH A DEFECT.”</div>
+
+      <div data-anim style="width:100%;aspect-ratio:1080/468;background-image:url('assets/media/en-review-2.jpg');background-size:100% auto;background-repeat:no-repeat;opacity:{{ c3ResultO }};transform:translateY({{ c3ResultY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.32s, transform .6s cubic-bezier(.16,1,.3,1) 0.32s;"></div>
+      <div style="font-size:8px;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;opacity:.45;">Translated from Russian</div>
+      <div data-anim style="display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;gap:16px;opacity:{{ c3ResultO }};transform:translateY({{ c3ResultY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) 0.32s, transform .6s cubic-bezier(.16,1,.3,1) 0.32s;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;line-height:1.3;">AFTER THE FIRST SHIPMENT THEY CAME BACK FOR MORE.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NDA + CTA -->
+  <div style="border-top:1px solid rgba(24,23,21,0.15);margin-top:30px;padding-top:20px;display:flex;justify-content:space-between;align-items:flex-end;gap:60px;">
+    <p style="margin:0;font-size:11px;line-height:1.6;max-width:340px;opacity:0.45;">We don’t disclose brand names or production details. Our NDAs protect both sides.</p>
+    <a href="#contact" style="font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};border-bottom:2px solid {{ accent }};padding-bottom:4px;white-space:nowrap;">DISCUSS MY PROJECT →</a>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 1000},
+  &quot;ivory&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#F2EFE8&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#F2EFE8&quot;, &quot;#EDEAE1&quot;, &quot;#F6F3EC&quot;]},
+  &quot;ink&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#181715&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#181715&quot;, &quot;#111111&quot;]},
+  &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#541F2B&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#541F2B&quot;, &quot;#6B2A38&quot;, &quot;#3F1620&quot;], &quot;section&quot;: &quot;Brand&quot;}
+}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  state = { revealed: false };
+
+  componentDidMount() {
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      this.setState({ revealed: true });
+      return;
+    }
+    this.io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        this.setState({ revealed: true });
+        this.io.disconnect();
+      }
+    }, { threshold: 0.15 });
+    if (this.rootRef.current) this.io.observe(this.rootRef.current);
+  }
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+  }
+
+  renderVals() {
+    const on = this.state.revealed;
+    return {
+      ivory: this.props.ivory ?? '#F2EFE8',
+      ink: this.props.ink ?? '#181715',
+      accent: this.props.accent ?? '#541F2B',
+      rootRef: this.rootRef,
+      rO: on ? 1 : 0,
+      rY: on ? 0 : 24,
+      rO6: on ? 0.6 : 0,
+      rO7: on ? 0.7 : 0,
+      c1ChainO: on ? 1 : 0,
+      c1ChainY: on ? 0 : 16,
+      c1ResultO: on ? 1 : 0,
+      c1ResultY: on ? 0 : 16,
+      c2ResultO: on ? 1 : 0,
+      c2ResultY: on ? 0 : 16,
+      c2Result45: on ? 0.45 : 0,
+      c3ResultO: on ? 1 : 0,
+      c3ResultY: on ? 0 : 16,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #EAE6DC; }
+  a { color: #541F2B; text-decoration: none; }
+  a:hover { color: #181715; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-anim="line"] { width: 32px !important; transition: none !important; }
+    [data-anim="statement"] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</helmet>
+
+<div ref="{{ scrollRef }}" style="width:1440px;margin:0 auto;background:{{ ivory }};font-family:'Manrope',sans-serif;color:{{ ink }};position:relative;">
+  <div style="position:relative;">
+
+    <!-- INTRO -->
+    <div ref="{{ introRef }}" style="height:680px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;text-align:center;">
+      <div data-anim="line" style="width:{{ introLineWidth }};height:1px;background:{{ accent }};transition:width 0.5s cubic-bezier(.16,1,.3,1);"></div>
+      <h2 style="margin:0;font-size:52px;line-height:1.25;font-weight:600;letter-spacing:-0.5px;text-transform:uppercase;max-width:900px;">
+        <div style="opacity:{{ introOn }};transform:translateY({{ introY }}px);transition:opacity 0.6s cubic-bezier(.16,1,.3,1) 0s, transform 0.6s cubic-bezier(.16,1,.3,1) 0s;" data-anim="statement">PRODUCTION IN CHINA</div>
+        <div style="opacity:{{ introOn }};transform:translateY({{ introY }}px);transition:opacity 0.6s cubic-bezier(.16,1,.3,1) 0.1s, transform 0.6s cubic-bezier(.16,1,.3,1) 0.1s;" data-anim="statement">SHOULDN’T BECOME</div>
+        <div style="color:{{ accent }};opacity:{{ introOn }};transform:translateY({{ introY }}px);transition:opacity 0.6s cubic-bezier(.16,1,.3,1) 0.24s, transform 0.6s cubic-bezier(.16,1,.3,1) 0.24s;" data-anim="statement">YOUR SECOND JOB</div>
+      </h2>
+    </div>
+
+    <!-- STICKY PROBLEMS ZONE -->
+    <div id="problems-zone" style="height:3000px;position:relative;">
+      <div style="position:sticky;top:0;height:900px;display:flex;border-top:1px solid rgba(24,23,21,0.12);background:{{ ivory }};">
+
+        <!-- LEFT: persistent nav -->
+        <div style="width:38%;flex-shrink:0;padding:64px 56px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid rgba(24,23,21,0.12);box-sizing:border-box;">
+          <div>
+            <h3 style="margin:0 0 24px 0;font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-0.5px;text-transform:uppercase;">PRODUCTION IN CHINA</h3>
+            <button type="button" onClick="{{ skipBlock }}" style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};opacity:0.85;border-bottom:1px solid {{ ink }};padding-bottom:4px;transition:opacity 0.2s ease;" style-hover="opacity:1;">Next →</button>
+          </div>
+          <div style="display:flex;gap:28px;align-items:flex-end;">
+            <div style="width:1px;height:220px;background:rgba(24,23,21,0.12);position:relative;flex-shrink:0;">
+              <div style="position:absolute;bottom:0;left:0;width:100%;background:{{ accent }};height:{{ lineProgressPct }}%;transition:height 0.15s linear;"></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:20px;">
+              <span style="font-size:{{ num1Size }};font-weight:{{ num1Weight }};letter-spacing:1px;color:{{ num1Color }};transition:all 0.3s ease;">01</span>
+              <span style="font-size:{{ num2Size }};font-weight:{{ num2Weight }};letter-spacing:1px;color:{{ num2Color }};transition:all 0.3s ease;">02</span>
+              <span style="font-size:{{ num3Size }};font-weight:{{ num3Weight }};letter-spacing:1px;color:{{ num3Color }};transition:all 0.3s ease;">03</span>
+              <span style="font-size:{{ num4Size }};font-weight:{{ num4Weight }};letter-spacing:1px;color:{{ num4Color }};transition:all 0.3s ease;">04</span>
+              <span style="font-size:{{ num5Size }};font-weight:{{ num5Weight }};letter-spacing:1px;color:{{ num5Color }};transition:all 0.3s ease;">05</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: active problem. overflow:hidden removed — the 5 problem
+             states are mutually-exclusive normal-flow content (never stacked
+             for a cross-fade), so clipping served no animation purpose here
+             and only risked silently cutting off content that runs long. -->
+        <div style="flex:1;padding:64px 72px;position:relative;box-sizing:border-box;">
+
+          <sc-if value="{{ isP1 }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:{{ accent }};margin-bottom:20px;">CONTROL</div>
+            <h4 style="margin:0 0 24px 0;font-size:48px;line-height:1.1;font-weight:600;text-transform:uppercase;max-width:640px;">I CAN’T CONTROL PRODUCTION FROM ANOTHER COUNTRY</h4>
+            <p style="max-width:440px;font-size:16px;line-height:1.6;opacity:{{ bodyOpacity }};transform:translateY({{ bodyY }}px);transition:opacity 0.15s linear, transform 0.15s linear;margin:0 0 20px 0;">Keeping track of your order means endless messages, calls and requests for photos, and hoping problems don’t surface too late.</p>
+            <p style="max-width:440px;font-size:16px;line-height:1.6;font-weight:600;opacity:{{ solutionOpacity }};transform:translateY({{ solutionY }}px);transition:opacity 0.15s linear, transform 0.15s linear;margin:0 0 32px 0;">→ The team is based in China and oversees production on site.</p>
+            <div style="width:490px;opacity:{{ imageOpacity }};transform:translateY({{ imageY }}px);transition:opacity 0.15s linear, transform 0.15s linear;">
+              <img loading="lazy" decoding="async" src="assets/media/slots/p1-image.webp" alt="" style="width:490px;height:320px;object-fit:cover;object-position:center;display:block;"/>
+              <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;margin-top:10px;">CN / PRODUCTION CONTROL / 01</div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isP2 }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:{{ accent }};margin-bottom:20px;">QUALITY CONTROL</div>
+            <h4 style="margin:0 0 24px 0;font-size:48px;line-height:1.1;font-weight:600;text-transform:uppercase;max-width:640px;">I’M AFRAID I WON’T GET WHAT WE AGREED ON</h4>
+            <p style="max-width:440px;font-size:16px;line-height:1.6;opacity:{{ bodyOpacity }};transform:translateY({{ bodyY }}px);transition:opacity 0.15s linear, transform 0.15s linear;margin:0 0 20px 0;">You approved the reference sample, but in bulk production the fabric, fit, trims or finishing can change.</p>
+            <p style="max-width:440px;font-size:16px;line-height:1.6;font-weight:600;opacity:{{ solutionOpacity }};transform:translateY({{ solutionY }}px);transition:opacity 0.15s linear, transform 0.15s linear;margin:0 0 28px 0;">→ We check quality during production, not just once the order is finished.</p>
+            <div style="display:flex;align-items:flex-end;gap:36px;">
+              <div style="position:relative;opacity:{{ imageOpacity }};transition:opacity 0.15s linear;">
+                <img loading="lazy" decoding="async" src="assets/media/slots/p2-sample.webp" alt="" style="width:320px;height:400px;object-fit:cover;object-position:center;display:block;"/>
+                <div style="position:absolute;inset:0;pointer-events:none;opacity:{{ qcOpacity }};transition:opacity 0.15s linear;">
+                  <div style="position:absolute;top:10px;left:10px;width:16px;height:16px;border-top:1.5px solid {{ ivory }};border-left:1.5px solid {{ ivory }};"></div>
+                  <div style="position:absolute;top:10px;right:10px;width:16px;height:16px;border-top:1.5px solid {{ ivory }};border-right:1.5px solid {{ ivory }};"></div>
+                  <div style="position:absolute;bottom:10px;left:10px;width:16px;height:16px;border-bottom:1.5px solid {{ ivory }};border-left:1.5px solid {{ ivory }};"></div>
+                  <div style="position:absolute;bottom:10px;right:10px;width:16px;height:16px;border-bottom:1.5px solid {{ ivory }};border-right:1.5px solid {{ ivory }};"></div>
+                  <div style="position:absolute;top:34px;left:10px;font-size:9px;letter-spacing:1.5px;font-weight:600;color:{{ ivory }};background:rgba(84,31,43,0.85);padding:3px 7px;">QC</div>
+                </div>
+              </div>
+              <div style="width:70px;height:1px;background:{{ accent }};margin-bottom:150px;position:relative;">
+                <span style="position:absolute;top:-56px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9px;letter-spacing:1px;opacity:{{ matOpacity }};transition:opacity 0.15s linear;">MATERIAL</span>
+                <span style="position:absolute;top:-34px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9px;letter-spacing:1px;opacity:{{ fitOpacity }};transition:opacity 0.15s linear;">FIT</span>
+                <span style="position:absolute;top:14px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9px;letter-spacing:1px;opacity:{{ hwOpacity }};transition:opacity 0.15s linear;">HARDWARE</span>
+                <span style="position:absolute;top:36px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9px;letter-spacing:1px;opacity:{{ finOpacity }};transition:opacity 0.15s linear;">FINISH</span>
+              </div>
+              <div style="opacity:{{ productionOpacity }};transition:opacity 0.15s linear;">
+                <img loading="lazy" decoding="async" src="assets/media/slots/p2-production.webp" alt="" style="width:350px;height:260px;object-fit:cover;object-position:center;display:block;"/>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isP3 }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:{{ accent }};margin-bottom:20px;">PRODUCT DEVELOPMENT</div>
+            <h4 style="margin:0 0 24px 0;font-size:43px;line-height:1.12;font-weight:600;text-transform:uppercase;max-width:680px;">I HAVE A PRODUCT IDEA, BUT THERE ARE TOO MANY UNKNOWNS BETWEEN THE REFERENCE AND THE FINISHED ORDER</h4>
+            <p style="max-width:440px;font-size:16px;line-height:1.6;opacity:{{ bodyOpacity }};transform:translateY({{ bodyY }}px);transition:opacity 0.15s linear, transform 0.15s linear;margin:0 0 20px 0;">Patterns, fabrics, samples, revisions, production: there’s room for error at every stage.</p>
+            <p style="max-width:440px;font-size:16px;line-height:1.6;font-weight:600;opacity:{{ solutionOpacity }};transform:translateY({{ solutionY }}px);transition:opacity 0.15s linear, transform 0.15s linear;margin:0 0 24px 0;">→ Our team takes the product through the whole cycle, from idea to finished order.</p>
+            <div style="position:relative;height:340px;">
+              <div style="position:absolute;left:0;top:145px;width:{{ routeWidthPct }};height:1px;background:{{ accent }};transition:width 0.15s linear;"></div>
+              <div style="position:absolute;left:0;top:0;opacity:{{ refOpacity }};transition:opacity 0.15s linear;">
+                <img loading="lazy" decoding="async" src="assets/media/slots/p3-reference.webp" alt="" style="width:215px;height:290px;object-fit:cover;object-position:center;display:block;"/>
+                <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;margin-top:8px;">REFERENCE</div>
+              </div>
+              <div style="position:absolute;left:265px;top:105px;opacity:{{ sampleOpacity }};transition:opacity 0.15s linear;">
+                <img loading="lazy" decoding="async" src="assets/media/slots/p3-sample.webp" alt="" style="width:165px;height:220px;object-fit:cover;object-position:center;display:block;"/>
+                <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;margin-top:8px;">SAMPLE</div>
+              </div>
+              <div style="position:absolute;left:470px;top:20px;opacity:{{ productOpacity }};transition:opacity 0.15s linear;">
+                <img loading="lazy" decoding="async" src="assets/media/slots/p3-product.webp" alt="" style="width:220px;height:280px;object-fit:cover;object-position:center;display:block;"/>
+                <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;margin-top:8px;">PRODUCT</div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isP4 }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:{{ accent }};margin-bottom:20px;">ECONOMICS</div>
+            <h4 style="margin:0 0 32px 0;font-size:43px;line-height:1.12;font-weight:600;text-transform:uppercase;max-width:660px;">IT HAS TO WORK ON QUALITY AND ON THE NUMBERS.</h4>
+            <p style="max-width:440px;font-size:16px;line-height:1.6;margin:0 0 40px 0;opacity:{{ bodyOpacity }};transform:translateY({{ bodyY }}px);transition:opacity 0.15s linear, transform 0.15s linear;">You can make a beautiful product that makes no business sense because of its unit cost.</p>
+            <div style="opacity:{{ statement1Opacity }};transition:opacity 0.15s linear;font-size:44px;font-weight:700;text-transform:uppercase;line-height:1.1;margin-bottom:12px;">LOOKING GOOD ISN’T ENOUGH.<span style="color:{{ accent }};"></span></div>
+            <div style="opacity:{{ statement2Opacity }};transition:opacity 0.15s linear;font-size:44px;font-weight:700;text-transform:uppercase;line-height:1.1;margin-bottom:32px;">THE PRODUCT HAS TO MAKE MONEY.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:20px 28px;opacity:{{ paramsOpacity }};transition:opacity 0.15s linear;border-top:1px solid rgba(24,23,21,0.12);padding-top:20px;max-width:460px;">
+              <span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">TARGET COST</span>
+              <span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">MATERIAL</span>
+              <span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">COMPOSITION</span>
+              <span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">DENSITY</span>
+              <span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">HARDWARE</span>
+              <span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">VOLUME</span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isP5 }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:{{ accent }};margin-bottom:20px;">ONE TEAM</div>
+            <h4 style="margin:0 0 24px 0;font-size:43px;line-height:1.12;font-weight:600;text-transform:uppercase;max-width:660px;">I DON’T WANT TO MANAGE FIVE DIFFERENT CONTRACTORS IN CHINA MYSELF</h4>
+            <p style="max-width:440px;font-size:16px;line-height:1.6;margin:0 0 40px 0;opacity:{{ bodyOpacity }};transform:translateY({{ bodyY }}px);transition:opacity 0.15s linear, transform 0.15s linear;">The factory, the technologist, the buyer, quality control, negotiations: someone still has to tie all of it together.</p>
+
+            <div style="position:relative;height:200px;opacity:{{ linesOpacity }};transition:opacity 0.15s linear;">
+              <div style="position:absolute;left:0;top:0;display:flex;align-items:center;gap:12px;"><div style="width:60px;height:1px;background:rgba(24,23,21,0.3);"></div><span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">FACTORY</span></div>
+              <div style="position:absolute;left:0;top:44px;display:flex;align-items:center;gap:12px;"><div style="width:60px;height:1px;background:rgba(24,23,21,0.3);"></div><span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">TECHNOLOGIST</span></div>
+              <div style="position:absolute;left:0;top:88px;display:flex;align-items:center;gap:12px;"><div style="width:60px;height:1px;background:rgba(24,23,21,0.3);"></div><span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">SOURCING</span></div>
+              <div style="position:absolute;left:0;top:132px;display:flex;align-items:center;gap:12px;"><div style="width:60px;height:1px;background:rgba(24,23,21,0.3);"></div><span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">QUALITY CONTROL</span></div>
+              <div style="position:absolute;left:0;top:176px;display:flex;align-items:center;gap:12px;"><div style="width:60px;height:1px;background:rgba(24,23,21,0.3);"></div><span style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.55;">NEGOTIATIONS</span></div>
+            </div>
+
+            <div style="opacity:{{ convergedOpacity }};transition:opacity 0.15s linear;display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:24px;">
+              <div style="width:160px;height:2px;background:{{ accent }};"></div>
+              <div>
+                <div style="font-size:20px;font-weight:700;letter-spacing:1px;">LIANA GINI</div>
+                <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.6;">CHINA / PRODUCTION</div>
+              </div>
+            </div>
+          </sc-if>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTRO CTA -->
+    <div style="padding:70px 0 90px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
+      <div style="width:2px;height:36px;background:{{ accent }};"></div>
+      <a href="#services" style="font-size:30px;font-weight:600;line-height:1.25;text-transform:uppercase;text-align:center;color:{{ ink }};" style-hover="color:{{ accent }};">HAND IT OVER TO THE TEAM IN CHINA →</a>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  scrollRef = React.createRef();
+  introRef = React.createRef();
+  state = { scrollTop: 0, introInView: false };
+  ticking = false;
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    this.io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        this.setState({ introInView: true });
+        this.io.disconnect();
+      }
+    }, { threshold: 0.1 });
+    if (this.introRef.current) this.io.observe(this.introRef.current);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.io) this.io.disconnect();
+  }
+
+  // "Далее" — skips the whole sticky-scroll problems zone in one jump, for
+  // anyone who doesn't want to scroll through all 5 problem states manually.
+  // Reads the zone's live rect at click time (not a cached offset) so it's
+  // correct regardless of where the zone's sticky inner content currently sits.
+  skipBlock = () => {
+    const zone = document.getElementById('problems-zone');
+    if (!zone) return;
+    const rect = zone.getBoundingClientRect();
+    const targetY = window.scrollY + rect.bottom - 80;
+    window.scrollTo({ top: targetY, behavior: 'smooth' });
+  };
+
+  onScroll = () => {
+    if (this.ticking) return;
+    this.ticking = true;
+    requestAnimationFrame(() => {
+      this.ticking = false;
+      if (!this.scrollRef.current) return;
+      const rect = this.scrollRef.current.getBoundingClientRect();
+      const scrollTop = Math.max(0, -rect.top);
+      if (scrollTop !== this.state.scrollTop) this.setState({ scrollTop });
+    });
+  };
+
+  renderVals() {
+    const ivory = this.props.ivory ?? '#F2EFE8';
+    const ink = this.props.ink ?? '#181715';
+    const accent = this.props.accent ?? '#541F2B';
+    const inactive = 'rgba(24,23,21,0.3)';
+
+    // Shorter per-stage scroll distance (was 680) — the same fractional
+    // thresholds below now need proportionally less wheel/trackpad travel.
+    const introH = 680, problemH = 420, numProblems = 5, problemsH = problemH * numProblems;
+    const scrollTop = this.state.scrollTop || 0;
+    const rel = scrollTop - introH;
+    const activeIndex = Math.max(0, Math.min(numProblems - 1, Math.floor(rel / problemH)));
+    const localProgress = Math.max(0, Math.min(1, (rel - activeIndex * problemH) / problemH));
+    const lineProgressPct = Math.max(0, Math.min(100, (rel / problemsH) * 100));
+    const lp = localProgress;
+
+    // Continuous ramps instead of hard on/off thresholds — value tracks the
+    // scroll position itself (a "scrub"), so motion never races ahead of or
+    // lags behind the wheel/trackpad. Each ramp is ONE semantic reveal group
+    // (e.g. body + its solution line together) rather than a separate stop
+    // per element.
+    const ramp = (start, width) => Math.max(0, Math.min(1, (lp - start) / width));
+    // Starts a touch earlier per stage than before (was 0.02/0.32) — the
+    // headline itself is already static/instant on stage change, so this
+    // trims the remaining dead scroll before its supporting copy and image
+    // commit, without altering the sequence or motion style.
+    const textOn = ramp(0.0, 0.14);    // headline's supporting copy — one beat
+    const visualOn = ramp(0.24, 0.18); // image / secondary visual — one beat
+
+    const bodyOpacity = textOn, bodyY = 12 * (1 - textOn);
+    const solutionOpacity = textOn, solutionY = 12 * (1 - textOn);
+    const imageOpacity = visualOn, imageY = 12 * (1 - visualOn);
+
+    return {
+      ivory, ink, accent,
+      scrollRef: this.scrollRef,
+      introRef: this.introRef,
+      skipBlock: this.skipBlock,
+
+      introLineWidth: this.state.introInView ? '32px' : '0px',
+      introOn: this.state.introInView ? 1 : 0,
+      introY: this.state.introInView ? 0 : 14,
+
+      lineProgressPct: lineProgressPct,
+      num1Color: activeIndex === 0 && rel >= 0 ? accent : (activeIndex > 0 || rel >= problemH ? ink : inactive),
+      num2Color: activeIndex === 1 ? accent : (activeIndex > 1 ? ink : inactive),
+      num3Color: activeIndex === 2 ? accent : (activeIndex > 2 ? ink : inactive),
+      num4Color: activeIndex === 3 ? accent : (activeIndex > 3 ? ink : inactive),
+      num5Color: activeIndex === 4 ? accent : inactive,
+      num1Size: activeIndex === 0 ? '22px' : '15px',
+      num2Size: activeIndex === 1 ? '22px' : '15px',
+      num3Size: activeIndex === 2 ? '22px' : '15px',
+      num4Size: activeIndex === 3 ? '22px' : '15px',
+      num5Size: activeIndex === 4 ? '22px' : '15px',
+      num1Weight: activeIndex === 0 ? 700 : 600,
+      num2Weight: activeIndex === 1 ? 700 : 600,
+      num3Weight: activeIndex === 2 ? 700 : 600,
+      num4Weight: activeIndex === 3 ? 700 : 600,
+      num5Weight: activeIndex === 4 ? 700 : 600,
+
+      isP1: rel >= 0 && activeIndex === 0,
+      isP2: activeIndex === 1,
+      isP3: activeIndex === 2,
+      isP4: activeIndex === 3,
+      isP5: activeIndex === 4,
+
+      bodyOpacity, bodyY, solutionOpacity, solutionY, imageOpacity, imageY,
+
+      // P2 specific — material/fit/hardware/finish labels + production shot now
+      // reveal together with the image, as one visual beat, not five stops.
+      matOpacity: visualOn,
+      fitOpacity: visualOn,
+      hwOpacity: visualOn,
+      finOpacity: visualOn,
+      productionOpacity: visualOn,
+      // QC micro-overlay on the sample shot: fades in with the image, then
+      // settles quiet shortly after — restrained, not a separate checkpoint.
+      qcOpacity: visualOn * (1 - ramp(0.56, 0.12) * 0.65),
+
+      // P3 specific — route line draws in continuously with scroll; reference →
+      // sample → product now appear together as one beat once the line is well along.
+      routeWidthPct: Math.round(Math.min(100, lp * 140)) + '%',
+      refOpacity: visualOn,
+      sampleOpacity: visualOn,
+      productOpacity: visualOn,
+
+      // P4 specific — the two statement lines are one continuous thought, and the
+      // param list is its footnote: all reveal together as a single beat.
+      statement1Opacity: visualOn,
+      statement2Opacity: visualOn,
+      paramsOpacity: visualOn,
+
+      // P5 specific — role list draws in first, then converges into the LIANA GINI
+      // mark: kept as its own two-stage beat, since the convergence IS the point.
+      linesOpacity: ramp(0.14, 0.16),
+      convergedOpacity: ramp(0.46, 0.18),
+    };
+  }
+}
+</script>
+</body>
+</html>

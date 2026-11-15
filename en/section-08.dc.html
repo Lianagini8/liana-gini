@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #EAE6DC; }
+  a { color: #541F2B; text-decoration: none; }
+  .faq-btn { width: 100%; background: none; border: none; padding: 0; margin: 0; cursor: pointer; font-family: 'Manrope', sans-serif; text-align: left; color: inherit; }
+  .faq-btn:focus-visible { outline: 1px solid #541F2B; outline-offset: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-anim] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</helmet>
+
+<div id="faq" ref="{{ rootRef }}" style="width:1440px;margin:0 auto;background:{{ ivory }};font-family:'Manrope',sans-serif;color:{{ ink }};position:relative;padding:64px 60px 28px 60px;box-sizing:border-box;">
+
+  <!-- HEADER -->
+  <div data-anim style="display:flex;justify-content:space-between;align-items:flex-start;gap:60px;margin-bottom:48px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);">
+    <div>
+      <h2 style="margin:0;font-size:36px;line-height:1.15;font-weight:700;letter-spacing:-0.6px;text-transform:uppercase;max-width:620px;">QUESTIONS TO ASK BEFORE YOU PLACE AN ORDER.</h2>
+    </div>
+  </div>
+
+  <!-- ACCORDION -->
+  <div data-anim style="border-top:1px solid rgba(24,23,21,0.15);opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .12s, transform .6s cubic-bezier(.16,1,.3,1) .12s;">
+    <sc-for list="{{ items }}" as="item" hint-placeholder-count="7">
+      <div style="border-bottom:1px solid rgba(24,23,21,0.12);">
+        <button class="faq-btn" type="button" onClick="{{ item.onToggle }}" aria-expanded="{{ item.expanded }}" aria-controls="{{ item.panelId }}" style="display:flex;align-items:center;gap:32px;padding:26px 0;">
+          <span style="font-size:10px;font-weight:600;letter-spacing:1.5px;opacity:0.4;width:24px;flex-shrink:0;">{{ item.num }}</span>
+          <span style="flex:1;font-size:20px;font-weight:700;line-height:1.25;text-transform:uppercase;color:{{ item.qColor }};">{{ item.q }}</span>
+          <span style="font-size:18px;font-weight:400;opacity:0.45;width:20px;text-align:right;flex-shrink:0;color:{{ item.signColor }};">{{ item.sign }}</span>
+        </button>
+        <div id="{{ item.panelId }}" role="region" style="display:{{ item.panelDisplay }};padding:0 0 28px 56px;max-width:760px;">
+          <sc-for list="{{ item.paras }}" as="p" hint-placeholder-count="2">
+            <p style="margin:0 0 12px 0;font-size:14px;line-height:1.65;opacity:0.72;">{{ p.text }}</p>
+          </sc-for>
+          <sc-if value="{{ item.hasStrong }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:6px 0 0 0;font-size:14px;font-weight:700;line-height:1.5;text-transform:uppercase;color:{{ accent }};">{{ item.strong }}</p>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- TRANSITION -->
+  <div data-anim style="margin-top:36px;display:flex;justify-content:flex-end;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .22s, transform .6s cubic-bezier(.16,1,.3,1) .22s;">
+    <a href="#consultation" style="font-size:22px;font-weight:700;letter-spacing:-0.2px;text-transform:uppercase;color:{{ ink }};line-height:1.25;text-align:right;border-bottom:1px solid rgba(24,23,21,0.25);padding-bottom:8px;" style-hover="color:{{ accent }};border-color:{{ accent }};">HOW DO I GET STARTED WITH MANUFACTURING IN CHINA? ↓</a>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 1000},
+  &quot;ivory&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#F2EFE8&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#F2EFE8&quot;, &quot;#EDEAE1&quot;, &quot;#F6F3EC&quot;]},
+  &quot;ink&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#181715&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#181715&quot;, &quot;#111111&quot;]},
+  &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#541F2B&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#541F2B&quot;, &quot;#6B2A38&quot;, &quot;#3F1620&quot;], &quot;section&quot;: &quot;Brand&quot;}
+}">
+const FAQ = [
+  {
+    num: '01',
+    q: 'Will the factory understand exactly what I need?',
+    paras: [
+      'It’s not just about translation.',
+      'Liana speaks Chinese, understands how negotiations work and translates your business brief into production terms: what exactly to make, from what, to what standard and with what result.',
+    ],
+  },
+  {
+    num: '02',
+    q: 'Will the order match the sample?',
+    paras: [
+      'The reference sample is the standard for the whole order. If the factory is honest and the sample is approved, the order will match it.',
+      'The real risk is elsewhere: a dishonest factory may swap the fabric or composition in the sample itself. They promise one cotton and use a cheaper one. I check this personally before the sample goes into production.',
+    ],
+  },
+  {
+    num: '03',
+    q: 'Do factories in China take small orders?',
+    paras: [
+      'Yes, but the MOQ depends on the product and the factory.',
+      'For small and medium orders, expect roughly 100–300 units. Some ready-made options start at 50.',
+    ],
+  },
+  {
+    num: '04',
+    q: 'How do I know who’s actually making my order?',
+    paras: [
+      'One of our team’s jobs in China is to match the factory to the product, the construction and the volume.',
+      'We work on site, so we know who we’re negotiating with and who the order goes to.',
+    ],
+  },
+  {
+    num: '05',
+    q: 'Is my design protected from being copied by competitors?',
+    paras: [
+      'For your own designs, we work under an NDA.',
+      'This matters most for new styles, exclusive fabrics and anything else that belongs to the client’s brand.',
+    ],
+  },
+  {
+    num: '06',
+    q: 'HOW LONG DOES THE FIRST COLLECTION TAKE?',
+    paras: [
+      'A collection developed from scratch usually takes 3–6 months.',
+      'Garment production is a cycle: development, samples, fabrics, approvals, production and quality control.',
+    ],
+    strong: 'It’s not a one-off service but a full cycle',
+  },
+  {
+    num: '07',
+    q: 'What if you haven’t decided on the product yet?',
+    accentQ: true,
+    strongFirst: 'WE DON’T DECIDE FOR YOU WHAT WILL SELL.',
+    paras: [
+      'You know your market, your customer and your business goals.',
+      'Our job is to turn that goal into a product that can be made, and to take it through production in China.',
+    ],
+  },
+];
+
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  state = { open: null, revealed: false };
+
+  toggle = (i) => () => this.setState(s => ({ open: s.open === i ? null : i }));
+
+  componentDidMount() {
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      this.setState({ revealed: true });
+      return;
+    }
+    this.io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        this.setState({ revealed: true });
+        this.io.disconnect();
+      }
+    }, { threshold: 0.1 });
+    if (this.rootRef.current) this.io.observe(this.rootRef.current);
+  }
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+  }
+
+  renderVals() {
+    const ink = this.props.ink ?? '#181715';
+    const accent = this.props.accent ?? '#541F2B';
+    const open = this.state.open;
+    const on = this.state.revealed;
+
+    const items = FAQ.map((f, i) => {
+      const isOpen = open === i;
+      const paras = f.strongFirst
+        ? [{ text: f.strongFirst }, ...f.paras.map(t => ({ text: t }))]
+        : f.paras.map(t => ({ text: t }));
+      return {
+        num: f.num,
+        q: f.q,
+        qColor: f.accentQ ? accent : ink,
+        signColor: isOpen ? accent : ink,
+        sign: isOpen ? '–' : '+',
+        expanded: isOpen ? 'true' : 'false',
+        panelId: 'faq-panel-' + f.num,
+        panelDisplay: isOpen ? 'block' : 'none',
+        onToggle: this.toggle(i),
+        paras,
+        hasStrong: !!f.strong,
+        strong: f.strong || '',
+      };
+    });
+
+    return {
+      ivory: this.props.ivory ?? '#F2EFE8',
+      ink, accent, items,
+      rootRef: this.rootRef,
+      rO: on ? 1 : 0,
+      rY: on ? 0 : 20,
+    };
+  }
+}
+</script>
+</body>
+</html>

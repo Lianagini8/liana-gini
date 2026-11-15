@@ -1,0 +1,39 @@
+{
+  "name": "Liana Gini | Production in China",
+  "short_name": "Liana Gini",
+  "description": "We develop and manufacture clothing, footwear and accessories in China, from idea to finished order.",
+  "start_url": "./mobile.html?nored",
+  "scope": "./",
+  "id": "./mobile.html",
+  "display": "standalone",
+  "background_color": "#F2EFE8",
+  "theme_color": "#541F2B",
+  "orientation": "portrait",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -28,6 +28,7 @@ $o = [
   'contact'    => $contact,
   'email'      => $email,
   'marketing'  => !empty($in['marketingConsent']),
+  'lang'       => lang(),
   'downloads'  => 0,
 ];
 order_save($o);

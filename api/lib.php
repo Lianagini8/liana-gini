@@ -37,6 +37,24 @@ const PRODUCTS = [
   ],
 ];
 
+// ---------- язык: заказ с lianagini.com ведём на английском ----------
+
+function lang(?string $set = null): string {
+  static $l = null;
+  if ($set !== null) $l = $set;
+  if ($l === null) $l = preg_match('/(^|\.)lianagini\.com$/i', explode(':', (string)($_SERVER['HTTP_HOST'] ?? ''))[0]) ? 'en' : 'ru';
+  return $l;
+}
+
+function t(string $ru): string {
+  static $en = null;
+  if (lang() !== 'en') return $ru;
+  if ($en === null) { $f = __DIR__ . '/_en.php'; $en = is_file($f) ? require $f : []; }
+  return $en[$ru] ?? $ru;
+}
+
+function site_url(): string { return lang() === 'en' ? 'https://lianagini.com' : rtrim(cfg()['site'], '/'); }
+
 function cfg(): array {
   static $c = null;
   if ($c === null) {
@@ -117,7 +135,7 @@ function payment_url(array $o): string {
     'OutSum'        => $sum,
     'InvId'         => $o['id'],
     'Description'   => mb_substr($p['name'], 0, 100),
-    'Culture'       => 'ru',
+    'Culture'       => lang() === 'en' ? 'en' : 'ru',
     'Encoding'      => 'utf-8',
   ];
   if (rk('receipt')) {
@@ -139,15 +157,16 @@ function sig_ok(string $sum, string $inv, string $sig, string $pass): bool {
 // ---------- выдача файлов ----------
 
 function access_url(array $o): string {
-  return rtrim(cfg()['site'], '/') . '/api/access.php?o=' . $o['id'] . '&t=' . $o['token'];
+  return site_url() . '/api/access.php?o=' . $o['id'] . '&t=' . $o['token'];
 }
 
 function access_check(): array {
   $id = (int)($_GET['o'] ?? 0);
   $t  = (string)($_GET['t'] ?? '');
   $o  = order_load($id);
-  if (!$o || empty($o['token']) || !hash_equals($o['token'], $t)) page('Ссылка недействительна', '<p>Проверьте ссылку из письма или напишите нам.</p>', 404);
-  if (($o['status'] ?? '') !== 'paid') page('Оплата ещё не подтверждена', '<p>Обновите страницу через минуту.</p>', 402);
+  if ($o && !empty($o['lang'])) lang($o['lang']);
+  if (!$o || empty($o['token']) || !hash_equals($o['token'], $t)) page(t('Ссылка недействительна'), '<p>' . t('Проверьте ссылку из письма или напишите нам.') . '</p>', 404);
+  if (($o['status'] ?? '') !== 'paid') page(t('Оплата ещё не подтверждена'), '<p>' . t('Обновите страницу через минуту.') . '</p>', 402);
   return $o;
 }
 
@@ -219,7 +238,7 @@ function page(string $title, string $body, int $code = 200, string $head = ''): 
   header('Content-Type: text/html; charset=utf-8');
   header('Cache-Control: no-store');
   header('X-Robots-Tag: noindex');
-  echo '<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+  echo '<!doctype html><html lang="' . lang() . '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
     . '<meta name="robots" content="noindex"><title>' . h($title) . ' — LIANA GINI</title>' . $head
     . '<link href="/assets/fonts/fonts.css" rel="stylesheet">'
     . '<style>body{margin:0;background:#F2EFE8;color:#181715;font-family:Manrope,system-ui,sans-serif;line-height:1.5}'
@@ -228,6 +247,6 @@ function page(string $title, string $body, int $code = 200, string $head = ''): 
     . '.f{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid rgba(24,23,21,.15)}'
     . '.f span{font-weight:600}.f small{display:block;font-weight:400;opacity:.55;font-size:13px}.btn{display:inline-block;background:#541F2B;color:#F2EFE8;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.5px;text-transform:uppercase;padding:12px 18px;white-space:nowrap}'
     . '.btn:hover{background:#181715}.note{opacity:.65;font-size:14px;margin-top:22px}a{color:#541F2B}</style></head><body><div class="w">'
-    . '<a class="logo" href="/">LIANA GINI</a><h1>' . h($title) . '</h1>' . $body . '</div></body></html>';
+    . '<a class="logo" href="' . (lang() === 'en' ? site_url() . '/' : '/') . '">LIANA GINI</a><h1>' . h($title) . '</h1>' . $body . '</div></body></html>';
   exit;
 }

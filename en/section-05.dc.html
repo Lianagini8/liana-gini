@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #EAE6DC; }
+  a { color: #541F2B; text-decoration: none; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-anim] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</helmet>
+
+<div id="team" ref="{{ rootRef }}" style="width:1440px;margin:0 auto;background:{{ ivory }};font-family:'Manrope',sans-serif;color:{{ ink }};position:relative;box-sizing:border-box;padding-bottom:44px;">
+
+  <!-- TOP -->
+  <div style="position:relative;height:150px;padding:56px 60px 0 60px;box-sizing:border-box;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <h2 style="margin:0;font-size:44px;line-height:1;font-weight:700;letter-spacing:-1px;text-transform:uppercase;white-space:nowrap;">OUR TEAM IS IN CHINA.</h2>
+      <div style="text-align:right;font-size:12px;font-weight:600;line-height:1.5;letter-spacing:0.3px;text-transform:uppercase;opacity:0.7;padding-top:6px;max-width:320px;">Access to vetted partner factories.</div>
+    </div>
+  </div>
+
+  <!-- CHINA VIDEO -->
+  <div ref="{{ videoWrapRef }}" style="position:relative;width:100vw;margin-left:calc(min(0px, 50% - 50vw));height:min(38vw, 520px);min-height:300px;overflow:hidden;background:#0e0b0a;">
+    <video poster="assets/media/team-poster.jpg" src="assets/media/china-city.mp4" autoplay="true" muted="true" loop="true" playsinline="true" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block;background-image:url('assets/media/team-poster.jpg');background-size:cover;background-position:center 55%;"></video>
+    <div data-anim style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:{{ weAreHereOpacity }};transform:translateY({{ weAreHereY }}px);transition:opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);">
+      <h2 style="margin:0;font-size:56px;font-weight:700;letter-spacing:-1px;text-transform:uppercase;color:#F2EFE8;text-shadow:0 2px 24px rgba(0,0,0,0.55);">WE’RE HERE.</h2>
+    </div>
+  </div>
+
+  <!-- CREDIBILITY ROW -->
+  <div data-anim style="position:relative;padding:20px 60px;box-sizing:border-box;display:flex;align-items:flex-start;gap:50px;border-bottom:1px solid rgba(24,23,21,0.08);opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .05s, transform .7s cubic-bezier(.16,1,.3,1) .05s;">
+    <div style="flex:1.3;">
+      <h3 style="margin:0;font-size:26px;line-height:1.2;font-weight:700;text-transform:uppercase;">NOT JUST PRESENT: WE KNOW HOW TO NEGOTIATE.<span style="color:{{ accent }};"></span></h3>
+    </div>
+    <div style="width:1px;align-self:stretch;background:rgba(24,23,21,0.08);"></div>
+    <div style="flex:0.9;">
+      <div style="font-size:18px;font-weight:700;text-transform:uppercase;line-height:1.15;">Liana: Asian studies graduate, MBA</div>
+      <div style="font-size:11px;opacity:0.5;margin-top:8px;">Negotiation expertise</div>
+    </div>
+    <div style="width:1px;align-self:stretch;background:rgba(24,23,21,0.08);"></div>
+    <div style="flex:0.9;">
+      <div style="font-size:15px;font-weight:700;text-transform:uppercase;line-height:1.2;">A GARMENT TECHNOLOGIST ON THE TEAM</div>
+      <div style="font-size:11px;opacity:0.5;margin-top:8px;">Size charts to GOST, the Russian national standard.</div>
+    </div>
+  </div>
+
+  <!-- SYSTEM ROW -->
+  <div data-anim style="position:relative;padding:16px 60px;box-sizing:border-box;display:flex;align-items:flex-start;gap:56px;border-bottom:1px solid rgba(24,23,21,0.08);opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .18s, transform .7s cubic-bezier(.16,1,.3,1) .18s;">
+    <div style="flex:1;">
+      <div style="font-size:15px;font-weight:700;text-transform:uppercase;">PROCESSES REFINED OVER 14 YEARS</div>
+    </div>
+    <div style="width:1px;align-self:stretch;background:rgba(24,23,21,0.08);"></div>
+    <div style="flex:1;">
+      <div style="font-size:15px;font-weight:700;text-transform:uppercase;">TRANSPARENT MANUFACTURER SELECTION</div>
+    </div>
+    <div style="width:1px;align-self:stretch;background:rgba(24,23,21,0.08);"></div>
+    <div style="flex:1;">
+      <div style="font-size:15px;font-weight:700;text-transform:uppercase;color:{{ accent }};">INTELLECTUAL PROPERTY PROTECTION</div>
+    </div>
+    <div style="flex:1;">
+      <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;margin-bottom:6px;">FACTORY RELATIONS</div>
+      <div style="font-size:15px;font-weight:700;text-transform:uppercase;">LONG-STANDING RELATIONSHIPS WITH FACTORIES</div>
+    </div>
+  </div>
+
+  <!-- LIANA VIDEO INTRODUCTION -->
+  <div data-anim style="position:relative;padding:26px 60px 0 60px;box-sizing:border-box;display:flex;gap:36px;align-items:flex-start;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .3s, transform .7s cubic-bezier(.16,1,.3,1) .3s;">
+    <div id="liana-video" onClick="{{ toggleLianaVideo }}" style="position:relative;width:390px;height:270px;flex-shrink:0;cursor:pointer;overflow:hidden;background:#0e0b0a;">
+      <video ref="{{ lianaVideoElRef }}" onEnded="{{ onLianaVideoEnded }}" poster="assets/media/liana-video-poster.jpg" src="assets/media/liana-video-card.mp4" playsinline="true" preload="metadata" style="width:390px;height:270px;object-fit:cover;object-position:center;display:block;background-image:url('assets/media/liana-video-poster.jpg');background-size:cover;background-position:center;"></video>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:{{ lianaPlayIconOpacity }};transition:opacity 0.2s ease;">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(14,11,10,0.55);display:flex;align-items:center;justify-content:center;">
+          <span style="color:#F2EFE8;font-size:18px;margin-left:3px;">▶</span>
+        </div>
+      </div>
+      <div style="position:absolute;bottom:16px;left:16px;display:flex;align-items:center;gap:8px;background:rgba(14,11,10,0.55);padding:6px 12px;pointer-events:none;opacity:{{ lianaPlayIconOpacity }};transition:opacity 0.2s ease;">
+        <span style="color:#F2EFE8;font-size:11px;">▶</span>
+        <span style="color:#F2EFE8;font-size:10px;font-weight:600;letter-spacing:1px;">02:22</span>
+      </div>
+    </div>
+    <div style="flex:1;">
+      <h3 style="margin:0 0 12px 0;font-size:34px;font-weight:700;text-transform:uppercase;line-height:1.1;">LIANA GINI</h3>
+      <p style="margin:0 0 20px 0;font-size:14px;line-height:1.5;font-weight:500;max-width:400px;opacity:0.65;">Asian studies graduate. MBA. Skilled negotiator. Years of hands-on experience with manufacturing in China.</p>
+      <a href="#liana-video" onClick="{{ toggleLianaVideo }}" style="font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};border-bottom:2px solid {{ accent }};padding-bottom:4px;">WATCH THE VIDEO INTRO →</a>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 1180},
+  &quot;ivory&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#F2EFE8&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#F2EFE8&quot;, &quot;#EDEAE1&quot;, &quot;#F6F3EC&quot;]},
+  &quot;ink&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#181715&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#181715&quot;, &quot;#111111&quot;]},
+  &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#541F2B&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#541F2B&quot;, &quot;#6B2A38&quot;, &quot;#3F1620&quot;], &quot;section&quot;: &quot;Brand&quot;}
+}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  videoWrapRef = React.createRef();
+  lianaVideoElRef = React.createRef();
+  state = { revealed: false, weAreHereOn: false, weAreHereSoft: false, lianaPlaying: false };
+  ticking = false;
+
+  // Click-to-play video card: no autoplay (it has real audio, unlike the
+  // muted background loops elsewhere on this page). Play icon + duration
+  // chip fade out once playing, reappear on pause/end.
+  toggleLianaVideo = (e) => {
+    if (e) e.preventDefault();
+    const v = this.lianaVideoElRef.current;
+    if (!v) return;
+    if (v.paused) { v.play(); this.setState({ lianaPlaying: true }); }
+    else { v.pause(); this.setState({ lianaPlaying: false }); }
+  };
+  onLianaVideoEnded = () => this.setState({ lianaPlaying: false });
+
+  componentDidMount() {
+    this.reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.reduceMotion) {
+      this.setState({ revealed: true, weAreHereOn: true });
+      return;
+    }
+    this.io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        this.setState({ revealed: true });
+        this.io.disconnect();
+      }
+    }, { threshold: 0.15 });
+    if (this.rootRef.current) this.io.observe(this.rootRef.current);
+
+    // "МЫ ЗДЕСЬ." reveals once the video is well into the viewport, then
+    // softly recedes as the credibility content below takes over.
+    this.ioVideo = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) this.setState({ weAreHereOn: true });
+    }, { threshold: 0.4 });
+    if (this.videoWrapRef.current) this.ioVideo.observe(this.videoWrapRef.current);
+
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+    if (this.ioVideo) this.ioVideo.disconnect();
+    window.removeEventListener('scroll', this.onScroll);
+  }
+  onScroll = () => {
+    if (this.ticking) return;
+    this.ticking = true;
+    requestAnimationFrame(() => {
+      this.ticking = false;
+      if (!this.videoWrapRef.current) return;
+      const rect = this.videoWrapRef.current.getBoundingClientRect();
+      // Once the video's top has scrolled a good way past the viewport top,
+      // ease the statement back — content below is taking the attention now.
+      const soft = rect.top < -rect.height * 0.35;
+      if (soft !== this.state.weAreHereSoft) this.setState({ weAreHereSoft: soft });
+    });
+  };
+
+  renderVals() {
+    const on = this.state.revealed;
+    return {
+      ivory: this.props.ivory ?? '#F2EFE8',
+      ink: this.props.ink ?? '#181715',
+      accent: this.props.accent ?? '#541F2B',
+      rootRef: this.rootRef,
+      videoWrapRef: this.videoWrapRef,
+      rO: on ? 1 : 0,
+      rY: on ? 0 : 24,
+      weAreHereOpacity: !this.state.weAreHereOn ? 0 : (this.state.weAreHereSoft ? 0.72 : 1),
+      weAreHereY: this.state.weAreHereOn ? 0 : 18,
+      lianaVideoElRef: this.lianaVideoElRef,
+      toggleLianaVideo: this.toggleLianaVideo,
+      onLianaVideoEnded: this.onLianaVideoEnded,
+      lianaPlayIconOpacity: this.state.lianaPlaying ? 0 : 1,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -38,6 +38,8 @@ const PAGES = ['index.html', 'mobile.html'];
 const PAGE_OPTS = {
   'index.html': { viewport: { width: 1440, height: 900 } },
   'mobile.html': { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true },
+  'en/index.html': { viewport: { width: 1440, height: 900 } },
+  'en/mobile.html': { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true },
 };
 // A fixed weekday so date-dependent copy (e.g. "осталось N мест на выходные")
 // is baked in its neutral form. Humans still get the live, date-based text.
@@ -95,7 +97,8 @@ function serve(overrides) {
   const server = http.createServer((req, res) => {
     let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
     if (p.endsWith('/')) p += 'index.html';
-    const rel = p.replace(/^\/+/, '');
+    // en/ на lianagini.com открывается как корень сайта, общие файлы лежат в /assets
+    const rel = p.replace(/^\/+/, '').replace(/^en\/assets\//, 'assets/');
     if (overrides[rel] != null) { res.writeHead(200, { 'content-type': types['.html'] }); return res.end(overrides[rel]); }
     const file = path.join(ROOT, rel);
     if (!file.startsWith(ROOT) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) { res.writeHead(404); return res.end(); }
@@ -152,7 +155,9 @@ async function render(browser, url, helmetHtml, headKeys, opts) {
     // mobile.html: six tabs, only the active one is rendered
     const sc = document.getElementById('lg-scroll');
     if (sc) {
-      const labels = ['Главная', 'Каталог', 'Услуги', 'Команда', 'Кейсы', 'Контакты'];
+      const labels = document.documentElement.lang === 'en'
+        ? ['Home', 'Catalogue', 'Services', 'Team', 'Case studies', 'Contacts']
+        : ['Главная', 'Каталог', 'Услуги', 'Команда', 'Кейсы', 'Контакты'];
       const btn = (l) => [...document.querySelectorAll('button, a, div[role="button"], span')]
         .filter((b) => b.textContent.trim() === l).pop();
       out.tabs = [];
@@ -164,7 +169,7 @@ async function render(browser, url, helmetHtml, headKeys, opts) {
         const kids = [...sc.children];
         out.tabs.push({ label: l, html: (out.tabs.length ? kids.slice(1) : kids).map((k) => k.outerHTML).join('') });
       }
-      const home = btn('Главная'); if (home) { home.click(); await wait(400); }
+      const home = btn(labels[0]); if (home) { home.click(); await wait(400); }
     }
     return out;
   });
