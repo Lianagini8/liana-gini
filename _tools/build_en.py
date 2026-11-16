@@ -323,8 +323,26 @@ def en_reviews(s):
     return re.sub(r"(<div[^\n]*en-review-2\.jpg[^\n]*\n)", lambda m: m.group(1) + note, s, count=1)
 
 
+# Слаги посадочных страниц: они есть только на .ru. Если такая ссылка
+# осталась в английской сборке, на .com она даст 404.
+RU_ONLY_SLUGS = (
+    'o-liane-gini', 'konsultaciya', 'baier-v-kitae', 'detskaya-odezhda', 'nizhnee-bele',
+    'gotovye-kollekcii', 'svoy-brend-odezhdy', 'rynki-guanchzhou', 'kontrol-kachestva',
+    'sportivnaya-odezhda', 'tkani', 'furnitura', 'furnitura-s-logotipom',
+    'soprovozhdenie-v-guanchzhou', 'kak-najti-fabriku',
+)
+RU_PAGES_BLOCKS = {'section-10.dc.html': 'footer-desktop', 'mobile.html': 'footer-mobile'}
+
+
 def drop_ru_pages(s, name):
     """Посадочные страницы есть только на .ru: на английском подвале их быть не должно."""
+    # Блок со списком всех 15 страниц целиком вырезаем по его комментариям.
+    if name in RU_PAGES_BLOCKS:
+        key = RU_PAGES_BLOCKS[name]
+        pat = r'[ \t]*<!-- ru-pages:%s -->.*?<!-- /ru-pages:%s -->\n' % (key, key)
+        s, n = re.subn(pat, '', s, flags=re.S)
+        if n != 1:
+            issues.append((name, 'footer', 'не найден блок ru-pages:' + key))
     if name == 'section-10.dc.html':
         # ссылка на страницу консультации заменяется на блок консультации этой же страницы
         if 'href="/konsultaciya/"' not in s:
@@ -334,6 +352,9 @@ def drop_ru_pages(s, name):
     s = re.sub(r'(?:\s*·)?\s*<a href="/(?:o-liane-gini|konsultaciya)/"[^>]*>[^<]*</a>', '', s)
     if s == before and name == 'section-10.dc.html':
         issues.append((name, 'footer', 'не найдена ссылка на /o-liane-gini/'))
+    for slug in RU_ONLY_SLUGS:
+        if 'href="/%s/"' % slug in s:
+            issues.append((name, 'footer', 'осталась ссылка на русскую страницу /%s/' % slug))
     return s
 
 
