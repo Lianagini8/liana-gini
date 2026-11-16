@@ -79,8 +79,10 @@ FIXES = {
     'Согласие на рассылки': 'Marketing Consent',
 }
 
-SEO_TITLE = 'Turnkey Clothing Manufacturing in China | Liana Gini'
-SEO_DESC = 'We develop and manufacture clothing, footwear and accessories in China, from idea and sample to quality control of the finished order. Liana Gini’s team works in Guangzhou.'
+# Turnkey («под ключ») во вкладке обрезалось до «Turnkey Cl…» и читалось как Turkey —
+# для производства в Китае это худшее недоразумение. «Под ключ» осталось в описании.
+SEO_TITLE = 'Clothing Manufacturing in China | Liana Gini'
+SEO_DESC = 'We develop and manufacture clothing, footwear and accessories in China, turnkey: from idea and sample to quality control of the finished order. Liana Gini’s team works in Guangzhou.'
 
 issues = []
 
