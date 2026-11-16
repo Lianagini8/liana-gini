@@ -10,10 +10,8 @@
 # 05.11.2026: один адрес сайта для поиска (www и /index.html → https://lianagini.ru/)
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  # 15.11.2026: lianagini.online ведёт на lianagini.ru. /.well-known/ открыт для выпуска сертификата.
-  RewriteCond %{HTTP_HOST} ^(www\.)?lianagini\.online$ [NC]
-  RewriteCond %{REQUEST_URI} !^/\.well-known/
-  RewriteRule ^(.*)$ https://lianagini.ru/$1 [R=301,L]
+  # lianagini.online ведёт на lianagini.ru, но правило живёт не здесь: в панели
+  # у .online свой сайт с папкой www/lianagini.online и своим .htaccess (16.11.2026).
   # Английская версия лежит в /en и доступна только как lianagini.com
   RewriteCond %{THE_REQUEST} ^[A-Z]+\s/en(/|\?|\s)
   RewriteRule ^ - [R=404,L]
