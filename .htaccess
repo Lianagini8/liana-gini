@@ -7,6 +7,12 @@
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
 
+# 16.11.2026: .txt (llms.txt, robots.txt, ключ IndexNow) отдаём с кодировкой UTF-8.
+# Без неё браузеры и часть роботов читают кириллицу в llms.txt как кракозябры.
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .txt
+</IfModule>
+
 # 05.11.2026: один адрес сайта для поиска (www и /index.html → https://lianagini.ru/)
 <IfModule mod_rewrite.c>
   RewriteEngine On
