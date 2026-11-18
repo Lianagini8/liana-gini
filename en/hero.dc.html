@@ -29,7 +29,7 @@
   <div data-hero-anim style="position:absolute;top:0;left:0;right:0;height:96px;display:flex;align-items:center;justify-content:space-between;padding:0 64px;z-index:3;animation:revealUp 0.5s ease 0.15s both;">
     <div style="font-size:20px;font-weight:700;letter-spacing:2px;white-space:nowrap;flex-shrink:0;">LIANA GINI</div>
     <div style="flex:1;display:flex;justify-content:center;">
-      <nav style="display:flex;gap:40px;">
+      <nav ref="{{ navRef }}" style="display:flex;gap:40px;align-items:center;">
         <a href="#services" style="font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};" style-hover="color:{{ accent }};">Services</a>
         <a href="#services" style="font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};" style-hover="color:{{ accent }};">How we work</a>
         <a href="#cases" style="font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};" style-hover="color:{{ accent }};">Case studies</a>
@@ -91,16 +91,34 @@
 class Component extends DCLogic {
   videoRef = React.createRef();
   rootRef = React.createRef();
-  state = { parallax: 0 };
+  navRef = React.createRef();
+  state = { parallax: 0, menu: null };
+  hoverAt = 0;
   ticking = false;
 
+  // Выпадающие «Услуги» и «Материалы»: наведение, клик или тап; закрываются кликом вне меню и Esc.
+  menuEnter = (k) => () => { if (this.state.menu !== k) { this.hoverAt = Date.now(); this.setState({ menu: k }); } };
+  menuLeave = () => { if (this.state.menu) this.setState({ menu: null }); };
+  menuClick = (k) => (e) => {
+    if (e) e.preventDefault();
+    // на телефоне и планшете тап сначала даёт mouseenter, поэтому сразу после него меню не закрываем
+    if (this.state.menu === k && Date.now() - this.hoverAt > 400) this.setState({ menu: null });
+    else this.setState({ menu: k });
+  };
+  onDocDown = (e) => { if (this.state.menu && this.navRef.current && !this.navRef.current.contains(e.target)) this.setState({ menu: null }); };
+  onKey = (e) => { if (e.key === 'Escape' && this.state.menu) this.setState({ menu: null }); };
+
   componentDidMount() {
+    document.addEventListener('pointerdown', this.onDocDown);
+    document.addEventListener('keydown', this.onKey);
     if (this.videoRef.current) this.videoRef.current.muted = true;
     this.reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (this.reduceMotion) return;
     window.addEventListener('scroll', this.onScroll, { passive: true });
   }
   componentWillUnmount() {
+    document.removeEventListener('pointerdown', this.onDocDown);
+    document.removeEventListener('keydown', this.onKey);
     window.removeEventListener('scroll', this.onScroll);
   }
   // Subtle depth on exit: the video lags slightly behind normal scroll speed
@@ -119,6 +137,15 @@ class Component extends DCLogic {
     });
   };
 
+  menuVals(k) {
+    const open = this.state.menu === k;
+    return {
+      [k + 'Enter']: this.menuEnter(k), [k + 'Click']: this.menuClick(k),
+      [k + 'Open']: open ? 'true' : 'false', [k + 'Color']: open ? '#C99AA5' : (this.props.ivory ?? '#F2EFE8'),
+      [k + 'Rot']: open ? 180 : 0, [k + 'Vis']: open ? 'visible' : 'hidden', [k + 'Op']: open ? 1 : 0, [k + 'Y']: open ? 0 : -6,
+    };
+  }
+
   renderVals() {
     const parallax = this.reduceMotion ? 0 : this.state.parallax;
     return {
@@ -127,6 +154,10 @@ class Component extends DCLogic {
       accent: this.props.accent ?? '#541F2B',
       videoRef: this.videoRef,
       rootRef: this.rootRef,
+      navRef: this.navRef,
+      menuLeave: this.menuLeave,
+      ...this.menuVals('serv'),
+      ...this.menuVals('mat'),
       videoParallaxY: parallax,
       linesFadeOpacity: Math.max(0.4, 1 - parallax / 40 * 0.6),
     };

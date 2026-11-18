@@ -331,18 +331,33 @@ RU_ONLY_SLUGS = (
     'sportivnaya-odezhda', 'tkani', 'furnitura', 'furnitura-s-logotipom',
     'soprovozhdenie-v-guanchzhou', 'kak-najti-fabriku',
 )
-RU_PAGES_BLOCKS = {'section-10.dc.html': 'footer-desktop', 'mobile.html': 'footer-mobile'}
+# Блоки со ссылками на посадочные (меню «Услуги»/«Материалы», ссылки «Название →»
+# в разделах главной) помечены комментариями ru-pages и вырезаются для .com целиком.
+RU_PAGES_BLOCKS = {
+    'hero.dc.html': ['nav-desktop'],
+    'section-03.dc.html': ['step1', 'step2', 'step3', 'step5'],
+    'section-05.dc.html': ['team'],
+    'section-06.dc.html': ['cases'],
+    'section-07.dc.html': ['catalogs'],
+    'section-09.dc.html': ['agency'],
+    'mobile.html': ['services-mobile', 'steps-mobile', 'team-mobile', 'cases-mobile', 'catalogs-mobile', 'agency-mobile'],
+}
+# Что встаёт на место блока в английской сборке (до перевода, поэтому по-русски).
+RU_PAGES_EN = {
+    'nav-desktop': '        <a href="#services" style="font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};" style-hover="color:{{ accent }};">Услуги</a>\n',
+}
 
 
 def drop_ru_pages(s, name):
-    """Посадочные страницы есть только на .ru: на английском подвале их быть не должно."""
-    # Блок со списком всех 15 страниц целиком вырезаем по его комментариям.
-    if name in RU_PAGES_BLOCKS:
-        key = RU_PAGES_BLOCKS[name]
-        pat = r'[ \t]*<!-- ru-pages:%s -->.*?<!-- /ru-pages:%s -->\n' % (key, key)
-        s, n = re.subn(pat, '', s, flags=re.S)
+    """Посадочные страницы есть только на .ru: в английской сборке ссылок на них быть не должно."""
+    for key in RU_PAGES_BLOCKS.get(name, []):
+        pat = r'[ \t]*<!-- ru-pages:%s -->.*?<!-- /ru-pages:%s -->\n' % (re.escape(key), re.escape(key))
+        s, n = re.subn(pat, lambda m: RU_PAGES_EN.get(key, ''), s, flags=re.S)
         if n != 1:
-            issues.append((name, 'footer', 'не найден блок ru-pages:' + key))
+            issues.append((name, 'ru-pages', 'не найден блок ru-pages:' + key))
+    left = re.findall(r'<!-- ru-pages:([a-z0-9-]+) -->', s)
+    if left:
+        issues.append((name, 'ru-pages', 'блок не вырезан, добавьте в RU_PAGES_BLOCKS: ' + ', '.join(left)))
     if name == 'section-10.dc.html':
         # ссылка на страницу консультации заменяется на блок консультации этой же страницы
         if 'href="/konsultaciya/"' not in s:
@@ -354,7 +369,7 @@ def drop_ru_pages(s, name):
         issues.append((name, 'footer', 'не найдена ссылка на /o-liane-gini/'))
     for slug in RU_ONLY_SLUGS:
         if 'href="/%s/"' % slug in s:
-            issues.append((name, 'footer', 'осталась ссылка на русскую страницу /%s/' % slug))
+            issues.append((name, 'ru-pages', 'осталась ссылка на русскую страницу /%s/' % slug))
     return s
 
 
@@ -411,8 +426,7 @@ def main():
                 issues.append((name, 'price', 'не найдена подпись цены в окне оплаты'))
             s = s.replace(*MOBILE_LABEL)
         s = s.replace('name@mail.ru', 'name@example.com')
-        if name in ('section-10.dc.html', 'mobile.html'):
-            s = drop_ru_pages(s, name)
+        s = drop_ru_pages(s, name)
         # Метки этапов и на русском сайте английские. Катя 12.11: «партия» = order, не batch.
         s = s.replace('opacity:0.5;">BATCH</span>', 'opacity:0.5;">ORDER</span>').replace("'QC', 'BATCH'", "'QC', 'ORDER'")
         s = s.replace('/assets/js/payments.js', '/js/payments.js').replace('assets/js/cookie-banner.js', 'js/cookie-banner.js')

@@ -29,8 +29,45 @@
   <div data-hero-anim style="position:absolute;top:0;left:0;right:0;height:96px;display:flex;align-items:center;justify-content:space-between;padding:0 64px;z-index:3;animation:revealUp 0.5s ease 0.15s both;">
     <div style="font-size:20px;font-weight:700;letter-spacing:2px;white-space:nowrap;flex-shrink:0;">LIANA GINI</div>
     <div style="flex:1;display:flex;justify-content:center;">
-      <nav style="display:flex;gap:40px;">
-        <a href="#services" style="font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};" style-hover="color:{{ accent }};">Услуги</a>
+      <nav ref="{{ navRef }}" style="display:flex;gap:40px;align-items:center;">
+        <!-- ru-pages:nav-desktop -->
+        <div onMouseEnter="{{ servEnter }}" onMouseLeave="{{ menuLeave }}" style="position:relative;">
+          <button type="button" onClick="{{ servClick }}" aria-haspopup="true" aria-expanded="{{ servOpen }}" aria-controls="menu-serv" style="font-family:'Manrope',sans-serif;background:none;border:none;padding:0;margin:0;cursor:pointer;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ servColor }};" style-hover="color:#C99AA5;">Услуги <span style="font-size:8px;opacity:0.7;margin-left:3px;display:inline-block;transform:rotate({{ servRot }}deg);transition:transform .2s ease;" aria-hidden="true">▼</span></button>
+          <div id="menu-serv" style="position:absolute;top:100%;left:-28px;padding-top:20px;z-index:10;visibility:{{ servVis }};opacity:{{ servOp }};transform:translateY({{ servY }}px);transition:opacity .2s ease, transform .2s ease, visibility .2s;">
+            <div style="background:rgba(14,11,10,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:24px 28px 20px;display:flex;gap:56px;">
+              <div>
+                <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;margin-bottom:8px;">Направления</div>
+                <a href="/baier-v-kitae/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Байер одежды в&nbsp;Китае</a>
+                <a href="/svoy-brend-odezhdy/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Свой бренд одежды</a>
+                <a href="/gotovye-kollekcii/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Готовые коллекции под ваш логотип</a>
+                <a href="/nizhnee-bele/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Нижнее бельё</a>
+                <a href="/detskaya-odezhda/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Детская одежда</a>
+                <a href="/sportivnaya-odezhda/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Спорт и&nbsp;йога</a>
+                <a href="/soprovozhdenie-v-guanchzhou/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Сопровождение в&nbsp;Гуанчжоу</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div onMouseEnter="{{ matEnter }}" onMouseLeave="{{ menuLeave }}" style="position:relative;">
+          <button type="button" onClick="{{ matClick }}" aria-haspopup="true" aria-expanded="{{ matOpen }}" aria-controls="menu-mat" style="font-family:'Manrope',sans-serif;background:none;border:none;padding:0;margin:0;cursor:pointer;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ matColor }};" style-hover="color:#C99AA5;">Материалы <span style="font-size:8px;opacity:0.7;margin-left:3px;display:inline-block;transform:rotate({{ matRot }}deg);transition:transform .2s ease;" aria-hidden="true">▼</span></button>
+          <div id="menu-mat" style="position:absolute;top:100%;left:-28px;padding-top:20px;z-index:10;visibility:{{ matVis }};opacity:{{ matOp }};transform:translateY({{ matY }}px);transition:opacity .2s ease, transform .2s ease, visibility .2s;">
+            <div style="background:rgba(14,11,10,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:24px 28px 20px;display:flex;gap:56px;">
+              <div>
+                <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;margin-bottom:8px;">Материалы</div>
+                <a href="/tkani/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Ткани</a>
+                <a href="/furnitura/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Фурнитура, кружево и&nbsp;стразы</a>
+                <a href="/furnitura-s-logotipom/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Фурнитура с&nbsp;логотипом</a>
+              </div>
+              <div>
+                <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;margin-bottom:8px;">Статьи</div>
+                <a href="/kak-najti-fabriku/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Как найти фабрику в&nbsp;Китае</a>
+                <a href="/rynki-guanchzhou/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Рынки Гуанчжоу</a>
+                <a href="/kontrol-kachestva/" style="display:block;font-size:14px;font-weight:500;color:{{ ivory }};padding:7px 0;white-space:nowrap;" style-hover="color:#E8B4B8;">Контроль качества</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /ru-pages:nav-desktop -->
         <a href="#services" style="font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};" style-hover="color:{{ accent }};">Как работаем</a>
         <a href="#cases" style="font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};" style-hover="color:{{ accent }};">Кейсы</a>
         <a href="#team" style="font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};" style-hover="color:{{ accent }};">О Лиане</a>
@@ -91,16 +128,34 @@
 class Component extends DCLogic {
   videoRef = React.createRef();
   rootRef = React.createRef();
-  state = { parallax: 0 };
+  navRef = React.createRef();
+  state = { parallax: 0, menu: null };
+  hoverAt = 0;
   ticking = false;
 
+  // Выпадающие «Услуги» и «Материалы»: наведение, клик или тап; закрываются кликом вне меню и Esc.
+  menuEnter = (k) => () => { if (this.state.menu !== k) { this.hoverAt = Date.now(); this.setState({ menu: k }); } };
+  menuLeave = () => { if (this.state.menu) this.setState({ menu: null }); };
+  menuClick = (k) => (e) => {
+    if (e) e.preventDefault();
+    // на телефоне и планшете тап сначала даёт mouseenter, поэтому сразу после него меню не закрываем
+    if (this.state.menu === k && Date.now() - this.hoverAt > 400) this.setState({ menu: null });
+    else this.setState({ menu: k });
+  };
+  onDocDown = (e) => { if (this.state.menu && this.navRef.current && !this.navRef.current.contains(e.target)) this.setState({ menu: null }); };
+  onKey = (e) => { if (e.key === 'Escape' && this.state.menu) this.setState({ menu: null }); };
+
   componentDidMount() {
+    document.addEventListener('pointerdown', this.onDocDown);
+    document.addEventListener('keydown', this.onKey);
     if (this.videoRef.current) this.videoRef.current.muted = true;
     this.reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (this.reduceMotion) return;
     window.addEventListener('scroll', this.onScroll, { passive: true });
   }
   componentWillUnmount() {
+    document.removeEventListener('pointerdown', this.onDocDown);
+    document.removeEventListener('keydown', this.onKey);
     window.removeEventListener('scroll', this.onScroll);
   }
   // Subtle depth on exit: the video lags slightly behind normal scroll speed
@@ -119,6 +174,15 @@ class Component extends DCLogic {
     });
   };
 
+  menuVals(k) {
+    const open = this.state.menu === k;
+    return {
+      [k + 'Enter']: this.menuEnter(k), [k + 'Click']: this.menuClick(k),
+      [k + 'Open']: open ? 'true' : 'false', [k + 'Color']: open ? '#C99AA5' : (this.props.ivory ?? '#F2EFE8'),
+      [k + 'Rot']: open ? 180 : 0, [k + 'Vis']: open ? 'visible' : 'hidden', [k + 'Op']: open ? 1 : 0, [k + 'Y']: open ? 0 : -6,
+    };
+  }
+
   renderVals() {
     const parallax = this.reduceMotion ? 0 : this.state.parallax;
     return {
@@ -127,6 +191,10 @@ class Component extends DCLogic {
       accent: this.props.accent ?? '#541F2B',
       videoRef: this.videoRef,
       rootRef: this.rootRef,
+      navRef: this.navRef,
+      menuLeave: this.menuLeave,
+      ...this.menuVals('serv'),
+      ...this.menuVals('mat'),
       videoParallaxY: parallax,
       linesFadeOpacity: Math.max(0.4, 1 - parallax / 40 * 0.6),
     };

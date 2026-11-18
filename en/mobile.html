@@ -956,6 +956,7 @@
     <!-- ============ TAB: SERVICES ============ -->
     <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
 
+
       <div style="padding:28px {{ secPadX }} 8px {{ secPadX }};">
         <h2 style="margin:0;font-size:24px;line-height:1.25;font-weight:700;letter-spacing:-0.5px;text-transform:uppercase;">We take production off your hands. From idea to finished order.<span style="color:{{ accent }};"></span></h2>
       </div>
@@ -1384,7 +1385,7 @@ class Component extends DCLogic {
   cardsRef = React.createRef();
   contentRef = React.createRef();
   formSectionRef = React.createRef();
-  state = { tab: 'home', cardIdx: 0, formState: 'idle', buyState: 'idle', bookState: 'idle', heroPassed: false, teamVideoReady: false, vw: 390,
+  state = { accServ: true, accMat: false, tab: 'home', cardIdx: 0, formState: 'idle', buyState: 'idle', bookState: 'idle', heroPassed: false, teamVideoReady: false, vw: 390,
     pdConsent: false, marketingConsent: false, pdConsentError: false,
     checkoutOpen: false, checkoutProduct: null, checkoutPdConsent: false, checkoutMarketingConsent: false, checkoutPdConsentError: false,
     checkoutBuyerName: '', checkoutBuyerContact: '', checkoutNameError: false, checkoutContactError: false, consultationOrder: null,
@@ -1397,6 +1398,7 @@ class Component extends DCLogic {
   // Tap opens the video card full screen with native controls (iPhone uses
   // webkitEnterFullscreen, others the Fullscreen API). Leaving full screen
   // pauses it and returns the small preview.
+  accToggle = (k) => () => this.setState(st => ({ [k]: !st[k] }));
   toggleLianaVideo = (e) => {
     if (e) e.preventDefault();
     const v = this.lianaVideoElRef.current;
@@ -1726,6 +1728,8 @@ class Component extends DCLogic {
       formMax: tab768 ? '520px' : 'none',
       measure: tab768 ? '640px' : 'none',
       ivory, ink, accent, charcoal,
+      accServToggle: this.accToggle('accServ'), accServOpen: this.state.accServ ? 'true' : 'false', accServSign: this.state.accServ ? '−' : '+', accServDisplay: this.state.accServ ? 'block' : 'none',
+      accMatToggle: this.accToggle('accMat'), accMatOpen: this.state.accMat ? 'true' : 'false', accMatSign: this.state.accMat ? '−' : '+', accMatDisplay: this.state.accMat ? 'block' : 'none',
       isHome: tab === 'home', isCatalog: tab === 'catalog', isServices: tab === 'services',
       isTeam: tab === 'team', isCases: tab === 'cases', isContact: tab === 'contact',
       goContact: this.goContact, goServices: this.goServices, goContactForm: this.goContactForm,
@@ -1763,6 +1767,7 @@ class Component extends DCLogic {
         return {
           ...t,
           tags: t.tags.map(text => ({ text })),
+          isStep1: i === 0, isStep2: i === 1, isStep3: i === 2, isStep5: i === 4,
           hasLine: !tab768 && i < TIMELINE.length - 1,
           dotColor: on ? accent : inactive,
           lineScale: on ? 1 : 0,
