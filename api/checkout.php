@@ -17,6 +17,16 @@ if ($pid === 'personal-consultation' && ($name === '' || $contact === '')) { htt
 $email = mb_substr(trim((string)($in['email'] ?? '')), 0, 200);
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { http_response_code(400); exit('{"error":"email"}'); }
 
+// Бриф с формы «Обсудим ваше производство на консультации» (с 25.11.2026 форма ведёт на оплату консультации).
+// Хранится в заказе и приходит Лиане в письме об оплате, бесплатной заявки больше нет.
+$brief = [];
+if ($pid === 'personal-consultation' && is_array($in['brief'] ?? null)) {
+  foreach (['product' => 2000, 'design' => 2000, 'volume' => 200, 'targetCost' => 200, 'phone' => 100, 'contactHandle' => 200] as $k => $max) {
+    $v = mb_substr(trim(strip_tags((string)($in['brief'][$k] ?? ''))), 0, $max);
+    if ($v !== '') $brief[$k] = $v;
+  }
+}
+
 $o = [
   'id'         => next_order_id(),
   'product'    => $pid,
@@ -30,6 +40,7 @@ $o = [
   'marketing'  => !empty($in['marketingConsent']),
   'lang'       => lang(),
   'downloads'  => 0,
+  'brief'      => $brief,
 ];
 order_save($o);
 echo json_encode(['checkoutUrl' => payment_url($o), 'orderId' => $o['id']]);

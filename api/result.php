@@ -30,6 +30,17 @@ if ($o['status'] !== 'paid') {
   send_mail(cfg()['notify_email'] ?? '', "Оплата №{$o['id']}: {$p['name']}",
     "Заказ №{$o['id']}\nТовар: {$p['name']}\nСумма: {$o['amount']} ₽\nEmail покупателя: {$o['email']}" .
     ($o['name'] !== '' ? "\nИмя: {$o['name']}" : '') . ($o['contact'] !== '' ? "\nКонтакт: {$o['contact']}" : '') .
-    "\nСогласие на рекламу: " . ($o['marketing'] ? 'да' : 'нет') . (($o['lang'] ?? '') === 'en' ? "\nСайт: lianagini.com" : ''));
+    "\nСогласие на рекламу: " . ($o['marketing'] ? 'да' : 'нет') . (($o['lang'] ?? '') === 'en' ? "\nСайт: lianagini.com" : '') . brief_text($o));
 }
 echo 'OK' . $o['id'];
+
+// Бриф, который покупатель заполнил перед оплатой консультации.
+function brief_text(array $o): string {
+  $labels = ['product' => 'Опишите вашу задачу', 'design' => 'Есть готовый дизайн или прототип', 'volume' => 'Планируемый объём',
+    'targetCost' => 'Целевая себестоимость', 'phone' => 'Телефон', 'contactHandle' => 'Email / мессенджер'];
+  $b = $o['brief'] ?? [];
+  if (!$b) return '';
+  $t = "\n\nБРИФ К КОНСУЛЬТАЦИИ\n";
+  foreach ($labels as $k => $label) $t .= "\n$label:\n" . ($b[$k] ?? '—') . "\n";
+  return $t;
+}

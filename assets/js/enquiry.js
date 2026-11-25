@@ -35,3 +35,36 @@ export async function submitEnquiry(payload) {
     return { state: STATES.ERROR, reason: 'network-error' };
   }
 }
+
+// С 25.11.2026 бриф ведёт на оплату консультации (решение Лианы: бесплатных заявок с сайта нет).
+// Бриф уходит вместе с заказом и приходит Лиане в письме об оплате, отдельного письма до оплаты нет.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export function validatePaid(p) {
+  const errors = {};
+  if (!p.product?.trim()) errors.product = 'required';
+  if (!p.phone?.trim()) errors.phone = 'required';
+  if (!p.name?.trim()) errors.name = 'required';
+  if (!EMAIL_RE.test((p.email || '').trim())) errors.email = 'required';
+  if (!p.pdConsent) errors.pdConsent = 'required';
+  return { valid: Object.keys(errors).length === 0, errors };
+}
+
+export async function payConsultation(p) {
+  const { valid, errors } = validatePaid(p);
+  if (!valid) return { state: STATES.ERROR, errors, reason: 'validation-failed' };
+  if (p._honey && p._honey.trim()) return { state: STATES.ERROR, reason: 'bot' };
+  const brief = {};
+  for (const k of FIELDS) brief[k] = (p[k] || '').trim();
+  const contact = [brief.phone, brief.contactHandle].filter(Boolean).join(', ');
+  try {
+    const { startCheckout } = await import('/assets/js/payments.js');
+    const res = await startCheckout('personal-consultation', {
+      name: p.name.trim(), contact, email: p.email.trim(), marketingConsent: !!p.marketingConsent, brief,
+    });
+    if (res.checkoutUrl) return { state: STATES.PENDING, checkoutUrl: res.checkoutUrl };
+    return { state: STATES.ERROR, reason: 'checkout-failed' };
+  } catch (err) {
+    return { state: STATES.ERROR, reason: 'network-error' };
+  }
+}

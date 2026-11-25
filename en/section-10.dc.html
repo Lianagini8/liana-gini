@@ -27,8 +27,8 @@
     <!-- PRODUCTION ENQUIRY -->
     <div data-anim style="display:flex;gap:80px;align-items:flex-start;margin-bottom:60px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);">
       <div style="width:400px;flex-shrink:0;">
-        <h2 style="margin:0 0 18px 0;font-size:40px;line-height:1.1;font-weight:700;letter-spacing:-1px;text-transform:uppercase;">TELL US WHAT YOU WANT TO MAKE.</h2>
-        <p style="margin:0;font-size:13px;line-height:1.6;max-width:320px;opacity:0.55;">A few questions help us understand your project before the first call.</p>
+        <h2 style="margin:0 0 18px 0;font-size:40px;line-height:1.1;font-weight:700;letter-spacing:-1px;text-transform:uppercase;">A CONSULTATION ON YOUR PRODUCTION</h2>
+        <p style="margin:0;font-size:13px;line-height:1.6;max-width:320px;opacity:0.55;">The consultation is paid in advance: 15,000 RUB (≈ $185), 30–60 min. If you place an order after the consultation, this amount is credited towards it.<span style="white-space:nowrap;"><span style="white-space:nowrap;"></span></span></p>
       </div>
 
       <form onSubmit="{{ onSubmit }}" data-form="production-enquiry" data-submit-state="{{ formState }}" data-success-target="#enquiry-sent" style="flex:1;min-width:0;">
@@ -82,6 +82,22 @@
               <input class="brief-input" id="q-contact-handle" name="contactHandle" type="text" placeholder="@username / email"/>
             </div>
           </div>
+
+          <div style="border-top:1px solid rgba(242,239,232,0.18);padding:16px 0 18px 0;display:flex;gap:20px;align-items:baseline;">
+            <span style="font-size:9px;letter-spacing:1.5px;opacity:0.4;width:18px;flex-shrink:0;">07</span>
+            <div style="flex:1;min-width:0;">
+              <label for="q-name" style="display:block;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">What should we call you?</label>
+              <input class="brief-input" id="q-name" name="name" type="text" required="true" autocomplete="name" placeholder="Name"/>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid rgba(242,239,232,0.18);padding:16px 0 18px 0;display:flex;gap:20px;align-items:baseline;">
+            <span style="font-size:9px;letter-spacing:1.5px;opacity:0.4;width:18px;flex-shrink:0;">08</span>
+            <div style="flex:1;min-width:0;">
+              <label for="q-email" style="display:block;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Email for the receipt</label>
+              <input class="brief-input" id="q-email" name="email" type="email" required="true" autocomplete="email" placeholder="name@example.com"/>
+            </div>
+          </div>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(242,239,232,0.18);padding-top:18px;margin-top:16px;">
@@ -90,6 +106,7 @@
             <span style="opacity:0.75;">I consent to <a href="pd-consent.html" target="_blank" rel="noopener" style="color:{{ ivory }};text-decoration:underline;">the processing of personal data</a> in accordance with the <a href="privacy-policy.html" target="_blank" rel="noopener" style="color:{{ ivory }};text-decoration:underline;">Privacy Policy</a>.</span>
           </label>
           <div id="pd-consent-error" role="alert" style="display:{{ pdErrorDisplay }};font-size:11px;color:#E8B4B8;padding-left:26px;">Please tick the consent box to send your enquiry.</div>
+          <p style="margin:0;padding-left:26px;font-size:12px;line-height:1.5;opacity:0.55;">The service is provided under the terms of the <a href="oferta.html" target="_blank" rel="noopener" style="color:{{ ivory }};text-decoration:underline;">Public Offer</a>.</p>
           <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;">
             <input type="checkbox" name="marketingConsent" checked="{{ marketingConsent }}" onChange="{{ onMarketingConsentChange }}" style="margin-top:2px;width:16px;height:16px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
             <span style="opacity:0.55;">I would like to receive news and special offers: <a href="ad-consent.html" target="_blank" rel="noopener" style="color:{{ ivory }};text-decoration:underline;">Consent to marketing communications</a>.</span>
@@ -98,7 +115,7 @@
 
         <div style="border-top:2px solid {{ accentLight }};padding-top:22px;margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;">
           <div style="display:flex;align-items:center;gap:28px;">
-            <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px 26px;white-space:nowrap;transition:transform 0.2s ease, background 0.2s ease, color 0.2s ease;" style-hover="background:{{ ivory }};color:{{ charcoal }};transform:translateX(4px);">DISCUSS YOUR PROJECT →</button>
+            <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px 26px;white-space:nowrap;transition:transform 0.2s ease, background 0.2s ease, color 0.2s ease;" style-hover="background:{{ ivory }};color:{{ charcoal }};transform:translateX(4px);">PROCEED TO PAYMENT →</button>
             <a href="https://t.me/lianagini" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};opacity:0.5;white-space:nowrap;" style-hover="opacity:1;color:{{ accentLight }};">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"/></svg>
  MESSAGE US ON TELEGRAM →
@@ -208,21 +225,20 @@ class Component extends DCLogic {
  targetCost: form.targetCost?.value || '',
  phone: form.phone?.value || '',
  contactHandle: form.contactHandle?.value || '',
+ name: form.elements.namedItem('name')?.value || '',
+ email: form.elements.namedItem('email')?.value || '',
  pdConsent: this.state.pdConsent,
  marketingConsent: this.state.marketingConsent,
  _honey: form._honey?.value || '',
  };
  this.setState({ formState: 'pending' });
  try {
+ // С 25.11.2026 бриф ведёт на оплату консультации: заказ создаёт сервер, затем страница Робокассы.
+ // При ошибке введённые данные остаются в форме.
  const mod = await import('/assets/js/enquiry.js');
- const res = await mod.submitEnquiry(payload);
- this.setState({ formState: res.state });
- // Only clear the form/consents once the server has actually confirmed delivery —
- // on error the user's entered data must stay exactly as typed.
- if (res.state === 'success') {
- form.reset();
- this.setState({ pdConsent: false, marketingConsent: false });
- }
+ const res = await mod.payConsultation(payload);
+ if (res.checkoutUrl) { window.location.assign(res.checkoutUrl); return; }
+ this.setState({ formState: res.reason === 'validation-failed' ? 'invalid' : 'error' });
  } catch (err) {
  this.setState({ formState: 'error' });
  }
@@ -231,10 +247,10 @@ class Component extends DCLogic {
  renderVals() {
  const s = this.state.formState;
  const notes = {
- idle: 'We’ll reply on Telegram or via the contact you gave us.',
- pending: 'Sending…',
- success: 'ENQUIRY RECEIVED. WE’LL BE IN TOUCH.',
- error: 'Something went wrong. Try again or message us on Telegram. →',
+ idle: 'After payment, the team will contact you to arrange the consultation time.',
+ pending: 'Creating your order and going to payment…',
+ invalid: 'Please fill in your task, phone, name and email for the receipt.',
+ error: 'Could not go to payment. Please try again or message us on Telegram.',
  };
  const on = this.state.revealed;
  return {

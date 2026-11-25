@@ -77,6 +77,24 @@ FIXES = {
         '1.3. The Policy applies to all personal data processed by the Operator, including data obtained through the Operator’s website https://lianagini.com (hereinafter referred to as the “Website”), feedback forms and the chatbot.',
     # В юридическом ряду подвала все ссылки с заглавных, у Кати одна строчными.
     'Согласие на рассылки': 'Marketing Consent',
+    # Лиана 24.11: для иностранных клиентов не ГОСТ, а международные стандарты.
+    'Размерные сетки — по ГОСТу.': 'Size charts to international standards.',
+    # 25.11: бриф ведёт на оплату консультации. Заголовок и подзаголовок Кати, перевод мой (Кате на вычитку).
+    'ОБСУДИМ ВАШЕ ПРОИЗВОДСТВО НА КОНСУЛЬТАЦИИ': 'A CONSULTATION ON YOUR PRODUCTION',
+    'Обсудим ваше производство на консультации': 'A consultation on your production',
+    'Консультация оплачивается заранее: 15 000, 30–60 мин. Если после консультации вы размещаете заказ, эта сумма засчитывается в его стоимость.':
+        'The consultation is paid in advance: 15,000\u00a0RUB (≈\u00a0$185), 30–60\u00a0min. If you place an order after the consultation, this amount is credited towards it.',
+    'Как к вам обращаться?': 'What should we call you?',
+    'Имя': 'Name',
+    'Email для чека': 'Email for the receipt',
+    'Перейти к оплате →': 'Proceed to payment',
+    'ПЕРЕЙТИ К ОПЛАТЕ →': 'PROCEED TO PAYMENT',
+    'После оплаты команда свяжется с вами и согласует время консультации.': 'After payment, the team will contact you to arrange the consultation time.',
+    'Создаём заказ и переходим к оплате…': 'Creating your order and going to payment…',
+    'Заполните задачу, телефон, имя и email для чека.': 'Please fill in your task, phone, name and email for the receipt.',
+    'Не удалось перейти к оплате. Попробуйте ещё раз или напишите в Telegram.': 'Could not go to payment. Please try again or message us on Telegram.',
+    'Укажите имя, чтобы продолжить.': 'Please enter your name to continue.',
+    'Укажите email, на него придёт чек.': 'Please enter your email: the receipt will be sent there.',
 }
 
 # Turnkey («под ключ») во вкладке обрезалось до «Turnkey Cl…» и читалось как Turkey —
@@ -429,6 +447,11 @@ def main():
         s = drop_ru_pages(s, name)
         # Метки этапов и на русском сайте английские. Катя 12.11: «партия» = order, не batch.
         s = s.replace('opacity:0.5;">BATCH</span>', 'opacity:0.5;">ORDER</span>').replace("'QC', 'BATCH'", "'QC', 'ORDER'")
+        # Лиана 24.11: на английской версии QC вместо Control.
+        if name == 'hero.dc.html':
+            if '>Control / Sample / Production<' not in s:
+                issues.append((name, 'qc', 'не найдена строка Control / Sample / Production'))
+            s = s.replace('>Control / Sample / Production<', '>QC / Sample / Production<')
         s = s.replace('/assets/js/payments.js', '/js/payments.js').replace('assets/js/cookie-banner.js', 'js/cookie-banner.js')
         s = re.sub(r'<html([^>]*)lang="ru"', r'<html\1lang="en"', s, count=1)
         if name in ('index.html', 'mobile.html'):

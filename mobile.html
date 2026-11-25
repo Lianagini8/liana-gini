@@ -832,8 +832,8 @@
         <p style="margin: 14px 0px 16px; font-size: 11px; line-height: 1.5; max-width: none; opacity: 0.45;">Точную стоимость считаем индивидуально в зависимости от продукта, объёма и логистики и определяем после консультации.</p>
         <button type="button" style="font-family: Manrope, sans-serif; border-width: medium medium 2px; border-style: none none solid; border-color: currentcolor currentcolor rgb(84, 31, 43); border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(24, 23, 21); background: none; padding: 10px 2px 3px;">Обсудить на консультации →</button>
       </div><div style="padding: 36px 20px 8px; border-top: 1px solid rgba(24, 23, 21, 0.1); margin-top: 16px;">
-        <h2 style="margin: 0px 0px 8px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.3px; text-transform: uppercase;">Расскажите, что хотите <br>произвести.</h2>
-        <p style="margin: 0px 0px 20px; font-size: 12px; line-height: 1.5; max-width: none; opacity: 0.55;">Несколько вопросов помогут понять задачу до первого разговора с&nbsp;командой.</p>
+        <h2 style="margin: 0px 0px 8px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.3px; text-transform: uppercase;">Обсудим ваше производство <br>на консультации</h2>
+        <p style="margin: 0px 0px 20px; font-size: 12px; line-height: 1.5; max-width: none; opacity: 0.55;">Консультация оплачивается заранее: 15&nbsp;000, <span style="white-space: nowrap;">30–60&nbsp;мин.</span> Если после консультации вы&nbsp;размещаете заказ, эта сумма засчитывается в&nbsp;его стоимость.</p>
 
         <form style="display: flex; flex-direction: column; max-width: none;">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;">
@@ -857,9 +857,17 @@
             <label for="mq-phone" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Напишите контактный номер телефона</label>
             <input class="brief-input" id="mq-phone" name="phone" type="tel" inputmode="tel" required="" placeholder="+7 900 000-00-00">
           </div>
-          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px 18px;">
+          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px;">
             <label for="mq-contact-handle" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Укажите email или мессенжер (telegram/max/wechat)</label>
             <input class="brief-input" id="mq-contact-handle" name="contactHandle" type="text" placeholder="@username / email">
+          </div>
+          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px;">
+            <label for="mq-name" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Как к вам обращаться?</label>
+            <input class="brief-input" id="mq-name" name="name" type="text" required="" autocomplete="name" placeholder="Имя">
+          </div>
+          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px 18px;">
+            <label for="mq-email" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Email для чека</label>
+            <input class="brief-input" id="mq-email" name="email" type="email" required="" autocomplete="email" placeholder="name@mail.ru">
           </div>
           <div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid rgba(24, 23, 21, 0.15); padding-top: 16px; margin-bottom: 18px;">
             <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 1.5; cursor: pointer;">
@@ -867,17 +875,18 @@
               <span style="opacity: 0.8;">Я даю согласие на <a href="pd-consent.html" target="_blank" rel="noopener" style="text-decoration: underline;">обработку персональных данных</a> в соответствии с <a href="privacy-policy.html" target="_blank" rel="noopener" style="text-decoration: underline;">Политикой ПДн</a>.</span>
             </label>
             <div id="mq-pd-consent-error" role="alert" style="display: none; font-size: 11px; color: rgb(84, 31, 43); padding-left: 27px;">Отметьте согласие на обработку персональных данных.</div>
+            <p style="margin: 0px; padding-left: 27px; font-size: 12px; line-height: 1.5; opacity: 0.6;">Услуга оказывается на условиях <a href="oferta.html" target="_blank" rel="noopener" style="text-decoration: underline;">Публичной оферты</a>.</p>
             <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 1.5; cursor: pointer;">
               <input type="checkbox" name="marketingConsent" style="margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: rgb(84, 31, 43); cursor: pointer;">
               <span style="opacity: 0.6;">Хочу получать новости и спецпредложения — <a href="ad-consent.html" target="_blank" rel="noopener" style="text-decoration: underline;">согласие на рассылки</a>.</span>
             </label>
           </div>
-          <button type="submit" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 16px; margin-bottom: 14px;">Обсудить проект →</button>
+          <button type="submit" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 16px; margin-bottom: 14px;">Перейти к оплате →</button>
           <a href="https://t.me/lianagini" style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.6; padding-bottom: 8px;">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"></path></svg>
             Написать сразу в Telegram
           </a>
-          <div style="text-align: center; font-size: 11px; line-height: 1.5; opacity: 0.45;"><span class="sc-interp">Ответим в Telegram или по указанному контакту.</span></div>
+          <div style="text-align: center; font-size: 11px; line-height: 1.5; opacity: 0.45;"><span class="sc-interp">После оплаты команда свяжется с&nbsp;вами и&nbsp;согласует время консультации.</span></div>
         </form>
       </div><div style="margin-top: 20px; padding: 28px 20px; background: rgb(26, 24, 23); color: rgb(242, 239, 232);">
         <div style="font-size: 16px; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 6px;">LIANA GINI</div>
@@ -1350,8 +1359,8 @@
       </div>
 
       <div ref="{{ formSectionRef }}" style="padding:36px {{ secPadX }} 8px {{ secPadX }};border-top:1px solid rgba(24,23,21,0.1);margin-top:16px;">
-        <h2 style="margin:0 0 8px 0;font-size:22px;line-height:1.25;font-weight:700;letter-spacing:-0.3px;text-transform:uppercase;">Расскажите, что хотите<br/>произвести.</h2>
-        <p style="margin:0 0 20px 0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.55;">Несколько вопросов помогут понять задачу до первого разговора с&nbsp;командой.</p>
+        <h2 style="margin:0 0 8px 0;font-size:22px;line-height:1.25;font-weight:700;letter-spacing:-0.3px;text-transform:uppercase;">Обсудим ваше производство<br/>на консультации</h2>
+        <p style="margin:0 0 20px 0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.55;">Консультация оплачивается заранее: 15&nbsp;000, <span style="white-space:nowrap;">30–60&nbsp;мин.</span> Если после консультации вы&nbsp;размещаете заказ, эта сумма засчитывается в&nbsp;его стоимость.</p>
 
         <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;max-width:{{ formMax }};">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"/>
@@ -1375,9 +1384,17 @@
             <label for="mq-phone" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Напишите контактный номер телефона</label>
             <input class="brief-input" id="mq-phone" name="phone" type="tel" inputmode="tel" required="true" placeholder="+7 900 000-00-00"/>
           </div>
-          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0 18px 0;">
+          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;">
             <label for="mq-contact-handle" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Укажите email или мессенжер (telegram/max/wechat)</label>
             <input class="brief-input" id="mq-contact-handle" name="contactHandle" type="text" placeholder="@username / email"/>
+          </div>
+          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;">
+            <label for="mq-name" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Как к вам обращаться?</label>
+            <input class="brief-input" id="mq-name" name="name" type="text" required="true" autocomplete="name" placeholder="Имя"/>
+          </div>
+          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0 18px 0;">
+            <label for="mq-email" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Email для чека</label>
+            <input class="brief-input" id="mq-email" name="email" type="email" required="true" autocomplete="email" placeholder="name@mail.ru"/>
           </div>
           <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(24,23,21,0.15);padding-top:16px;margin-bottom:18px;">
             <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;">
@@ -1385,12 +1402,13 @@
               <span style="opacity:0.8;">Я даю согласие на <a href="pd-consent.html" target="_blank" rel="noopener" style="text-decoration:underline;">обработку персональных данных</a> в соответствии с <a href="privacy-policy.html" target="_blank" rel="noopener" style="text-decoration:underline;">Политикой ПДн</a>.</span>
             </label>
             <div id="mq-pd-consent-error" role="alert" style="display:{{ pdErrorDisplay }};font-size:11px;color:{{ accent }};padding-left:27px;">Отметьте согласие на обработку персональных данных.</div>
+            <p style="margin:0;padding-left:27px;font-size:12px;line-height:1.5;opacity:0.6;">Услуга оказывается на условиях <a href="oferta.html" target="_blank" rel="noopener" style="text-decoration:underline;">Публичной оферты</a>.</p>
             <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;">
               <input type="checkbox" name="marketingConsent" checked="{{ marketingConsent }}" onChange="{{ onMarketingConsentChange }}" style="margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
               <span style="opacity:0.6;">Хочу получать новости и спецпредложения — <a href="ad-consent.html" target="_blank" rel="noopener" style="text-decoration:underline;">согласие на рассылки</a>.</span>
             </label>
           </div>
-          <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px;margin-bottom:14px;">Обсудить проект →</button>
+          <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px;margin-bottom:14px;">Перейти к оплате →</button>
           <a href="https://t.me/lianagini" style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;opacity:0.6;padding-bottom:8px;">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"/></svg>
             Написать сразу в Telegram
@@ -1841,20 +1859,17 @@ class Component extends DCLogic {
       product: form.product?.value || '', design: form.design?.value || '',
       volume: form.volume?.value || '', targetCost: form.targetCost?.value || '',
       phone: form.phone?.value || '', contactHandle: form.contactHandle?.value || '',
+      name: form.elements.namedItem('name')?.value || '', email: form.elements.namedItem('email')?.value || '',
       pdConsent: this.state.pdConsent, marketingConsent: this.state.marketingConsent,
       _honey: form._honey?.value || '',
     };
     this.setState({ formState: 'pending' });
     try {
+      // С 25.11.2026 бриф ведёт на оплату консультации: заказ создаёт сервер, затем страница Робокассы.
       const mod = await import('/assets/js/enquiry.js');
-      const res = await mod.submitEnquiry(payload);
-      this.setState({ formState: res.state });
-      // Only clear the form/consents once the server has actually confirmed
-      // delivery — on error the user's entered data must stay exactly as typed.
-      if (res.state === 'success') {
-        form.reset();
-        this.setState({ pdConsent: false, marketingConsent: false });
-      }
+      const res = await mod.payConsultation(payload);
+      if (res.checkoutUrl) { window.location.assign(res.checkoutUrl); return; }
+      this.setState({ formState: res.reason === 'validation-failed' ? 'invalid' : 'error' });
     } catch (err) { this.setState({ formState: 'error' }); }
   };
 
@@ -1882,10 +1897,10 @@ class Component extends DCLogic {
     ];
 
     const notes = {
-      idle: 'Ответим в Telegram или по указанному контакту.',
-      pending: 'Отправляем…',
-      success: 'ЗАДАЧА ПЕРЕДАНА. КОМАНДА СВЯЖЕТСЯ С ВАМИ.',
-      error: 'Не удалось отправить — попробуйте ещё раз или напишите в Telegram →',
+      idle: 'После оплаты команда свяжется с вами и согласует время консультации.',
+      pending: 'Создаём заказ и переходим к оплате…',
+      invalid: 'Заполните задачу, телефон, имя и email для чека.',
+      error: 'Не удалось перейти к оплате. Попробуйте ещё раз или напишите в Telegram.',
     };
 
     const tab768 = this.state.vw >= 700;

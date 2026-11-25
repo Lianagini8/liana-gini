@@ -105,8 +105,8 @@
 
   <!-- CHECKOUT CONSENT GATE — same shared pattern as the products page. -->
   <sc-if value="{{ checkoutOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(24,23,21,0.55);box-sizing:border-box;" onClick="{{ closeCheckout }}">
-      <div role="dialog" aria-modal="true" aria-labelledby="checkout-title" onClick="{{ stopPropagation }}" style="background:{{ ivory }};color:{{ ink }};width:100%;max-width:440px;padding:36px;box-sizing:border-box;font-family:'Manrope',sans-serif;">
+    <div style="position:fixed;inset:0;z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:24px;background:rgba(24,23,21,0.55);box-sizing:border-box;overflow-y:auto;" onClick="{{ closeCheckout }}">
+      <div role="dialog" aria-modal="true" aria-labelledby="checkout-title" onClick="{{ stopPropagation }}" style="background:{{ ivory }};color:{{ ink }};width:100%;max-width:440px;padding:36px;box-sizing:border-box;font-family:'Manrope',sans-serif;margin:auto 0;">
         <div style="font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:{{ accent }};margin-bottom:10px;">{{ checkoutName }}</div>
         <div id="checkout-title" style="font-size:32px;font-weight:700;letter-spacing:-1px;margin-bottom:26px;">{{ checkoutPriceLabel }}</div>
 
@@ -134,7 +134,15 @@
           <div id="checkout-phone-error" role="alert" style="display:{{ checkoutPhoneErrorDisplay }};font-size:11px;color:{{ accent }};margin-bottom:10px;">Enter your phone number to continue.</div>
 
           <label for="checkout-contact-handle" style="display:block;font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;">Email or messenger (Telegram, MAX, WeChat)</label>
-          <input id="checkout-contact-handle" type="text" value="{{ formContactHandle }}" onChange="{{ onFormContactHandleChange }}" placeholder="@username / email" style="width:100%;box-sizing:border-box;font-family:'Manrope',sans-serif;font-size:14px;padding:12px 14px;border:1px solid rgba(24,23,21,0.25);background:{{ ivory }};color:{{ ink }};margin-bottom:16px;"/>
+          <input id="checkout-contact-handle" type="text" value="{{ formContactHandle }}" onChange="{{ onFormContactHandleChange }}" placeholder="@username / email" style="width:100%;box-sizing:border-box;font-family:'Manrope',sans-serif;font-size:14px;padding:12px 14px;border:1px solid rgba(24,23,21,0.25);background:{{ ivory }};color:{{ ink }};margin-bottom:14px;"/>
+
+          <label for="checkout-name" style="display:block;font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;">What should we call you?</label>
+          <input id="checkout-name" type="text" required="true" autocomplete="name" value="{{ formName }}" onChange="{{ onFormNameChange }}" placeholder="Name" aria-describedby="checkout-name-error" style="width:100%;box-sizing:border-box;font-family:'Manrope',sans-serif;font-size:14px;padding:12px 14px;border:1px solid rgba(24,23,21,0.25);background:{{ ivory }};color:{{ ink }};margin-bottom:4px;"/>
+          <div id="checkout-name-error" role="alert" style="display:{{ checkoutNameErrorDisplay }};font-size:11px;color:{{ accent }};margin-bottom:10px;">Please enter your name to continue.</div>
+
+          <label for="checkout-email" style="display:block;font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;">Email for the receipt</label>
+          <input id="checkout-email" type="email" required="true" autocomplete="email" value="{{ formEmail }}" onChange="{{ onFormEmailChange }}" placeholder="name@example.com" aria-describedby="checkout-email-error" style="width:100%;box-sizing:border-box;font-family:'Manrope',sans-serif;font-size:14px;padding:12px 14px;border:1px solid rgba(24,23,21,0.25);background:{{ ivory }};color:{{ ink }};margin-bottom:4px;"/>
+          <div id="checkout-email-error" role="alert" style="display:{{ checkoutEmailErrorDisplay }};font-size:11px;color:{{ accent }};margin-bottom:16px;">Please enter your email: the receipt will be sent there.</div>
 
           <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;cursor:pointer;margin-bottom:10px;">
             <input type="checkbox" name="pdConsent" required="true" checked="{{ pdConsent }}" onChange="{{ onPdConsentChange }}" aria-describedby="checkout-pd-error" style="margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
@@ -150,7 +158,7 @@
           </label>
 
           <div style="display:flex;gap:16px;align-items:center;">
-            <button type="button" onClick="{{ onProceedCheckout }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 26px;white-space:nowrap;">Send →</button>
+            <button type="button" onClick="{{ onProceedCheckout }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 26px;white-space:nowrap;">PROCEED TO PAYMENT →</button>
             <button type="button" onClick="{{ closeCheckout }}" style="font-family:'Manrope',sans-serif;border:none;background:none;cursor:pointer;font-size:12px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;opacity:0.55;">Cancel</button>
           </div>
           <p style="font-size:11px;line-height:1.5;opacity:0.4;margin:16px 0 0 0;">{{ checkoutNote }}</p>
@@ -172,7 +180,7 @@ class Component extends DCLogic {
   rootRef = React.createRef();
   state = { bookingState: 'idle', revealed: false,
     checkoutOpen: false, checkoutProduct: null, pdConsent: false, marketingConsent: false, pdConsentError: false,
-    formProduct: '', formDesign: '', formVolume: '', formTargetCost: '', formPhone: '', formContactHandle: '',
+    formProduct: '', formDesign: '', formVolume: '', formTargetCost: '', formPhone: '', formContactHandle: '', formName: '', formEmail: '', formNameError: false, formEmailError: false,
     formProductError: false, formPhoneError: false };
 
   componentDidMount() {
@@ -204,7 +212,7 @@ class Component extends DCLogic {
       pdConsent: false,
       marketingConsent: false,
       pdConsentError: false,
-      formProduct: '', formDesign: '', formVolume: '', formTargetCost: '', formPhone: '', formContactHandle: '',
+      formProduct: '', formDesign: '', formVolume: '', formTargetCost: '', formPhone: '', formContactHandle: '', formName: '', formEmail: '', formNameError: false, formEmailError: false,
       formProductError: false, formPhoneError: false,
       bookingState: 'idle',
       checkoutProduct: {
@@ -225,38 +233,35 @@ class Component extends DCLogic {
   onFormTargetCostChange = (e) => this.setState({ formTargetCost: e.target.value });
   onFormPhoneChange = (e) => this.setState({ formPhone: e.target.value, formPhoneError: false });
   onFormContactHandleChange = (e) => this.setState({ formContactHandle: e.target.value });
+  onFormNameChange = (e) => this.setState({ formName: e.target.value, formNameError: false });
+  onFormEmailChange = (e) => this.setState({ formEmail: e.target.value, formEmailError: false });
 
   // Sends the anketa through the same enquiry channel as the main contact
   // form — not a payment call. Tagged with the product name as `source` so
   // Liana can tell in her inbox this came from the consultation CTA.
+  // С 25.11.2026 анкета ведёт на оплату консультации (решение Лианы: бесплатных заявок с сайта нет).
+  // Бриф уходит вместе с заказом и приходит Лиане в письме об оплате.
   onProceedCheckout = async () => {
-    const product = this.state.formProduct.trim();
-    const phone = this.state.formPhone.trim();
-    const productOk = product.length > 0;
-    const phoneOk = phone.length > 0;
-    if (!productOk || !phoneOk || !this.state.pdConsent) {
+    const payload = {
+      product: this.state.formProduct, design: this.state.formDesign, volume: this.state.formVolume,
+      targetCost: this.state.formTargetCost, phone: this.state.formPhone, contactHandle: this.state.formContactHandle,
+      name: this.state.formName, email: this.state.formEmail,
+      pdConsent: this.state.pdConsent, marketingConsent: this.state.marketingConsent,
+    };
+    const mod = await import('/assets/js/enquiry.js');
+    const { errors } = mod.validatePaid(payload);
+    if (Object.keys(errors).length) {
       this.setState({
-        formProductError: !productOk,
-        formPhoneError: !phoneOk,
-        pdConsentError: !this.state.pdConsent,
+        formProductError: !!errors.product, formPhoneError: !!errors.phone,
+        formNameError: !!errors.name, formEmailError: !!errors.email, pdConsentError: !!errors.pdConsent,
       });
       return;
     }
     this.setState({ bookingState: 'pending' });
     try {
-      const mod = await import('/assets/js/enquiry.js');
-      const res = await mod.submitEnquiry({
-        product,
-        design: this.state.formDesign.trim(),
-        volume: this.state.formVolume.trim(),
-        targetCost: this.state.formTargetCost.trim(),
-        phone,
-        contactHandle: this.state.formContactHandle.trim(),
-        pdConsent: this.state.pdConsent,
-        marketingConsent: this.state.marketingConsent,
-        source: this.state.checkoutProduct ? this.state.checkoutProduct.name : '',
-      });
-      this.setState({ bookingState: res.state });
+      const res = await mod.payConsultation(payload);
+      if (res.checkoutUrl) { window.location.assign(res.checkoutUrl); return; }
+      this.setState({ bookingState: 'error' });
     } catch (err) {
       this.setState({ bookingState: 'error' });
     }
@@ -266,10 +271,9 @@ class Component extends DCLogic {
     const on = this.state.revealed;
     const product = this.state.checkoutProduct;
     const bookingNotes = {
-      idle: 'We’ll reply on Telegram or via the contact you gave us.',
-      pending: 'Sending…',
-      success: 'Enquiry sent. We’ll be in touch.',
-      error: 'Something went wrong. Try again or message us on Telegram.',
+      idle: 'After payment, the team will contact you to arrange the consultation time.',
+      pending: 'Creating your order and going to payment…',
+      error: 'Could not go to payment. Please try again or message us on Telegram.',
     };
     return {
       ivory: this.props.ivory ?? '#F2EFE8',
@@ -299,6 +303,12 @@ class Component extends DCLogic {
       formTargetCost: this.state.formTargetCost,
       formPhone: this.state.formPhone,
       formContactHandle: this.state.formContactHandle,
+      formName: this.state.formName,
+      formEmail: this.state.formEmail,
+      onFormNameChange: this.onFormNameChange,
+      onFormEmailChange: this.onFormEmailChange,
+      checkoutNameErrorDisplay: this.state.formNameError ? 'block' : 'none',
+      checkoutEmailErrorDisplay: this.state.formEmailError ? 'block' : 'none',
       onFormProductChange: this.onFormProductChange,
       onFormDesignChange: this.onFormDesignChange,
       onFormVolumeChange: this.onFormVolumeChange,
