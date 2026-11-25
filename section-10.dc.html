@@ -15,6 +15,11 @@
   .brief-input::placeholder { color: rgba(242,239,232,0.28); }
   .brief-input:focus { border-bottom-color: #8C4457; }
   .brief-input { transition: border-bottom-color 0.25s ease; }
+  #contact .msg-chip { position: relative; display: inline-block; cursor: pointer; }
+  #contact .msg-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  #contact .msg-chip span { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; padding: 6px 11px; border: 1px solid rgba(242,239,232,0.3); color: rgba(242,239,232,0.75); transition: all 0.2s ease; }
+  #contact .msg-chip input:checked + span { background: #F2EFE8; color: #1A1817; border-color: #F2EFE8; }
+  #contact .msg-chip input:focus-visible + span { outline: 2px solid #8C4457; outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) {
     [data-anim] { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
@@ -79,6 +84,7 @@
             <span style="font-size:9px;letter-spacing:1.5px;opacity:0.4;width:18px;flex-shrink:0;">06</span>
             <div style="flex:1;min-width:0;">
               <label for="q-contact-handle" style="display:block;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Укажите email или мессенжер (telegram/max/wechat)</label>
+              <div role="radiogroup" aria-label="Мессенджер для связи" style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px 0;"><label class="msg-chip"><input type="radio" name="messenger" value="Telegram"/><span>Telegram</span></label><label class="msg-chip"><input type="radio" name="messenger" value="WhatsApp"/><span>WhatsApp</span></label><label class="msg-chip"><input type="radio" name="messenger" value="WeChat"/><span>WeChat</span></label><label class="msg-chip"><input type="radio" name="messenger" value="MAX"/><span>MAX</span></label><label class="msg-chip"><input type="radio" name="messenger" value="Email"/><span>Email</span></label></div>
               <input class="brief-input" id="q-contact-handle" name="contactHandle" type="text" placeholder="@username / email"/>
             </div>
           </div>
@@ -226,6 +232,7 @@ class Component extends DCLogic {
  targetCost: form.targetCost?.value || '',
  phone: form.phone?.value || '',
  contactHandle: form.contactHandle?.value || '',
+ messenger: form.elements.namedItem('messenger')?.value || '',
  name: form.elements.namedItem('name')?.value || '',
  email: form.elements.namedItem('email')?.value || '',
  pdConsent: this.state.pdConsent,

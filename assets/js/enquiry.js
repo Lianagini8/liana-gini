@@ -6,7 +6,7 @@ export const WIRED = true;
 
 export const STATES = { IDLE: 'idle', PENDING: 'pending', SUCCESS: 'success', ERROR: 'error' };
 
-export const FIELDS = ['product', 'design', 'volume', 'targetCost', 'phone', 'contactHandle'];
+export const FIELDS = ['product', 'design', 'volume', 'targetCost', 'phone', 'messenger', 'contactHandle'];
 
 export function validate(payload) {
   const errors = {};
@@ -56,7 +56,7 @@ export async function payConsultation(p) {
   if (p._honey && p._honey.trim()) return { state: STATES.ERROR, reason: 'bot' };
   const brief = {};
   for (const k of FIELDS) brief[k] = (p[k] || '').trim();
-  const contact = [brief.phone, brief.contactHandle].filter(Boolean).join(', ');
+  const contact = [brief.phone, [brief.messenger, brief.contactHandle].filter(Boolean).join(': ')].filter(Boolean).join(', ');
   try {
     const { startCheckout } = await import('/assets/js/payments.js');
     const res = await startCheckout('personal-consultation', {

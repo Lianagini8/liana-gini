@@ -37,7 +37,7 @@ echo 'OK' . $o['id'];
 // Бриф, который покупатель заполнил перед оплатой консультации.
 function brief_text(array $o): string {
   $labels = ['product' => 'Опишите вашу задачу', 'design' => 'Есть готовый дизайн или прототип', 'volume' => 'Планируемый объём',
-    'targetCost' => 'Целевая себестоимость', 'phone' => 'Телефон', 'contactHandle' => 'Email / мессенджер'];
+    'targetCost' => 'Целевая себестоимость', 'phone' => 'Телефон', 'messenger' => 'Где удобнее связаться', 'contactHandle' => 'Email / мессенджер'];
   $b = $o['brief'] ?? [];
   if (!$b) return '';
   $t = "\n\nБРИФ К КОНСУЛЬТАЦИИ\n";

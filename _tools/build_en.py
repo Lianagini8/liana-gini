@@ -95,6 +95,7 @@ FIXES = {
     'Не удалось перейти к оплате. Попробуйте ещё раз или напишите в Telegram.': 'Could not go to payment. Please try again or message us on Telegram.',
     'Укажите имя, чтобы продолжить.': 'Please enter your name to continue.',
     'Укажите email, на него придёт чек.': 'Please enter your email: the receipt will be sent there.',
+    'Мессенджер для связи': 'Messenger to contact you',
 }
 
 # Turnkey («под ключ») во вкладке обрезалось до «Turnkey Cl…» и читалось как Turkey —

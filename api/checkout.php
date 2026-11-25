@@ -21,7 +21,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { http_response_code(400); exit(
 // Хранится в заказе и приходит Лиане в письме об оплате, бесплатной заявки больше нет.
 $brief = [];
 if ($pid === 'personal-consultation' && is_array($in['brief'] ?? null)) {
-  foreach (['product' => 2000, 'design' => 2000, 'volume' => 200, 'targetCost' => 200, 'phone' => 100, 'contactHandle' => 200] as $k => $max) {
+  foreach (['product' => 2000, 'design' => 2000, 'volume' => 200, 'targetCost' => 200, 'phone' => 100, 'messenger' => 40, 'contactHandle' => 200] as $k => $max) {
     $v = mb_substr(trim(strip_tags((string)($in['brief'][$k] ?? ''))), 0, $max);
     if ($v !== '') $brief[$k] = $v;
   }

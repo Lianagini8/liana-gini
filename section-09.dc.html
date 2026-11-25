@@ -10,6 +10,11 @@
 <helmet>
 <link href="/assets/fonts/fonts.css" rel="stylesheet">
 <style>
+  [role=dialog] .msg-chip { position: relative; display: inline-block; cursor: pointer; }
+  [role=dialog] .msg-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  [role=dialog] .msg-chip span { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; padding: 6px 11px; border: 1px solid rgba(24,23,21,0.25); color: rgba(24,23,21,0.75); transition: all 0.2s ease; }
+  [role=dialog] .msg-chip input:checked + span { background: #541F2B; color: #F2EFE8; border-color: #541F2B; }
+  [role=dialog] .msg-chip input:focus-visible + span { outline: 2px solid #8C4457; outline-offset: 2px; }
   body { margin: 0; background: #EAE6DC; }
   a { color: #541F2B; text-decoration: none; }
   @media (prefers-reduced-motion: reduce) {
@@ -140,6 +145,7 @@
           <div id="checkout-phone-error" role="alert" style="display:{{ checkoutPhoneErrorDisplay }};font-size:11px;color:{{ accent }};margin-bottom:10px;">Укажите телефон, чтобы продолжить.</div>
 
           <label for="checkout-contact-handle" style="display:block;font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;">Укажите email или мессенджер (telegram/max/wechat)</label>
+          <div role="radiogroup" aria-label="Мессенджер для связи" style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px 0;"><label class="msg-chip"><input type="radio" name="messenger" value="Telegram"/><span>Telegram</span></label><label class="msg-chip"><input type="radio" name="messenger" value="WhatsApp"/><span>WhatsApp</span></label><label class="msg-chip"><input type="radio" name="messenger" value="WeChat"/><span>WeChat</span></label><label class="msg-chip"><input type="radio" name="messenger" value="MAX"/><span>MAX</span></label><label class="msg-chip"><input type="radio" name="messenger" value="Email"/><span>Email</span></label></div>
           <input id="checkout-contact-handle" type="text" value="{{ formContactHandle }}" onChange="{{ onFormContactHandleChange }}" placeholder="@username / email" style="width:100%;box-sizing:border-box;font-family:'Manrope',sans-serif;font-size:14px;padding:12px 14px;border:1px solid rgba(24,23,21,0.25);background:{{ ivory }};color:{{ ink }};margin-bottom:14px;"/>
 
           <label for="checkout-name" style="display:block;font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;">Как к вам обращаться?</label>
@@ -251,6 +257,7 @@ class Component extends DCLogic {
     const payload = {
       product: this.state.formProduct, design: this.state.formDesign, volume: this.state.formVolume,
       targetCost: this.state.formTargetCost, phone: this.state.formPhone, contactHandle: this.state.formContactHandle,
+      messenger: (document.querySelector('[role=dialog] input[name=messenger]:checked') || {}).value || '',
       name: this.state.formName, email: this.state.formEmail,
       pdConsent: this.state.pdConsent, marketingConsent: this.state.marketingConsent,
     };
