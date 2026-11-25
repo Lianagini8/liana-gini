@@ -96,6 +96,7 @@ FIXES = {
     'Укажите имя, чтобы продолжить.': 'Please enter your name to continue.',
     'Укажите email, на него придёт чек.': 'Please enter your email: the receipt will be sent there.',
     'Мессенджер для связи': 'Messenger to contact you',
+    'Что входит в консультацию': 'What the consultation includes',
 }
 
 # Turnkey («под ключ») во вкладке обрезалось до «Turnkey Cl…» и читалось как Turkey —

@@ -839,6 +839,7 @@
       </div><div style="padding: 36px 20px 8px; border-top: 1px solid rgba(24, 23, 21, 0.1); margin-top: 16px;">
         <h2 style="margin: 0px 0px 8px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.3px; text-transform: uppercase;">Обсудим ваше производство <br>на консультации</h2>
         <p style="margin: 0px 0px 20px; font-size: 12px; line-height: 1.5; max-width: none; opacity: 0.55;">Консультация оплачивается заранее: 15&nbsp;000, <span style="white-space: nowrap;">30–60&nbsp;мин.</span> Если после консультации вы&nbsp;размещаете заказ, эта сумма засчитывается в&nbsp;его стоимость.</p>
+        <a href="#consultation" style="display: inline-block; margin: -6px 0px 20px; font-size: 11px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: rgb(84, 31, 43); border-bottom: 1px solid rgba(84, 31, 43, 0.4); padding-bottom: 3px;">Что входит в&nbsp;консультацию&nbsp;→</a>
 
         <form style="display: flex; flex-direction: column; max-width: none;">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;">
@@ -1372,6 +1373,7 @@
       <div ref="{{ formSectionRef }}" style="padding:36px {{ secPadX }} 8px {{ secPadX }};border-top:1px solid rgba(24,23,21,0.1);margin-top:16px;">
         <h2 style="margin:0 0 8px 0;font-size:22px;line-height:1.25;font-weight:700;letter-spacing:-0.3px;text-transform:uppercase;">Обсудим ваше производство<br/>на консультации</h2>
         <p style="margin:0 0 20px 0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.55;">Консультация оплачивается заранее: 15&nbsp;000, <span style="white-space:nowrap;">30–60&nbsp;мин.</span> Если после консультации вы&nbsp;размещаете заказ, эта сумма засчитывается в&nbsp;его стоимость.</p>
+        <a href="#consultation" onClick="{{ goConsult }}" style="display:inline-block;margin:-6px 0 20px 0;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:{{ accent }};border-bottom:1px solid rgba(84,31,43,0.4);padding-bottom:3px;">Что входит в&nbsp;консультацию&nbsp;→</a>
 
         <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;max-width:{{ formMax }};">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"/>
@@ -1807,6 +1809,7 @@ class Component extends DCLogic {
   onCheckoutContactChange = (e) => this.setState({ checkoutBuyerContact: e.target.value, checkoutContactError: false });
   onCheckoutEmailChange = (e) => this.setState({ checkoutBuyerEmail: e.target.value, checkoutEmailError: false });
 
+  goConsult = (e) => { e.preventDefault(); if (this.consultRef.current) this.consultRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
   onBook = (e) => {
     e.preventDefault();
     this.openCheckout('personal-consultation', 'Личная консультация с Лианой Гини', '15 000 ₽');
@@ -2010,6 +2013,7 @@ class Component extends DCLogic {
       consultReasons: CONSULT_REASONS.map((text, i) => ({ text, num: '0' + (i + 1) })),
       services: SERVICES.map(parseColor).map((s, i) => ({ ...s, num: '0' + (i + 1) })),
       onBook: this.onBook,
+      goConsult: this.goConsult,
       onSubmit: this.onSubmit,
       formNote: notes[this.state.formState] || notes.idle,
       pdConsent: this.state.pdConsent,
