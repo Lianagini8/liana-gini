@@ -82,8 +82,9 @@ FIXES = {
     # 25.11: бриф ведёт на оплату консультации. Заголовок и подзаголовок Кати, перевод мой (Кате на вычитку).
     'ОБСУДИМ ВАШЕ ПРОИЗВОДСТВО НА КОНСУЛЬТАЦИИ': 'A CONSULTATION ON YOUR PRODUCTION',
     'Обсудим ваше производство на консультации': 'A consultation on your production',
-    'Консультация оплачивается заранее: 15 000, 30–60 мин. Если после консультации вы размещаете заказ, эта сумма засчитывается в его стоимость.':
-        'The consultation is paid in advance: 15,000\u00a0RUB (≈\u00a0$185), 30–60\u00a0min. If you place an order after the consultation, this amount is credited towards it.',
+    # 26.11: фразу о зачёте суммы в заказ Кристина убрала (Лиана уточняет у юриста).
+    'Консультация оплачивается заранее: 15 000, 30–60 мин.':
+        'The consultation is paid in advance: 15,000\u00a0RUB (≈\u00a0$185), 30–60\u00a0min.',
     'Как к вам обращаться?': 'What should we call you?',
     'Имя': 'Name',
     'Email для чека': 'Email for the receipt',
