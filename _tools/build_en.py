@@ -369,7 +369,7 @@ RU_ONLY_SLUGS = (
     'o-liane-gini', 'konsultaciya', 'baier-v-kitae', 'detskaya-odezhda', 'nizhnee-bele',
     'gotovye-kollekcii', 'svoy-brend-odezhdy', 'rynki-guanchzhou', 'kontrol-kachestva',
     'sportivnaya-odezhda', 'tkani', 'furnitura', 'furnitura-s-logotipom',
-    'soprovozhdenie-v-guanchzhou', 'kak-najti-fabriku',
+    'soprovozhdenie-v-guanchzhou', 'kak-najti-fabriku', 'katalogi',
 )
 # Блоки со ссылками на посадочные (меню «Услуги»/«Материалы», ссылки «Название →»
 # в разделах главной) помечены комментариями ru-pages и вырезаются для .com целиком.

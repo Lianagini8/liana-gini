@@ -1,0 +1,48 @@
+/* Страница каталогов /katalogi/ (27.11.2026, макет Кати). Дополняет landing.css. */
+.kat-head { padding: 40px 0 0; }
+.kat-head h1 { margin: 0 0 18px; font-size: clamp(32px, 5vw, 52px); line-height: 1.05; font-weight: 700; text-transform: uppercase; letter-spacing: -0.5px; max-width: 760px; }
+.kat-head .lead { font-size: 17px; max-width: 640px; color: var(--muted); }
+.kat-steps { list-style: none; margin: 28px 0 0; padding: 16px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 10px 44px; font-size: 13px; font-weight: 600; }
+.kat-steps span { opacity: 0.55; margin-right: 4px; }
+.kat-grid-wrap { padding: 32px 0 56px; }
+.kat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.kat-card { background: #fff; border: 1px solid var(--rule); display: flex; flex-direction: column; }
+.kat-preview { aspect-ratio: 4 / 3; background: var(--paper); overflow: hidden; }
+.kat-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.kat-body { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
+.kat-num { margin: 0 0 6px; font-size: 11px; letter-spacing: 1.2px; opacity: 0.55; }
+.kat-name { margin: 0 0 8px; font-size: 18px; line-height: 1.25; font-weight: 700; text-transform: uppercase; }
+.kat-what { margin: 0 0 14px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.kat-what b { color: var(--ink); }
+.kat-price { margin: auto 0 14px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--muted); }
+.kat-price b { font-size: 22px; color: var(--ink); margin-right: 6px; }
+.kat-price.muted { color: var(--muted); }
+.kat-card .btn { align-self: flex-start; font-size: 12px; min-height: 42px; padding: 10px 16px; }
+.kat-soon { align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 12px 16px; border: 1px solid var(--rule); color: var(--muted); }
+.kat-card.is-soon .kat-preview { opacity: 0.6; }
+.kat-cta { padding: 0 0 72px; }
+.kat-cta .wrap > div:first-child { flex: 1; min-width: 0; }
+.kat-cta .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; background: var(--ink); color: var(--ivory); padding: 32px 36px; max-width: calc(var(--wrap) - 2 * var(--gutter)); }
+.kat-cta h2 { margin: 0 0 8px; font-size: 24px; line-height: 1.2; text-transform: uppercase; font-weight: 700; }
+.kat-cta p { margin: 0; font-size: 14px; opacity: 0.75; }
+.kat-modal { position: fixed; inset: 0; z-index: 100; background: rgba(24,23,21,0.55); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.kat-modal[hidden] { display: none; }
+.kat-dialog { background: var(--ivory); width: 100%; max-width: 440px; padding: 30px 28px; max-height: 100%; overflow-y: auto; }
+.kat-modal-name { margin: 0 0 6px; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); }
+.kat-modal-price { margin: 0 0 20px; font-size: 30px; font-weight: 700; }
+#kat-form label[for] { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; opacity: 0.65; margin-bottom: 6px; }
+#kat-form input[type=email] { width: 100%; font: inherit; font-size: 15px; padding: 12px 14px; border: 1px solid rgba(24,23,21,0.25); background: var(--ivory); margin-bottom: 6px; }
+.kat-check { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.5; margin: 10px 0 4px; cursor: pointer; }
+.kat-check input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--accent); flex-shrink: 0; }
+.kat-note { font-size: 12px; color: var(--muted); margin: 8px 0 4px; }
+.kat-err { font-size: 12px; color: var(--accent); margin: 0 0 6px; }
+.kat-actions { display: flex; align-items: center; gap: 18px; margin-top: 18px; }
+.kat-cancel { background: none; border: 0; font: inherit; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); cursor: pointer; }
+.kat-wait { margin: 10px 0 0; font-size: 12px; line-height: 1.5; color: var(--accent); }
+.kat-status { font-size: 12px; color: var(--muted); min-height: 18px; margin: 12px 0 0; }
+@media (max-width: 900px) { .kat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+  .kat-grid { grid-template-columns: 1fr; }
+  .kat-steps { flex-direction: column; gap: 8px; }
+  .kat-cta .wrap { padding: 26px 22px; margin: 0 var(--gutter); max-width: none; width: auto; }
+}
