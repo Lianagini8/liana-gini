@@ -181,6 +181,12 @@
   .brief-input { font-family: 'Manrope', sans-serif; background: transparent; border: none; border-bottom: 1px solid rgba(24,23,21,0.18); outline: none; color: #181715; font-size: 15px; font-weight: 500; width: 100%; height: 32px; padding: 0; display: block; }
   .brief-input::placeholder { color: rgba(24,23,21,0.32); }
   .brief-input:focus { border-bottom-color: #541F2B; }
+  .consult-opt { display: block; cursor: pointer; }
+  .consult-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .consult-box { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid rgba(24,23,21,0.2); }
+  .consult-dot { width: 14px; height: 14px; margin-top: 2px; border-radius: 50%; border: 1.5px solid rgba(24,23,21,0.45); flex-shrink: 0; box-sizing: border-box; }
+  .consult-opt input:checked + .consult-box { border-color: #541F2B; background: rgba(84,31,43,0.06); }
+  .consult-opt input:checked + .consult-box .consult-dot { border: 4px solid #541F2B; }
   .msg-chip { position: relative; display: inline-block; cursor: pointer; }
   .msg-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
   .msg-chip span { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; padding: 6px 11px; border: 1px solid rgba(24,23,21,0.25); color: rgba(24,23,21,0.75); transition: all 0.2s ease; }
@@ -233,9 +239,6 @@
           <span aria-hidden="true" style="opacity: 0.25;">/</span>
           <a href="https://lianagini.com/" hreflang="en" style="color: rgb(24, 23, 21); opacity: 0.5;">EN</a>
         </div>
-        <a href="https://t.me/lianagini" class="scp0" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; background: rgb(84, 31, 43); color: rgb(242, 239, 232);">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"></path></svg>
-        </a>
       </div>
     </div><div style="position: relative; height: calc(-56px + 100svh); min-height: 560px; overflow: hidden; background: rgb(14, 11, 10); color: rgb(242, 239, 232);">
         <video poster="assets/media/hero-poster.jpg" src="assets/media/hero-video.mp4" loop="" playsinline="true" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; background-image: url(&quot;assets/media/hero-poster.jpg&quot;); background-size: cover; background-position: center 30%;" preload="none"></video>
@@ -243,7 +246,7 @@
           <h1 style="margin: 0px 0px 10px; font-size: 23px; line-height: 1.22; font-weight: 600; letter-spacing: -0.2px; text-transform: uppercase;">Ваш производственный <br>отдел в&nbsp;Китае</h1>
           <p style="margin: 0px 0px 16px; font-size: 14px; line-height: 1.5; opacity: 0.85; max-width: 340px;">Разработка и&nbsp;производство одежды, обуви и&nbsp;аксессуаров в&nbsp;Китае — от&nbsp;идеи до&nbsp;готовой&nbsp;партии.</p>
           <p style="margin: 0px 0px 16px; font-size: 11px; font-weight: 600; line-height: 1.4; opacity: 0.75; max-width: 340px;">Превращаю «сделано в Китае» в «сделано качественно»</p>
-          <a href="https://t.me/lianagini" target="_blank" rel="noopener" style="display: block; text-align: center; background: rgb(84, 31, 43); color: rgb(242, 239, 232); font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 15px;">Обсудить производство</a>
+          <a href="#contact" style="display: block; text-align: center; background: rgb(84, 31, 43); color: rgb(242, 239, 232); font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 15px;">Обсудить производство</a>
         </div>
         <div data-manim-fade="" style="position: absolute; left: 50%; bottom: 8px; width: 12px; height: 12px; border-right: 1.5px solid rgba(255, 255, 255, 0.5); border-bottom: 1.5px solid rgba(255, 255, 255, 0.5); opacity: 0; animation: 0.5s ease 0.5s 1 normal both running mChevron;"></div>
       </div><div style="padding: 28px 20px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px;">
@@ -778,10 +781,28 @@
         <div style="border-top: 2px solid rgb(84, 31, 43); padding-top: 18px; margin-top: 24px;">
           <div style="text-align: center; font-size: 30px; font-weight: 700; letter-spacing: -1px; margin-bottom: 14px;">15 000 ₽</div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
-            <button type="button" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 15px 18px; width: 100%;">Посчитать партию →</button>
-            <button type="button" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 15px 18px; width: 100%;">Посчитать первую партию →</button>
+            <button type="button" data-pick="sell" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 15px 18px; width: 100%;">Посчитать партию →</button>
+            <button type="button" data-pick="brand" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 15px 18px; width: 100%;">Посчитать первую партию →</button>
           </div>
         </div>
+      </div><div style="margin: 24px 20px 0px; background: rgb(234, 230, 220); padding: 24px 20px;">
+        <div style="font-size: 10px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; opacity: 0.55; margin-bottom: 6px;">Консультация · от&nbsp;60&nbsp;минут</div>
+        <div style="font-size: 10px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: rgb(84, 31, 43); margin-bottom: 10px;">Если вы открываете компанию в&nbsp;Китае</div>
+        <h3 style="margin: 0px 0px 10px; font-size: 20px; font-weight: 700; line-height: 1.2; text-transform: uppercase;">Как открыть и&nbsp;вести компанию в&nbsp;Китае</h3>
+        <p style="margin: 0px 0px 16px; font-size: 13px; line-height: 1.5; opacity: 0.75;">Для тех, кто планирует работать с&nbsp;Китаем через свою компанию: закупать товар, затамаживать его и&nbsp;возвращать НДС.</p>
+        <div style="font-size: 10px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; opacity: 0.55; margin-bottom: 6px;">Что разберём на консультации</div>
+        <div style="display: flex; flex-direction: column; margin-bottom: 14px;">
+          <div style="display: flex; gap: 12px; align-items: baseline; border-top: 1px solid rgba(24, 23, 21, 0.12); padding: 10px 0px;"><span style="font-size: 9px; opacity: 0.45; width: 16px; flex-shrink: 0;">01</span><div><div style="font-size: 13px; font-weight: 700; margin-bottom: 3px;">Регистрация компании</div><div style="font-size: 12px; line-height: 1.5; opacity: 0.7;">Порядок регистрации, импортно-экспортное разрешение, какие документы нужны.</div></div></div>
+          <div style="display: flex; gap: 12px; align-items: baseline; border-top: 1px solid rgba(24, 23, 21, 0.12); padding: 10px 0px;"><span style="font-size: 9px; opacity: 0.45; width: 16px; flex-shrink: 0;">02</span><div><div style="font-size: 13px; font-weight: 700; margin-bottom: 3px;">Офис и аренда</div><div style="font-size: 12px; line-height: 1.5; opacity: 0.7;">Как выбрать офис и&nbsp;на что смотреть в&nbsp;договоре с&nbsp;арендодателем.</div></div></div>
+          <div style="display: flex; gap: 12px; align-items: baseline; border-top: 1px solid rgba(24, 23, 21, 0.12); padding: 10px 0px;"><span style="font-size: 9px; opacity: 0.45; width: 16px; flex-shrink: 0;">03</span><div><div style="font-size: 13px; font-weight: 700; margin-bottom: 3px;">Счёт в банке</div><div style="font-size: 12px; line-height: 1.5; opacity: 0.7;">Как открыть счёт, который принимает платежи из&nbsp;России, и&nbsp;какие документы собрать.</div></div></div>
+          <div style="display: flex; gap: 12px; align-items: baseline; border-top: 1px solid rgba(24, 23, 21, 0.12); padding: 10px 0px;"><span style="font-size: 9px; opacity: 0.45; width: 16px; flex-shrink: 0;">04</span><div><div style="font-size: 13px; font-weight: 700; margin-bottom: 3px;">Затаможка товара</div><div style="font-size: 12px; line-height: 1.5; opacity: 0.7;">Как правильно затамаживать товар и&nbsp;оформить первые документы.</div></div></div>
+          <div style="display: flex; gap: 12px; align-items: baseline; border-top: 1px solid rgba(24, 23, 21, 0.12); padding: 10px 0px;"><span style="font-size: 9px; opacity: 0.45; width: 16px; flex-shrink: 0;">05</span><div><div style="font-size: 13px; font-weight: 700; margin-bottom: 3px;">Возврат НДС</div><div style="font-size: 12px; line-height: 1.5; opacity: 0.7;">Какие требования налоговая предъявляет к&nbsp;документам. Разберём каждый документ.</div></div></div>
+          <div style="display: flex; gap: 12px; align-items: baseline; border-top: 1px solid rgba(24, 23, 21, 0.12); padding: 10px 0px;"><span style="font-size: 9px; opacity: 0.45; width: 16px; flex-shrink: 0;">06</span><div><div style="font-size: 13px; font-weight: 700; margin-bottom: 3px;">Ведение компании</div><div style="font-size: 12px; line-height: 1.5; opacity: 0.7;">Отчётность, офис, аренда и&nbsp;штат: что нужно учесть заранее.</div></div></div>
+        </div>
+        <div style="font-size: 10px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; opacity: 0.55; margin-bottom: 6px;">Что получите</div>
+        <p style="margin: 0px 0px 18px; font-size: 13px; line-height: 1.5; opacity: 0.8;">Пошаговый план открытия компании под вашу задачу: порядок действий, список документов и&nbsp;ответы на все ваши вопросы. Дальнейшую работу обсуждаем индивидуально после консультации.</p>
+        <div style="text-align: center; font-size: 30px; font-weight: 700; letter-spacing: -1px; margin-bottom: 14px;">20&nbsp;000&nbsp;₽</div>
+        <button type="button" data-pick="company" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 15px 18px; width: 100%;">Записаться на консультацию →</button>
       </div><div style="padding: 32px 20px 8px; border-top: 1px solid rgba(24, 23, 21, 0.1); margin-top: 20px;">
         <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 6px;">
           <h3 style="margin: 0px; font-size: 20px; font-weight: 700; line-height: 1.2; text-transform: uppercase;">Агентские услуги</h3>
@@ -835,14 +856,22 @@
           
         </div>
         <p style="margin: 14px 0px 16px; font-size: 11px; line-height: 1.5; max-width: none; opacity: 0.45;">Точную стоимость считаем индивидуально в зависимости от продукта, объёма и логистики и определяем после консультации.</p>
-        <button type="button" style="font-family: Manrope, sans-serif; border-width: medium medium 2px; border-style: none none solid; border-color: currentcolor currentcolor rgb(84, 31, 43); border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(24, 23, 21); background: none; padding: 10px 2px 3px;">Обсудить на консультации →</button>
+        <button type="button" data-pick="" style="font-family: Manrope, sans-serif; border-width: medium medium 2px; border-style: none none solid; border-color: currentcolor currentcolor rgb(84, 31, 43); border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(24, 23, 21); background: none; padding: 10px 2px 3px;">Обсудить на консультации →</button>
       </div><div style="padding: 36px 20px 8px; border-top: 1px solid rgba(24, 23, 21, 0.1); margin-top: 16px;">
-        <h2 style="margin: 0px 0px 8px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.3px; text-transform: uppercase;">Обсудим ваше производство <br>на консультации</h2>
-        <p style="margin: 0px 0px 20px; font-size: 12px; line-height: 1.5; max-width: none; opacity: 0.55;">Консультация оплачивается заранее: 15&nbsp;000, <span style="white-space: nowrap;">30–60&nbsp;мин.</span></p>
-        <a href="#consultation" style="display: inline-block; margin: -6px 0px 20px; font-size: 11px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: rgb(84, 31, 43); border-bottom: 1px solid rgba(84, 31, 43, 0.4); padding-bottom: 3px;">Что входит в&nbsp;консультацию&nbsp;→</a>
+        <h2 style="margin: 0px 0px 8px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.3px; text-transform: uppercase;">Запись на&nbsp;консультацию</h2>
+        <p style="margin: 0px 0px 8px; font-size: 12px; line-height: 1.5; max-width: none; opacity: 0.7;">Заполните анкету, чтобы Лиана заранее изучила вашу задачу. После оплаты мы&nbsp;свяжемся с&nbsp;вами и&nbsp;согласуем удобное время.</p>
+        <p style="margin: 0px 0px 20px; font-size: 12px; line-height: 1.5; max-width: none; opacity: 0.55;">Консультация оплачивается заранее. Если после консультации вы&nbsp;размещаете заказ, эта сумма засчитывается в&nbsp;его стоимость.</p>
 
         <form style="display: flex; flex-direction: column; max-width: none;">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;">
+          <div style="font-size: 10px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; opacity: 0.6; margin-bottom: 10px;">Выберите консультацию</div>
+          <div role="radiogroup" aria-label="Выберите консультацию" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px;">
+            <label class="consult-opt"><input type="radio" name="consult" value="sell" checked=""><span class="consult-box"><span class="consult-dot"></span><span style="flex: 1 1 0%; min-width: 0px;"><span style="display: block; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; opacity: 0.65; margin-bottom: 3px;">Уже продаю одежду</span><span style="display: block; font-size: 13px; font-weight: 600; line-height: 1.35;">Формирование ассортимента и&nbsp;расчёт партии</span><span style="display: block; font-size: 11px; opacity: 0.65; margin-top: 3px;">30–60&nbsp;мин · 15&nbsp;000&nbsp;₽</span></span></span></label>
+            <label class="consult-opt"><input type="radio" name="consult" value="brand"><span class="consult-box"><span class="consult-dot"></span><span style="flex: 1 1 0%; min-width: 0px;"><span style="display: block; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; opacity: 0.65; margin-bottom: 3px;">Запускаю первый бренд</span><span style="display: block; font-size: 13px; font-weight: 600; line-height: 1.35;">Формирование коллекции и&nbsp;расчёт первой партии</span><span style="display: block; font-size: 11px; opacity: 0.65; margin-top: 3px;">30–60&nbsp;мин · 15&nbsp;000&nbsp;₽</span></span></span></label>
+            
+            <label class="consult-opt"><input type="radio" name="consult" value="company"><span class="consult-box"><span class="consult-dot"></span><span style="flex: 1 1 0%; min-width: 0px;"><span style="display: block; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; opacity: 0.65; margin-bottom: 3px;">Открываю компанию в&nbsp;Китае</span><span style="display: block; font-size: 13px; font-weight: 600; line-height: 1.35;">Как открыть и&nbsp;вести компанию в&nbsp;Китае</span><span style="display: block; font-size: 11px; opacity: 0.65; margin-top: 3px;">от&nbsp;60&nbsp;мин · 20&nbsp;000&nbsp;₽</span></span></span></label>
+            
+          </div>
           <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px;">
             <label for="mq-product" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Опишите вашу задачу</label>
             <input class="brief-input" id="mq-product" name="product" type="text" required="" placeholder="категория, изделие">
@@ -851,14 +880,20 @@
             <label for="mq-design" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Есть готовый дизайн или прототип?</label>
             <input class="brief-input" id="mq-design" name="design" type="text" placeholder="Приложите ссылку / нет">
           </div>
-          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px;">
+          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px; display: block;">
             <label for="mq-volume" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Какой планируется объём?</label>
             <input class="brief-input" id="mq-volume" name="volume" type="text" placeholder="шт.">
           </div>
-          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px;">
+          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px; display: block;">
             <label for="mq-cost" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Есть целевая себестоимость?</label>
             <input class="brief-input" id="mq-cost" name="targetCost" type="text" placeholder="₽ / ¥ за единицу">
           </div>
+          
+          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px; display: none;">
+            <label for="mq-plan" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Что планируете: открыть компанию, затамаживать товар, вернуть НДС?</label>
+            <input class="brief-input" id="mq-plan" name="plan" type="text" placeholder="например: открыть компанию и&nbsp;счёт">
+          </div>
+          
           <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px;">
             <label for="mq-phone" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Напишите контактный номер телефона</label>
             <input class="brief-input" id="mq-phone" name="phone" type="tel" inputmode="tel" required="" placeholder="+7 900 000-00-00">
@@ -878,6 +913,10 @@
           </div>
           <div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid rgba(24, 23, 21, 0.15); padding-top: 16px; margin-bottom: 18px;">
             <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 1.5; cursor: pointer;">
+              <input type="checkbox" name="paidAck" required="" style="margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: rgb(84, 31, 43); cursor: pointer;">
+              <span style="opacity: 0.8;">Понимаю, что консультация платная</span>
+            </label>
+            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 1.5; cursor: pointer;">
               <input type="checkbox" name="pdConsent" required="" aria-describedby="mq-pd-consent-error" style="margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: rgb(84, 31, 43); cursor: pointer;">
               <span style="opacity: 0.8;">Я даю согласие на <a href="pd-consent.html" target="_blank" rel="noopener" style="text-decoration: underline;">обработку персональных данных</a> в соответствии с <a href="privacy-policy.html" target="_blank" rel="noopener" style="text-decoration: underline;">Политикой ПДн</a>.</span>
             </label>
@@ -888,11 +927,7 @@
               <span style="opacity: 0.6;">Хочу получать новости и спецпредложения — <a href="ad-consent.html" target="_blank" rel="noopener" style="text-decoration: underline;">согласие на рассылки</a>.</span>
             </label>
           </div>
-          <button type="submit" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 16px; margin-bottom: 14px;">Перейти к оплате →</button>
-          <a href="https://t.me/lianagini" style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.6; padding-bottom: 8px;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"></path></svg>
-            Написать сразу в Telegram
-          </a>
+          <button type="submit" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 16px; margin-bottom: 14px;"><span class="sc-interp">Оплатить 15 000 ₽ →</span></button>
           <div style="text-align: center; font-size: 11px; line-height: 1.5; opacity: 0.45;"><span class="sc-interp">После оплаты команда свяжется с&nbsp;вами и&nbsp;согласует время консультации.</span></div>
         </form>
       </div><div style="margin-top: 20px; padding: 28px 20px; background: rgb(26, 24, 23); color: rgb(242, 239, 232);">
@@ -940,6 +975,12 @@
   .brief-input { font-family: 'Manrope', sans-serif; background: transparent; border: none; border-bottom: 1px solid rgba(24,23,21,0.18); outline: none; color: #181715; font-size: 15px; font-weight: 500; width: 100%; height: 32px; padding: 0; display: block; }
   .brief-input::placeholder { color: rgba(24,23,21,0.32); }
   .brief-input:focus { border-bottom-color: #541F2B; }
+  .consult-opt { display: block; cursor: pointer; }
+  .consult-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .consult-box { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid rgba(24,23,21,0.2); }
+  .consult-dot { width: 14px; height: 14px; margin-top: 2px; border-radius: 50%; border: 1.5px solid rgba(24,23,21,0.45); flex-shrink: 0; box-sizing: border-box; }
+  .consult-opt input:checked + .consult-box { border-color: #541F2B; background: rgba(84,31,43,0.06); }
+  .consult-opt input:checked + .consult-box .consult-dot { border: 4px solid #541F2B; }
   .msg-chip { position: relative; display: inline-block; cursor: pointer; }
   .msg-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
   .msg-chip span { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; padding: 6px 11px; border: 1px solid rgba(24,23,21,0.25); color: rgba(24,23,21,0.75); transition: all 0.2s ease; }
@@ -970,9 +1011,6 @@
           <span style="opacity:0.25;" aria-hidden="true">/</span>
           <a href="https://lianagini.com/" hreflang="en" style="color:{{ ink }};opacity:0.5;">EN</a>
         </div><!-- /lang-switch:top-mobile -->
-        <a href="https://t.me/lianagini" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:{{ accent }};color:{{ ivory }};" style-hover="background:{{ ink }};">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"/></svg>
-        </a>
       </div>
     </div>
 
@@ -985,7 +1023,7 @@
           <h1 style="margin:0 0 10px 0;font-size:{{ heroH1Size }};line-height:1.22;font-weight:600;letter-spacing:-0.2px;text-transform:uppercase;">Ваш производственный<br/>отдел в&nbsp;Китае</h1>
           <p style="margin:0 0 16px 0;font-size:{{ heroPSize }};line-height:1.5;opacity:0.85;max-width:{{ heroPMax }};">Разработка и&nbsp;производство одежды, обуви и&nbsp;аксессуаров в&nbsp;Китае — от&nbsp;идеи до&nbsp;готовой&nbsp;партии.</p>
           <p style="margin:0 0 16px 0;font-size:11px;font-weight:600;line-height:1.4;opacity:0.75;max-width:{{ heroPMax }};">Превращаю «сделано в Китае» в «сделано качественно»</p>
-          <a href="https://t.me/lianagini" target="_blank" rel="noopener" style="display:block;text-align:center;background:{{ accent }};color:{{ ivory }};font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:15px;">Обсудить производство</a>
+          <a href="#contact" onClick="{{ goContactForm }}" style="display:block;text-align:center;background:{{ accent }};color:{{ ivory }};font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:15px;">Обсудить производство</a>
         </div>
         <div data-manim-fade style="position:absolute;left:50%;bottom:8px;width:12px;height:12px;border-right:1.5px solid rgba(255,255,255,0.5);border-bottom:1.5px solid rgba(255,255,255,0.5);opacity:0;animation:mChevron 0.5s ease 0.5s both;"></div>
       </div>
@@ -1338,11 +1376,33 @@
         <div style="border-top:2px solid {{ accent }};padding-top:18px;margin-top:24px;">
           <div style="text-align:center;font-size:30px;font-weight:700;letter-spacing:-1px;margin-bottom:14px;">15 000 ₽</div>
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <button type="button" onClick="{{ onBook }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Посчитать партию →</button>
-            <button type="button" onClick="{{ onBook }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Посчитать первую партию →</button>
+            <button type="button" onClick="{{ pickBook }}" data-pick="sell" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Посчитать партию →</button>
+            <button type="button" onClick="{{ pickBook }}" data-pick="brand" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Посчитать первую партию →</button>
           </div>
         </div>
       </div>
+
+      <!-- ru-pages:company-consult-mobile -->
+      <div style="margin:24px {{ secPadX }} 0 {{ secPadX }};background:#EAE6DC;padding:24px 20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;opacity:0.55;margin-bottom:6px;">Консультация · от 60 минут</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:{{ accent }};margin-bottom:10px;">Если вы открываете компанию в Китае</div>
+        <h3 style="margin:0 0 10px 0;font-size:20px;font-weight:700;line-height:1.2;text-transform:uppercase;">Как открыть и вести компанию в Китае</h3>
+        <p style="margin:0 0 16px 0;font-size:13px;line-height:1.5;opacity:0.75;">Для тех, кто планирует работать с Китаем через свою компанию: закупать товар, затамаживать его и возвращать НДС.</p>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;opacity:0.55;margin-bottom:6px;">Что разберём на консультации</div>
+        <div style="display:flex;flex-direction:column;margin-bottom:14px;">
+          <div style="display:flex;gap:12px;align-items:baseline;border-top:1px solid rgba(24,23,21,0.12);padding:10px 0;"><span style="font-size:9px;opacity:0.45;width:16px;flex-shrink:0;">01</span><div><div style="font-size:13px;font-weight:700;margin-bottom:3px;">Регистрация компании</div><div style="font-size:12px;line-height:1.5;opacity:0.7;">Порядок регистрации, импортно-экспортное разрешение, какие документы нужны.</div></div></div>
+          <div style="display:flex;gap:12px;align-items:baseline;border-top:1px solid rgba(24,23,21,0.12);padding:10px 0;"><span style="font-size:9px;opacity:0.45;width:16px;flex-shrink:0;">02</span><div><div style="font-size:13px;font-weight:700;margin-bottom:3px;">Офис и аренда</div><div style="font-size:12px;line-height:1.5;opacity:0.7;">Как выбрать офис и на что смотреть в договоре с арендодателем.</div></div></div>
+          <div style="display:flex;gap:12px;align-items:baseline;border-top:1px solid rgba(24,23,21,0.12);padding:10px 0;"><span style="font-size:9px;opacity:0.45;width:16px;flex-shrink:0;">03</span><div><div style="font-size:13px;font-weight:700;margin-bottom:3px;">Счёт в банке</div><div style="font-size:12px;line-height:1.5;opacity:0.7;">Как открыть счёт, который принимает платежи из России, и какие документы собрать.</div></div></div>
+          <div style="display:flex;gap:12px;align-items:baseline;border-top:1px solid rgba(24,23,21,0.12);padding:10px 0;"><span style="font-size:9px;opacity:0.45;width:16px;flex-shrink:0;">04</span><div><div style="font-size:13px;font-weight:700;margin-bottom:3px;">Затаможка товара</div><div style="font-size:12px;line-height:1.5;opacity:0.7;">Как правильно затамаживать товар и оформить первые документы.</div></div></div>
+          <div style="display:flex;gap:12px;align-items:baseline;border-top:1px solid rgba(24,23,21,0.12);padding:10px 0;"><span style="font-size:9px;opacity:0.45;width:16px;flex-shrink:0;">05</span><div><div style="font-size:13px;font-weight:700;margin-bottom:3px;">Возврат НДС</div><div style="font-size:12px;line-height:1.5;opacity:0.7;">Какие требования налоговая предъявляет к документам. Разберём каждый документ.</div></div></div>
+          <div style="display:flex;gap:12px;align-items:baseline;border-top:1px solid rgba(24,23,21,0.12);padding:10px 0;"><span style="font-size:9px;opacity:0.45;width:16px;flex-shrink:0;">06</span><div><div style="font-size:13px;font-weight:700;margin-bottom:3px;">Ведение компании</div><div style="font-size:12px;line-height:1.5;opacity:0.7;">Отчётность, офис, аренда и штат: что нужно учесть заранее.</div></div></div>
+        </div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;opacity:0.55;margin-bottom:6px;">Что получите</div>
+        <p style="margin:0 0 18px 0;font-size:13px;line-height:1.5;opacity:0.8;">Пошаговый план открытия компании под вашу задачу: порядок действий, список документов и ответы на все ваши вопросы. Дальнейшую работу обсуждаем индивидуально после консультации.</p>
+        <div style="text-align:center;font-size:30px;font-weight:700;letter-spacing:-1px;margin-bottom:14px;">20 000 ₽</div>
+        <button type="button" onClick="{{ pickBook }}" data-pick="company" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Записаться на консультацию →</button>
+      </div>
+      <!-- /ru-pages:company-consult-mobile -->
 
       <div style="padding:32px {{ secPadX }} 8px {{ secPadX }};border-top:1px solid rgba(24,23,21,0.1);margin-top:20px;">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:6px;">
@@ -1367,16 +1427,24 @@
           </sc-for>
         </div>
         <p style="margin:14px 0 16px 0;font-size:11px;line-height:1.5;max-width:{{ measure }};opacity:0.45;">Точную стоимость считаем индивидуально в зависимости от продукта, объёма и логистики и определяем после консультации.</p>
-        <button type="button" onClick="{{ onBook }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};background:none;border-bottom:2px solid {{ accent }};padding:10px 2px 3px 2px;">Обсудить на консультации →</button>
+        <button type="button" onClick="{{ pickBook }}" data-pick="" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};background:none;border-bottom:2px solid {{ accent }};padding:10px 2px 3px 2px;">Обсудить на консультации →</button>
       </div>
 
       <div ref="{{ formSectionRef }}" style="padding:36px {{ secPadX }} 8px {{ secPadX }};border-top:1px solid rgba(24,23,21,0.1);margin-top:16px;">
-        <h2 style="margin:0 0 8px 0;font-size:22px;line-height:1.25;font-weight:700;letter-spacing:-0.3px;text-transform:uppercase;">Обсудим ваше производство<br/>на консультации</h2>
-        <p style="margin:0 0 20px 0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.55;">Консультация оплачивается заранее: 15&nbsp;000, <span style="white-space:nowrap;">30–60&nbsp;мин.</span></p>
-        <a href="#consultation" onClick="{{ goConsult }}" style="display:inline-block;margin:-6px 0 20px 0;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:{{ accent }};border-bottom:1px solid rgba(84,31,43,0.4);padding-bottom:3px;">Что входит в&nbsp;консультацию&nbsp;→</a>
+        <h2 style="margin:0 0 8px 0;font-size:22px;line-height:1.25;font-weight:700;letter-spacing:-0.3px;text-transform:uppercase;">Запись на консультацию</h2>
+        <p style="margin:0 0 8px 0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.7;">Заполните анкету, чтобы Лиана заранее изучила вашу задачу. После оплаты мы свяжемся с вами и согласуем удобное время.</p>
+        <p style="margin:0 0 20px 0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.55;">Консультация оплачивается заранее. Если после консультации вы размещаете заказ, эта сумма засчитывается в его стоимость.</p>
 
         <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;max-width:{{ formMax }};">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"/>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;opacity:0.6;margin-bottom:10px;">Выберите консультацию</div>
+          <div role="radiogroup" aria-label="Выберите консультацию" style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
+            <label class="consult-opt"><input type="radio" name="consult" value="sell" checked="{{ c_sell }}" onChange="{{ onConsultChange }}"/><span class="consult-box"><span class="consult-dot"></span><span style="flex:1;min-width:0;"><span style="display:block;font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;opacity:0.65;margin-bottom:3px;">Уже продаю одежду</span><span style="display:block;font-size:13px;font-weight:600;line-height:1.35;">Формирование ассортимента и расчёт партии</span><span style="display:block;font-size:11px;opacity:0.65;margin-top:3px;">30–60 мин · 15 000 ₽</span></span></span></label>
+            <label class="consult-opt"><input type="radio" name="consult" value="brand" checked="{{ c_brand }}" onChange="{{ onConsultChange }}"/><span class="consult-box"><span class="consult-dot"></span><span style="flex:1;min-width:0;"><span style="display:block;font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;opacity:0.65;margin-bottom:3px;">Запускаю первый бренд</span><span style="display:block;font-size:13px;font-weight:600;line-height:1.35;">Формирование коллекции и расчёт первой партии</span><span style="display:block;font-size:11px;opacity:0.65;margin-top:3px;">30–60 мин · 15 000 ₽</span></span></span></label>
+            <!-- ru-pages:company-option-mobile -->
+            <label class="consult-opt"><input type="radio" name="consult" value="company" checked="{{ c_company }}" onChange="{{ onConsultChange }}"/><span class="consult-box"><span class="consult-dot"></span><span style="flex:1;min-width:0;"><span style="display:block;font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;opacity:0.65;margin-bottom:3px;">Открываю компанию в Китае</span><span style="display:block;font-size:13px;font-weight:600;line-height:1.35;">Как открыть и вести компанию в Китае</span><span style="display:block;font-size:11px;opacity:0.65;margin-top:3px;">от 60 мин · 20 000 ₽</span></span></span></label>
+            <!-- /ru-pages:company-option-mobile -->
+          </div>
           <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;">
             <label for="mq-product" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Опишите вашу задачу</label>
             <input class="brief-input" id="mq-product" name="product" type="text" required="true" placeholder="категория, изделие"/>
@@ -1385,14 +1453,20 @@
             <label for="mq-design" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Есть готовый дизайн или прототип?</label>
             <input class="brief-input" id="mq-design" name="design" type="text" placeholder="Приложите ссылку / нет"/>
           </div>
-          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;">
+          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;display:{{ prodDisplay }};">
             <label for="mq-volume" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Какой планируется объём?</label>
             <input class="brief-input" id="mq-volume" name="volume" type="text" placeholder="шт."/>
           </div>
-          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;">
+          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;display:{{ prodDisplay }};">
             <label for="mq-cost" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Есть целевая себестоимость?</label>
             <input class="brief-input" id="mq-cost" name="targetCost" type="text" placeholder="₽ / ¥ за единицу"/>
           </div>
+          <!-- ru-pages:company-plan-mobile -->
+          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;display:{{ planDisplay }};">
+            <label for="mq-plan" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Что планируете: открыть компанию, затамаживать товар, вернуть НДС?</label>
+            <input class="brief-input" id="mq-plan" name="plan" type="text" placeholder="например: открыть компанию и счёт"/>
+          </div>
+          <!-- /ru-pages:company-plan-mobile -->
           <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;">
             <label for="mq-phone" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Напишите контактный номер телефона</label>
             <input class="brief-input" id="mq-phone" name="phone" type="tel" inputmode="tel" required="true" placeholder="+7 900 000-00-00"/>
@@ -1412,6 +1486,10 @@
           </div>
           <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(24,23,21,0.15);padding-top:16px;margin-bottom:18px;">
             <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;">
+              <input type="checkbox" name="paidAck" required="true" checked="{{ paidAck }}" onChange="{{ onPaidAckChange }}" style="margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
+              <span style="opacity:0.8;">Понимаю, что консультация платная</span>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;">
               <input type="checkbox" name="pdConsent" required="true" checked="{{ pdConsent }}" onChange="{{ onPdConsentChange }}" aria-describedby="mq-pd-consent-error" style="margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
               <span style="opacity:0.8;">Я даю согласие на <a href="pd-consent.html" target="_blank" rel="noopener" style="text-decoration:underline;">обработку персональных данных</a> в соответствии с <a href="privacy-policy.html" target="_blank" rel="noopener" style="text-decoration:underline;">Политикой ПДн</a>.</span>
             </label>
@@ -1422,11 +1500,7 @@
               <span style="opacity:0.6;">Хочу получать новости и спецпредложения — <a href="ad-consent.html" target="_blank" rel="noopener" style="text-decoration:underline;">согласие на рассылки</a>.</span>
             </label>
           </div>
-          <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px;margin-bottom:14px;">Перейти к оплате →</button>
-          <a href="https://t.me/lianagini" style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;opacity:0.6;padding-bottom:8px;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"/></svg>
-            Написать сразу в Telegram
-          </a>
+          <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px;margin-bottom:14px;">{{ payLabel }}</button>
           <div style="text-align:center;font-size:11px;line-height:1.5;opacity:0.45;">{{ formNote }}</div>
         </form>
       </div>
@@ -1602,7 +1676,7 @@ class Component extends DCLogic {
   cardsRef = React.createRef();
   contentRef = React.createRef();
   formSectionRef = React.createRef();
-  state = { accServ: true, accMat: false, tab: 'home', cardIdx: 0, formState: 'idle', buyState: 'idle', bookState: 'idle', heroPassed: false, teamVideoReady: false, vw: 390,
+  state = { consult: 'sell', paidAck: false, accServ: true, accMat: false, tab: 'home', cardIdx: 0, formState: 'idle', buyState: 'idle', bookState: 'idle', heroPassed: false, teamVideoReady: false, vw: 390,
     pdConsent: false, marketingConsent: false, pdConsentError: false,
     checkoutOpen: false, checkoutProduct: null, checkoutPdConsent: false, checkoutMarketingConsent: false, checkoutPdConsentError: false,
     checkoutBuyerName: '', checkoutBuyerContact: '', checkoutNameError: false, checkoutContactError: false, consultationOrder: null,
@@ -1810,6 +1884,15 @@ class Component extends DCLogic {
   onCheckoutEmailChange = (e) => this.setState({ checkoutBuyerEmail: e.target.value, checkoutEmailError: false });
 
   goConsult = (e) => { e.preventDefault(); if (this.consultRef.current) this.consultRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+  // 27.11: кнопки консультаций ведут к форме записи и выбирают в ней консультацию
+  pickBook = (e) => {
+    e.preventDefault();
+    const k = e.currentTarget.dataset.pick || '';
+    if (k) this.setState({ consult: k });
+    if (this.formSectionRef.current) this.formSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  onConsultChange = (e) => this.setState({ consult: e.target.value });
+  onPaidAckChange = (e) => this.setState({ paidAck: e.target.checked });
   onBook = (e) => {
     e.preventDefault();
     this.openCheckout('personal-consultation', 'Личная консультация с Лианой Гини', '15 000 ₽');
@@ -1869,6 +1952,7 @@ class Component extends DCLogic {
   onSubmit = async (e) => {
     e.preventDefault();
     if (!this.state.pdConsent) { this.setState({ pdConsentError: true }); return; }
+    if (!this.state.paidAck) { this.setState({ formState: 'invalid' }); return; }
     const form = e.currentTarget;
     const payload = {
       product: form.product?.value || '', design: form.design?.value || '',
@@ -1876,6 +1960,7 @@ class Component extends DCLogic {
       phone: form.phone?.value || '', contactHandle: form.contactHandle?.value || '',
       name: form.elements.namedItem('name')?.value || '', email: form.elements.namedItem('email')?.value || '',
       messenger: form.elements.namedItem('messenger')?.value || '',
+      plan: form.elements.namedItem('plan')?.value || '', consult: this.state.consult,
       pdConsent: this.state.pdConsent, marketingConsent: this.state.marketingConsent,
       _honey: form._honey?.value || '',
     };
@@ -1915,7 +2000,7 @@ class Component extends DCLogic {
     const notes = {
       idle: 'После оплаты команда свяжется с вами и согласует время консультации.',
       pending: 'Создаём заказ и переходим к оплате…',
-      invalid: 'Заполните задачу, телефон, имя и email для чека.',
+      invalid: 'Заполните задачу, телефон, имя, email для чека и отметьте, что консультация платная.',
       error: 'Не удалось перейти к оплате. Попробуйте ещё раз или напишите в Telegram.',
     };
 
@@ -1950,6 +2035,10 @@ class Component extends DCLogic {
       isTeam: tab === 'team', isCases: tab === 'cases', isContact: tab === 'contact',
       goContact: this.goContact, goServices: this.goServices, goContactForm: this.goContactForm,
       formSectionRef: this.formSectionRef,
+      pickBook: this.pickBook, onConsultChange: this.onConsultChange, onPaidAckChange: this.onPaidAckChange, paidAck: this.state.paidAck,
+      c_sell: this.state.consult === 'sell', c_brand: this.state.consult === 'brand', c_company: this.state.consult === 'company',
+      prodDisplay: this.state.consult === 'company' ? 'none' : 'block', planDisplay: this.state.consult === 'company' ? 'block' : 'none',
+      payLabel: this.state.consult === 'company' ? 'Оплатить 20 000 ₽ →' : 'Оплатить 15 000 ₽ →',
       cardsRef: this.cardsRef,
       contentRef: this.contentRef,
       onCardsScroll: this.onCardsScroll,

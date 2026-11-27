@@ -98,6 +98,25 @@ FIXES = {
     'Укажите email, на него придёт чек.': 'Please enter your email: the receipt will be sent there.',
     'Мессенджер для связи': 'Messenger to contact you',
     'Что входит в консультацию': 'What the consultation includes',
+    # 27.11: форма записи на консультацию по макету Кати
+    'ЗАПИСЬ НА КОНСУЛЬТАЦИЮ': 'BOOK A CONSULTATION',
+    'Запись на консультацию': 'Book a consultation',
+    'Заполните анкету, чтобы Лиана заранее изучила вашу задачу. После оплаты мы свяжемся с вами и согласуем удобное время.':
+        'Fill in the form so Liana can review your project in advance. After payment, we will contact you to arrange a convenient time.',
+    'Консультация оплачивается заранее. Если после консультации вы размещаете заказ, эта сумма засчитывается в его стоимость.':
+        'The consultation is paid in advance. If you place an order after the consultation, this amount is credited towards it.',
+    'Выберите консультацию': 'Choose a consultation',
+    'Уже продаю одежду': 'I already sell clothing',
+    'Запускаю первый бренд': 'I am launching my first brand',
+    '30–60 мин · 15 000 ₽': '30–60\u00a0min · 15,000\u00a0RUB (≈\u00a0$185)',
+    'Понимаю, что консультация платная': 'I understand that the consultation is paid',
+    'Заполните задачу, телефон, имя, email для чека и отметьте, что консультация платная.':
+        'Please fill in your task, phone, name and email for the receipt, and confirm that the consultation is paid.',
+    'ОПЛАТИТЬ ≈ $185 →': 'PAY 15,000 RUB (≈ $185)',
+    'Оплатить ≈ $185 →': 'Pay 15,000 RUB (≈ $185)',
+    'ОПЛАТИТЬ 20 000 ₽ →': 'PAY 20,000 RUB',
+    'Оплатить 20 000 ₽ →': 'Pay 20,000 RUB',
+    'Консультация: как открыть и вести компанию в Китае': 'Consultation: how to open and run a company in China',
 }
 
 # Turnkey («под ключ») во вкладке обрезалось до «Turnkey Cl…» и читалось как Turkey —
@@ -360,8 +379,9 @@ RU_PAGES_BLOCKS = {
     'section-05.dc.html': ['team'],
     'section-06.dc.html': ['cases'],
     'section-07.dc.html': ['catalogs'],
-    'section-09.dc.html': ['agency'],
-    'mobile.html': ['services-mobile', 'steps-mobile', 'team-mobile', 'cases-mobile', 'catalogs-mobile', 'agency-mobile'],
+    'section-09.dc.html': ['agency', 'company-consult'],
+    'section-10.dc.html': ['company-option', 'company-plan'],
+    'mobile.html': ['services-mobile', 'steps-mobile', 'team-mobile', 'cases-mobile', 'catalogs-mobile', 'agency-mobile', 'company-consult-mobile', 'company-option-mobile', 'company-plan-mobile'],
 }
 # Что встаёт на место блока в английской сборке (до перевода, поэтому по-русски).
 RU_PAGES_EN = {

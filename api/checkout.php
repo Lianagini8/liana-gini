@@ -13,15 +13,15 @@ if (!isset(PRODUCTS[$pid])) { http_response_code(400); exit('{"error":"product"}
 $clean = fn($v) => mb_substr(trim(strip_tags((string)$v)), 0, 200);
 $name = $clean($in['name'] ?? '');
 $contact = $clean($in['contact'] ?? '');
-if ($pid === 'personal-consultation' && ($name === '' || $contact === '')) { http_response_code(400); exit('{"error":"fields"}'); }
+if (in_array($pid, ['personal-consultation', 'company-consultation'], true) && ($name === '' || $contact === '')) { http_response_code(400); exit('{"error":"fields"}'); }
 $email = mb_substr(trim((string)($in['email'] ?? '')), 0, 200);
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { http_response_code(400); exit('{"error":"email"}'); }
 
 // Бриф с формы «Обсудим ваше производство на консультации» (с 25.11.2026 форма ведёт на оплату консультации).
 // Хранится в заказе и приходит Лиане в письме об оплате, бесплатной заявки больше нет.
 $brief = [];
-if ($pid === 'personal-consultation' && is_array($in['brief'] ?? null)) {
-  foreach (['product' => 2000, 'design' => 2000, 'volume' => 200, 'targetCost' => 200, 'phone' => 100, 'messenger' => 40, 'contactHandle' => 200] as $k => $max) {
+if (in_array($pid, ['personal-consultation', 'company-consultation'], true) && is_array($in['brief'] ?? null)) {
+  foreach (['consult' => 100, 'plan' => 2000, 'product' => 2000, 'design' => 2000, 'volume' => 200, 'targetCost' => 200, 'phone' => 100, 'messenger' => 40, 'contactHandle' => 200] as $k => $max) {
     $v = mb_substr(trim(strip_tags((string)($in['brief'][$k] ?? ''))), 0, $max);
     if ($v !== '') $brief[$k] = $v;
   }

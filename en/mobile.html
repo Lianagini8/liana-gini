@@ -181,6 +181,12 @@
   .brief-input { font-family: 'Manrope', sans-serif; background: transparent; border: none; border-bottom: 1px solid rgba(24,23,21,0.18); outline: none; color: #181715; font-size: 15px; font-weight: 500; width: 100%; height: 32px; padding: 0; display: block; }
   .brief-input::placeholder { color: rgba(24,23,21,0.32); }
   .brief-input:focus { border-bottom-color: #541F2B; }
+  .consult-opt { display: block; cursor: pointer; }
+  .consult-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .consult-box { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid rgba(24,23,21,0.2); }
+  .consult-dot { width: 14px; height: 14px; margin-top: 2px; border-radius: 50%; border: 1.5px solid rgba(24,23,21,0.45); flex-shrink: 0; box-sizing: border-box; }
+  .consult-opt input:checked + .consult-box { border-color: #541F2B; background: rgba(84,31,43,0.06); }
+  .consult-opt input:checked + .consult-box .consult-dot { border: 4px solid #541F2B; }
   .msg-chip { position: relative; display: inline-block; cursor: pointer; }
   .msg-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
   .msg-chip span { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; padding: 6px 11px; border: 1px solid rgba(24,23,21,0.25); color: rgba(24,23,21,0.75); transition: all 0.2s ease; }
@@ -233,9 +239,6 @@
           <span aria-hidden="true" style="opacity: 0.25;">/</span>
           <span aria-current="true">EN</span>
         </div>
-        <a href="https://t.me/lianagini" class="scp0" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; background: rgb(84, 31, 43); color: rgb(242, 239, 232);">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"></path></svg>
-        </a>
       </div>
     </div><div style="position: relative; height: calc(-56px + 100svh); min-height: 560px; overflow: hidden; background: rgb(14, 11, 10); color: rgb(242, 239, 232);">
         <video poster="assets/media/hero-poster.jpg" src="assets/media/hero-video.mp4" loop="" playsinline="true" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; background-image: url(&quot;assets/media/hero-poster.jpg&quot;); background-size: cover; background-position: center 30%;" preload="none"></video>
@@ -243,7 +246,7 @@
           <h1 style="margin: 0px 0px 10px; font-size: 23px; line-height: 1.22; font-weight: 600; letter-spacing: -0.2px; text-transform: uppercase;">Your production team in China</h1>
           <p style="margin: 0px 0px 16px; font-size: 14px; line-height: 1.5; opacity: 0.85; max-width: 340px;">We develop and manufacture clothing, footwear and accessories in China, from idea to finished order.</p>
           <p style="margin: 0px 0px 16px; font-size: 11px; font-weight: 600; line-height: 1.4; opacity: 0.75; max-width: 340px;">Turning “Made in China” into “Made right”</p>
-          <a href="https://t.me/lianagini" target="_blank" rel="noopener" style="display: block; text-align: center; background: rgb(84, 31, 43); color: rgb(242, 239, 232); font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 15px;">Discuss your project</a>
+          <a href="#contact" style="display: block; text-align: center; background: rgb(84, 31, 43); color: rgb(242, 239, 232); font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 15px;">Discuss your project</a>
         </div>
         <div data-manim-fade="" style="position: absolute; left: 50%; bottom: 8px; width: 12px; height: 12px; border-right: 1.5px solid rgba(255, 255, 255, 0.5); border-bottom: 1.5px solid rgba(255, 255, 255, 0.5); opacity: 0; animation: 0.5s ease 0.5s 1 normal both running mChevron;"></div>
       </div><div style="padding: 28px 20px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px;">
@@ -680,8 +683,8 @@
         <div style="border-top: 2px solid rgb(84, 31, 43); padding-top: 18px; margin-top: 24px;">
           <div style="text-align: center; font-size: 30px; font-weight: 700; letter-spacing: -1px; margin-bottom: 14px;">≈&nbsp;$185</div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
-            <button type="button" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 15px 18px; width: 100%;">Cost my order →</button>
-            <button type="button" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 15px 18px; width: 100%;">Cost my first order →</button>
+            <button type="button" data-pick="sell" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 15px 18px; width: 100%;">Cost my order →</button>
+            <button type="button" data-pick="brand" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 15px 18px; width: 100%;">Cost my first order →</button>
           </div>
         </div>
       </div><div style="padding: 32px 20px 8px; border-top: 1px solid rgba(24, 23, 21, 0.1); margin-top: 20px;">
@@ -731,14 +734,19 @@
           
         </div>
         <p style="margin: 14px 0px 16px; font-size: 11px; line-height: 1.5; max-width: none; opacity: 0.45;">The exact cost depends on the product, volume and logistics; we confirm it after the consultation.</p>
-        <button type="button" style="font-family: Manrope, sans-serif; border-width: medium medium 2px; border-style: none none solid; border-color: currentcolor currentcolor rgb(84, 31, 43); border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(24, 23, 21); background: none; padding: 10px 2px 3px;">Discuss on a call →</button>
+        <button type="button" data-pick="" style="font-family: Manrope, sans-serif; border-width: medium medium 2px; border-style: none none solid; border-color: currentcolor currentcolor rgb(84, 31, 43); border-image: none; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(24, 23, 21); background: none; padding: 10px 2px 3px;">Discuss on a call →</button>
       </div><div style="padding: 36px 20px 8px; border-top: 1px solid rgba(24, 23, 21, 0.1); margin-top: 16px;">
-        <h2 style="margin: 0px 0px 8px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.3px; text-transform: uppercase;">A consultation on your production</h2>
-        <p style="margin: 0px 0px 20px; font-size: 12px; line-height: 1.5; max-width: none; opacity: 0.55;">The consultation is paid in advance: 15,000&nbsp;RUB (≈&nbsp;$185), 30–60&nbsp;min.<span style="white-space: nowrap;"></span></p>
-        <a href="#consultation" style="display: inline-block; margin: -6px 0px 20px; font-size: 11px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: rgb(84, 31, 43); border-bottom: 1px solid rgba(84, 31, 43, 0.4); padding-bottom: 3px;">What the consultation includes&nbsp;→</a>
+        <h2 style="margin: 0px 0px 8px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.3px; text-transform: uppercase;">Book a consultation</h2>
+        <p style="margin: 0px 0px 8px; font-size: 12px; line-height: 1.5; max-width: none; opacity: 0.7;">Fill in the form so Liana can review your project in advance. After payment, we will contact you to arrange a convenient time.</p>
+        <p style="margin: 0px 0px 20px; font-size: 12px; line-height: 1.5; max-width: none; opacity: 0.55;">The consultation is paid in advance. If you place an order after the consultation, this amount is credited towards it.</p>
 
         <form style="display: flex; flex-direction: column; max-width: none;">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0;">
+          <div style="font-size: 10px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; opacity: 0.6; margin-bottom: 10px;">Choose a consultation</div>
+          <div role="radiogroup" aria-label="Choose a consultation" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px;">
+            <label class="consult-opt"><input type="radio" name="consult" value="sell" checked=""><span class="consult-box"><span class="consult-dot"></span><span style="flex: 1 1 0%; min-width: 0px;"><span style="display: block; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; opacity: 0.65; margin-bottom: 3px;">I already sell clothing</span><span style="display: block; font-size: 13px; font-weight: 600; line-height: 1.35;">Range planning and order costing</span><span style="display: block; font-size: 11px; opacity: 0.65; margin-top: 3px;">30–60&nbsp;min · 15,000&nbsp;RUB (≈&nbsp;$185)</span></span></span></label>
+            <label class="consult-opt"><input type="radio" name="consult" value="brand"><span class="consult-box"><span class="consult-dot"></span><span style="flex: 1 1 0%; min-width: 0px;"><span style="display: block; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; opacity: 0.65; margin-bottom: 3px;">I am launching my first brand</span><span style="display: block; font-size: 13px; font-weight: 600; line-height: 1.35;">Collection planning and first-order costing</span><span style="display: block; font-size: 11px; opacity: 0.65; margin-top: 3px;">30–60&nbsp;min · 15,000&nbsp;RUB (≈&nbsp;$185)</span></span></span></label>
+          </div>
           <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px;">
             <label for="mq-product" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Tell us about your project</label>
             <input class="brief-input" id="mq-product" name="product" type="text" required="" placeholder="category, product">
@@ -747,11 +755,11 @@
             <label for="mq-design" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Do you have a design or prototype?</label>
             <input class="brief-input" id="mq-design" name="design" type="text" placeholder="Add a link / No">
           </div>
-          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px;">
+          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px; display: block;">
             <label for="mq-volume" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">What quantity are you planning?</label>
             <input class="brief-input" id="mq-volume" name="volume" type="text" placeholder="pcs">
           </div>
-          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px;">
+          <div style="border-top: 1px solid rgba(24, 23, 21, 0.15); padding: 14px 0px; display: block;">
             <label for="mq-cost" style="display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Have a target unit cost?</label>
             <input class="brief-input" id="mq-cost" name="targetCost" type="text" placeholder="$ / ¥ per unit">
           </div>
@@ -774,6 +782,10 @@
           </div>
           <div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid rgba(24, 23, 21, 0.15); padding-top: 16px; margin-bottom: 18px;">
             <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 1.5; cursor: pointer;">
+              <input type="checkbox" name="paidAck" required="" style="margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: rgb(84, 31, 43); cursor: pointer;">
+              <span style="opacity: 0.8;">I understand that the consultation is paid</span>
+            </label>
+            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 1.5; cursor: pointer;">
               <input type="checkbox" name="pdConsent" required="" aria-describedby="mq-pd-consent-error" style="margin-top: 2px; width: 17px; height: 17px; flex-shrink: 0; accent-color: rgb(84, 31, 43); cursor: pointer;">
               <span style="opacity: 0.8;">I consent to <a href="pd-consent.html" target="_blank" rel="noopener" style="text-decoration: underline;">the processing of personal data</a> in accordance with the <a href="privacy-policy.html" target="_blank" rel="noopener" style="text-decoration: underline;">Privacy Policy</a>.</span>
             </label>
@@ -784,11 +796,7 @@
               <span style="opacity: 0.6;">I would like to receive news and special offers: <a href="ad-consent.html" target="_blank" rel="noopener" style="text-decoration: underline;">Marketing Consent</a>.</span>
             </label>
           </div>
-          <button type="submit" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 16px; margin-bottom: 14px;">PROCEED TO PAYMENT →</button>
-          <a href="https://t.me/lianagini" style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.6; padding-bottom: 8px;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"></path></svg>
-            Message us on Telegram
-          </a>
+          <button type="submit" style="font-family: Manrope, sans-serif; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; cursor: pointer; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: rgb(242, 239, 232); background: rgb(84, 31, 43); padding: 16px; margin-bottom: 14px;"><span class="sc-interp">Pay 15,000 RUB (≈ $185) →</span></button>
           <div style="text-align: center; font-size: 11px; line-height: 1.5; opacity: 0.45;"><span class="sc-interp">After payment, the team will contact you to arrange the consultation time.</span></div>
         </form>
       </div><div style="margin-top: 20px; padding: 28px 20px; background: rgb(26, 24, 23); color: rgb(242, 239, 232);">
@@ -834,6 +842,12 @@
   .brief-input { font-family: 'Manrope', sans-serif; background: transparent; border: none; border-bottom: 1px solid rgba(24,23,21,0.18); outline: none; color: #181715; font-size: 15px; font-weight: 500; width: 100%; height: 32px; padding: 0; display: block; }
   .brief-input::placeholder { color: rgba(24,23,21,0.32); }
   .brief-input:focus { border-bottom-color: #541F2B; }
+  .consult-opt { display: block; cursor: pointer; }
+  .consult-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .consult-box { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid rgba(24,23,21,0.2); }
+  .consult-dot { width: 14px; height: 14px; margin-top: 2px; border-radius: 50%; border: 1.5px solid rgba(24,23,21,0.45); flex-shrink: 0; box-sizing: border-box; }
+  .consult-opt input:checked + .consult-box { border-color: #541F2B; background: rgba(84,31,43,0.06); }
+  .consult-opt input:checked + .consult-box .consult-dot { border: 4px solid #541F2B; }
   .msg-chip { position: relative; display: inline-block; cursor: pointer; }
   .msg-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
   .msg-chip span { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; padding: 6px 11px; border: 1px solid rgba(24,23,21,0.25); color: rgba(24,23,21,0.75); transition: all 0.2s ease; }
@@ -864,9 +878,6 @@
           <span style="opacity:0.25;" aria-hidden="true">/</span>
           <span aria-current="true">EN</span>
         </div><!-- /lang-switch:top-mobile -->
-        <a href="https://t.me/lianagini" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:{{ accent }};color:{{ ivory }};" style-hover="background:{{ ink }};">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"/></svg>
-        </a>
       </div>
     </div>
 
@@ -879,7 +890,7 @@
           <h1 style="margin:0 0 10px 0;font-size:{{ heroH1Size }};line-height:1.22;font-weight:600;letter-spacing:-0.2px;text-transform:uppercase;">Your production team in China</h1>
           <p style="margin:0 0 16px 0;font-size:{{ heroPSize }};line-height:1.5;opacity:0.85;max-width:{{ heroPMax }};">We develop and manufacture clothing, footwear and accessories in China, from idea to finished order.</p>
           <p style="margin:0 0 16px 0;font-size:11px;font-weight:600;line-height:1.4;opacity:0.75;max-width:{{ heroPMax }};">Turning “Made in China” into “Made right”</p>
-          <a href="https://t.me/lianagini" target="_blank" rel="noopener" style="display:block;text-align:center;background:{{ accent }};color:{{ ivory }};font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:15px;">Discuss your project</a>
+          <a href="#contact" onClick="{{ goContactForm }}" style="display:block;text-align:center;background:{{ accent }};color:{{ ivory }};font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:15px;">Discuss your project</a>
         </div>
         <div data-manim-fade style="position:absolute;left:50%;bottom:8px;width:12px;height:12px;border-right:1.5px solid rgba(255,255,255,0.5);border-bottom:1.5px solid rgba(255,255,255,0.5);opacity:0;animation:mChevron 0.5s ease 0.5s both;"></div>
       </div>
@@ -1161,11 +1172,12 @@
         <div style="border-top:2px solid {{ accent }};padding-top:18px;margin-top:24px;">
           <div style="text-align:center;font-size:30px;font-weight:700;letter-spacing:-1px;margin-bottom:14px;">≈ $185</div>
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <button type="button" onClick="{{ onBook }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Cost my order →</button>
-            <button type="button" onClick="{{ onBook }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Cost my first order →</button>
+            <button type="button" onClick="{{ pickBook }}" data-pick="sell" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Cost my order →</button>
+            <button type="button" onClick="{{ pickBook }}" data-pick="brand" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:15px 18px;width:100%;">Cost my first order →</button>
           </div>
         </div>
       </div>
+
 
       <div style="padding:32px {{ secPadX }} 8px {{ secPadX }};border-top:1px solid rgba(24,23,21,0.1);margin-top:20px;">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:6px;">
@@ -1184,16 +1196,21 @@
           </sc-for>
         </div>
         <p style="margin:14px 0 16px 0;font-size:11px;line-height:1.5;max-width:{{ measure }};opacity:0.45;">The exact cost depends on the product, volume and logistics; we confirm it after the consultation.</p>
-        <button type="button" onClick="{{ onBook }}" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};background:none;border-bottom:2px solid {{ accent }};padding:10px 2px 3px 2px;">Discuss on a call →</button>
+        <button type="button" onClick="{{ pickBook }}" data-pick="" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};background:none;border-bottom:2px solid {{ accent }};padding:10px 2px 3px 2px;">Discuss on a call →</button>
       </div>
 
       <div ref="{{ formSectionRef }}" style="padding:36px {{ secPadX }} 8px {{ secPadX }};border-top:1px solid rgba(24,23,21,0.1);margin-top:16px;">
-        <h2 style="margin:0 0 8px 0;font-size:22px;line-height:1.25;font-weight:700;letter-spacing:-0.3px;text-transform:uppercase;">A consultation on your production</h2>
-        <p style="margin:0 0 20px 0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.55;">The consultation is paid in advance: 15,000 RUB (≈ $185), 30–60 min.<span style="white-space:nowrap;"></span></p>
-        <a href="#consultation" onClick="{{ goConsult }}" style="display:inline-block;margin:-6px 0 20px 0;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:{{ accent }};border-bottom:1px solid rgba(84,31,43,0.4);padding-bottom:3px;">What the consultation includes →</a>
+        <h2 style="margin:0 0 8px 0;font-size:22px;line-height:1.25;font-weight:700;letter-spacing:-0.3px;text-transform:uppercase;">Book a consultation</h2>
+        <p style="margin:0 0 8px 0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.7;">Fill in the form so Liana can review your project in advance. After payment, we will contact you to arrange a convenient time.</p>
+        <p style="margin:0 0 20px 0;font-size:12px;line-height:1.5;max-width:{{ measure }};opacity:0.55;">The consultation is paid in advance. If you place an order after the consultation, this amount is credited towards it.</p>
 
         <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;max-width:{{ formMax }};">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"/>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;opacity:0.6;margin-bottom:10px;">Choose a consultation</div>
+          <div role="radiogroup" aria-label="Choose a consultation" style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
+            <label class="consult-opt"><input type="radio" name="consult" value="sell" checked="{{ c_sell }}" onChange="{{ onConsultChange }}"/><span class="consult-box"><span class="consult-dot"></span><span style="flex:1;min-width:0;"><span style="display:block;font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;opacity:0.65;margin-bottom:3px;">I already sell clothing</span><span style="display:block;font-size:13px;font-weight:600;line-height:1.35;">Range planning and order costing</span><span style="display:block;font-size:11px;opacity:0.65;margin-top:3px;">30–60 min · 15,000 RUB (≈ $185)</span></span></span></label>
+            <label class="consult-opt"><input type="radio" name="consult" value="brand" checked="{{ c_brand }}" onChange="{{ onConsultChange }}"/><span class="consult-box"><span class="consult-dot"></span><span style="flex:1;min-width:0;"><span style="display:block;font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;opacity:0.65;margin-bottom:3px;">I am launching my first brand</span><span style="display:block;font-size:13px;font-weight:600;line-height:1.35;">Collection planning and first-order costing</span><span style="display:block;font-size:11px;opacity:0.65;margin-top:3px;">30–60 min · 15,000 RUB (≈ $185)</span></span></span></label>
+          </div>
           <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;">
             <label for="mq-product" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Tell us about your project</label>
             <input class="brief-input" id="mq-product" name="product" type="text" required="true" placeholder="category, product"/>
@@ -1202,11 +1219,11 @@
             <label for="mq-design" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Do you have a design or prototype?</label>
             <input class="brief-input" id="mq-design" name="design" type="text" placeholder="Add a link / No"/>
           </div>
-          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;">
+          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;display:{{ prodDisplay }};">
             <label for="mq-volume" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">What quantity are you planning?</label>
             <input class="brief-input" id="mq-volume" name="volume" type="text" placeholder="pcs"/>
           </div>
-          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;">
+          <div style="border-top:1px solid rgba(24,23,21,0.15);padding:14px 0;display:{{ prodDisplay }};">
             <label for="mq-cost" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Have a target unit cost?</label>
             <input class="brief-input" id="mq-cost" name="targetCost" type="text" placeholder="$ / ¥ per unit"/>
           </div>
@@ -1229,6 +1246,10 @@
           </div>
           <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(24,23,21,0.15);padding-top:16px;margin-bottom:18px;">
             <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;">
+              <input type="checkbox" name="paidAck" required="true" checked="{{ paidAck }}" onChange="{{ onPaidAckChange }}" style="margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
+              <span style="opacity:0.8;">I understand that the consultation is paid</span>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;">
               <input type="checkbox" name="pdConsent" required="true" checked="{{ pdConsent }}" onChange="{{ onPdConsentChange }}" aria-describedby="mq-pd-consent-error" style="margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
               <span style="opacity:0.8;">I consent to <a href="pd-consent.html" target="_blank" rel="noopener" style="text-decoration:underline;">the processing of personal data</a> in accordance with the <a href="privacy-policy.html" target="_blank" rel="noopener" style="text-decoration:underline;">Privacy Policy</a>.</span>
             </label>
@@ -1239,11 +1260,7 @@
               <span style="opacity:0.6;">I would like to receive news and special offers: <a href="ad-consent.html" target="_blank" rel="noopener" style="text-decoration:underline;">Marketing Consent</a>.</span>
             </label>
           </div>
-          <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px;margin-bottom:14px;">PROCEED TO PAYMENT →</button>
-          <a href="https://t.me/lianagini" style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;opacity:0.6;padding-bottom:8px;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"/></svg>
-            Message us on Telegram
-          </a>
+          <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px;margin-bottom:14px;">{{ payLabel }}</button>
           <div style="text-align:center;font-size:11px;line-height:1.5;opacity:0.45;">{{ formNote }}</div>
         </form>
       </div>
@@ -1417,7 +1434,7 @@ class Component extends DCLogic {
   cardsRef = React.createRef();
   contentRef = React.createRef();
   formSectionRef = React.createRef();
-  state = { accServ: true, accMat: false, tab: 'home', cardIdx: 0, formState: 'idle', buyState: 'idle', bookState: 'idle', heroPassed: false, teamVideoReady: false, vw: 390,
+  state = { consult: 'sell', paidAck: false, accServ: true, accMat: false, tab: 'home', cardIdx: 0, formState: 'idle', buyState: 'idle', bookState: 'idle', heroPassed: false, teamVideoReady: false, vw: 390,
     pdConsent: false, marketingConsent: false, pdConsentError: false,
     checkoutOpen: false, checkoutProduct: null, checkoutPdConsent: false, checkoutMarketingConsent: false, checkoutPdConsentError: false,
     checkoutBuyerName: '', checkoutBuyerContact: '', checkoutNameError: false, checkoutContactError: false, consultationOrder: null,
@@ -1625,6 +1642,15 @@ class Component extends DCLogic {
   onCheckoutEmailChange = (e) => this.setState({ checkoutBuyerEmail: e.target.value, checkoutEmailError: false });
 
   goConsult = (e) => { e.preventDefault(); if (this.consultRef.current) this.consultRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+  // 27.11: кнопки консультаций ведут к форме записи и выбирают в ней консультацию
+  pickBook = (e) => {
+    e.preventDefault();
+    const k = e.currentTarget.dataset.pick || '';
+    if (k) this.setState({ consult: k });
+    if (this.formSectionRef.current) this.formSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  onConsultChange = (e) => this.setState({ consult: e.target.value });
+  onPaidAckChange = (e) => this.setState({ paidAck: e.target.checked });
   onBook = (e) => {
     e.preventDefault();
     this.openCheckout('personal-consultation', 'Personal consultation with Liana Gini', '≈ $185');
@@ -1684,6 +1710,7 @@ class Component extends DCLogic {
   onSubmit = async (e) => {
     e.preventDefault();
     if (!this.state.pdConsent) { this.setState({ pdConsentError: true }); return; }
+    if (!this.state.paidAck) { this.setState({ formState: 'invalid' }); return; }
     const form = e.currentTarget;
     const payload = {
       product: form.product?.value || '', design: form.design?.value || '',
@@ -1691,6 +1718,7 @@ class Component extends DCLogic {
       phone: form.phone?.value || '', contactHandle: form.contactHandle?.value || '',
       name: form.elements.namedItem('name')?.value || '', email: form.elements.namedItem('email')?.value || '',
       messenger: form.elements.namedItem('messenger')?.value || '',
+      plan: form.elements.namedItem('plan')?.value || '', consult: this.state.consult,
       pdConsent: this.state.pdConsent, marketingConsent: this.state.marketingConsent,
       _honey: form._honey?.value || '',
     };
@@ -1730,7 +1758,7 @@ class Component extends DCLogic {
     const notes = {
       idle: 'After payment, the team will contact you to arrange the consultation time.',
       pending: 'Creating your order and going to payment…',
-      invalid: 'Please fill in your task, phone, name and email for the receipt.',
+      invalid: 'Please fill in your task, phone, name and email for the receipt, and confirm that the consultation is paid.',
       error: 'Could not go to payment. Please try again or message us on Telegram.',
     };
 
@@ -1765,6 +1793,10 @@ class Component extends DCLogic {
       isTeam: tab === 'team', isCases: tab === 'cases', isContact: tab === 'contact',
       goContact: this.goContact, goServices: this.goServices, goContactForm: this.goContactForm,
       formSectionRef: this.formSectionRef,
+      pickBook: this.pickBook, onConsultChange: this.onConsultChange, onPaidAckChange: this.onPaidAckChange, paidAck: this.state.paidAck,
+      c_sell: this.state.consult === 'sell', c_brand: this.state.consult === 'brand', c_company: this.state.consult === 'company',
+      prodDisplay: this.state.consult === 'company' ? 'none' : 'block', planDisplay: this.state.consult === 'company' ? 'block' : 'none',
+      payLabel: this.state.consult === 'company' ? 'Pay 20,000 RUB →' : 'Pay 15,000 RUB (≈ $185) →',
       cardsRef: this.cardsRef,
       contentRef: this.contentRef,
       onCardsScroll: this.onCardsScroll,

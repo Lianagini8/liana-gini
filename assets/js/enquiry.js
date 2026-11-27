@@ -6,7 +6,14 @@ export const WIRED = true;
 
 export const STATES = { IDLE: 'idle', PENDING: 'pending', SUCCESS: 'success', ERROR: 'error' };
 
-export const FIELDS = ['product', 'design', 'volume', 'targetCost', 'phone', 'messenger', 'contactHandle'];
+export const FIELDS = ['plan', 'product', 'design', 'volume', 'targetCost', 'phone', 'messenger', 'contactHandle'];
+
+// 27.11: три консультации в форме записи (макет Кати)
+export const CONSULTS = {
+  sell: { productId: 'personal-consultation', label: 'Уже продаю одежду: формирование ассортимента и расчёт партии' },
+  brand: { productId: 'personal-consultation', label: 'Запускаю первый бренд: формирование коллекции и расчёт первой партии' },
+  company: { productId: 'company-consultation', label: 'Открываю компанию в Китае: как открыть и вести компанию' },
+};
 
 export function validate(payload) {
   const errors = {};
@@ -54,12 +61,13 @@ export async function payConsultation(p) {
   const { valid, errors } = validatePaid(p);
   if (!valid) return { state: STATES.ERROR, errors, reason: 'validation-failed' };
   if (p._honey && p._honey.trim()) return { state: STATES.ERROR, reason: 'bot' };
-  const brief = {};
+  const c = CONSULTS[p.consult] || CONSULTS.sell;
+  const brief = { consult: c.label };
   for (const k of FIELDS) brief[k] = (p[k] || '').trim();
   const contact = [brief.phone, [brief.messenger, brief.contactHandle].filter(Boolean).join(': ')].filter(Boolean).join(', ');
   try {
     const { startCheckout } = await import('/assets/js/payments.js');
-    const res = await startCheckout('personal-consultation', {
+    const res = await startCheckout(c.productId, {
       name: p.name.trim(), contact, email: p.email.trim(), marketingConsent: !!p.marketingConsent, brief,
     });
     if (res.checkoutUrl) return { state: STATES.PENDING, checkoutUrl: res.checkoutUrl };

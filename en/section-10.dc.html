@@ -15,6 +15,13 @@
   .brief-input::placeholder { color: rgba(242,239,232,0.28); }
   .brief-input:focus { border-bottom-color: #8C4457; }
   .brief-input { transition: border-bottom-color 0.25s ease; }
+  #contact .consult-opt { display: block; cursor: pointer; }
+  #contact .consult-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  #contact .consult-box { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border: 1px solid rgba(242,239,232,0.25); transition: border-color 0.2s ease; }
+  #contact .consult-dot { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid rgba(242,239,232,0.6); flex-shrink: 0; box-sizing: border-box; }
+  #contact .consult-opt input:checked + .consult-box { border-color: #8C4457; background: rgba(140,68,87,0.12); }
+  #contact .consult-opt input:checked + .consult-box .consult-dot { border: 4px solid #C99AA5; }
+  #contact .consult-opt input:focus-visible + .consult-box { outline: 2px solid #8C4457; outline-offset: 2px; }
   #contact .msg-chip { position: relative; display: inline-block; cursor: pointer; }
   #contact .msg-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
   #contact .msg-chip span { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; padding: 6px 11px; border: 1px solid rgba(242,239,232,0.3); color: rgba(242,239,232,0.75); transition: all 0.2s ease; }
@@ -30,15 +37,20 @@
   <div style="width:1440px;max-width:100%;margin:0 auto;padding:76px 60px 40px 60px;box-sizing:border-box;">
 
     <!-- PRODUCTION ENQUIRY -->
-    <div data-anim style="display:flex;gap:80px;align-items:flex-start;margin-bottom:60px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);">
+    <div id="booking" data-anim style="display:flex;gap:80px;align-items:flex-start;margin-bottom:60px;opacity:{{ rO }};transform:translateY({{ rY }}px);transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);">
       <div style="width:400px;flex-shrink:0;">
-        <h2 style="margin:0 0 18px 0;font-size:40px;line-height:1.1;font-weight:700;letter-spacing:-1px;text-transform:uppercase;">A CONSULTATION ON YOUR PRODUCTION</h2>
-        <p style="margin:0;font-size:13px;line-height:1.6;max-width:320px;opacity:0.55;">The consultation is paid in advance: 15,000 RUB (≈ $185), 30–60 min.<span style="white-space:nowrap;"></span></p>
-        <a href="#consultation" style="display:inline-block;margin-top:16px;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:{{ ivory }};border-bottom:1px solid {{ accentLight }};padding-bottom:3px;" style-hover="color:{{ accentLight }};">What the consultation includes →</a>
+        <h2 style="margin:0 0 18px 0;font-size:40px;line-height:1.1;font-weight:700;letter-spacing:-1px;text-transform:uppercase;">BOOK A CONSULTATION</h2>
+        <p style="margin:0 0 12px 0;font-size:13px;line-height:1.6;max-width:320px;opacity:0.7;">Fill in the form so Liana can review your project in advance. After payment, we will contact you to arrange a convenient time.</p>
+        <p style="margin:0;font-size:13px;line-height:1.6;max-width:320px;opacity:0.55;">The consultation is paid in advance. If you place an order after the consultation, this amount is credited towards it.</p>
       </div>
 
       <form onSubmit="{{ onSubmit }}" data-form="production-enquiry" data-submit-state="{{ formState }}" data-success-target="#enquiry-sent" style="flex:1;min-width:0;">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"/>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:0.6;margin-bottom:12px;">Choose a consultation</div>
+        <div role="radiogroup" aria-label="Choose a consultation" style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px;">
+            <label class="consult-opt"><input type="radio" name="consult" value="sell" checked="{{ c_sell }}" onChange="{{ onConsultChange }}"/><span class="consult-box"><span class="consult-dot"></span><span style="flex:1;min-width:0;"><span style="display:block;font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;opacity:0.7;margin-bottom:3px;">I already sell clothing</span><span style="display:block;font-size:14px;font-weight:600;">Range planning and order costing</span></span><span style="font-size:12px;opacity:0.7;white-space:nowrap;">30–60 min · 15,000 RUB (≈ $185)</span></span></label>
+            <label class="consult-opt"><input type="radio" name="consult" value="brand" checked="{{ c_brand }}" onChange="{{ onConsultChange }}"/><span class="consult-box"><span class="consult-dot"></span><span style="flex:1;min-width:0;"><span style="display:block;font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;opacity:0.7;margin-bottom:3px;">I am launching my first brand</span><span style="display:block;font-size:14px;font-weight:600;">Collection planning and first-order costing</span></span><span style="font-size:12px;opacity:0.7;white-space:nowrap;">30–60 min · 15,000 RUB (≈ $185)</span></span></label>
+        </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:48px;row-gap:0;">
 
           <div style="grid-column:1 / -1;border-top:1px solid rgba(242,239,232,0.18);padding:16px 0 18px 0;display:flex;gap:20px;align-items:baseline;">
@@ -57,7 +69,7 @@
             </div>
           </div>
 
-          <div style="border-top:1px solid rgba(242,239,232,0.18);padding:16px 0 18px 0;display:flex;gap:20px;align-items:baseline;">
+          <div style="border-top:1px solid rgba(242,239,232,0.18);padding:16px 0 18px 0;display:{{ prodDisplay }};gap:20px;align-items:baseline;">
             <span style="font-size:9px;letter-spacing:1.5px;opacity:0.4;width:18px;flex-shrink:0;">03</span>
             <div style="flex:1;min-width:0;">
               <label for="q-volume" style="display:block;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">WHAT QUANTITY ARE YOU PLANNING?</label>
@@ -65,13 +77,14 @@
             </div>
           </div>
 
-          <div style="border-top:1px solid rgba(242,239,232,0.18);padding:16px 0 18px 0;display:flex;gap:20px;align-items:baseline;">
+          <div style="border-top:1px solid rgba(242,239,232,0.18);padding:16px 0 18px 0;display:{{ prodDisplay }};gap:20px;align-items:baseline;">
             <span style="font-size:9px;letter-spacing:1.5px;opacity:0.4;width:18px;flex-shrink:0;">04</span>
             <div style="flex:1;min-width:0;">
               <label for="q-cost" style="display:block;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">DO YOU HAVE A TARGET UNIT COST?</label>
               <input class="brief-input" id="q-cost" name="targetCost" type="text" placeholder="$ / ¥ per unit"/>
             </div>
           </div>
+
 
           <div style="border-top:1px solid rgba(242,239,232,0.18);padding:16px 0 18px 0;display:flex;gap:20px;align-items:baseline;">
             <span style="font-size:9px;letter-spacing:1.5px;opacity:0.4;width:18px;flex-shrink:0;">05</span>
@@ -109,6 +122,10 @@
 
         <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(242,239,232,0.18);padding-top:18px;margin-top:16px;">
           <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;">
+            <input type="checkbox" name="paidAck" required="true" checked="{{ paidAck }}" onChange="{{ onPaidAckChange }}" style="margin-top:2px;width:16px;height:16px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
+            <span style="opacity:0.75;">I understand that the consultation is paid</span>
+          </label>
+          <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;cursor:pointer;">
             <input type="checkbox" name="pdConsent" required="true" checked="{{ pdConsent }}" onChange="{{ onPdConsentChange }}" aria-describedby="pd-consent-error" style="margin-top:2px;width:16px;height:16px;flex-shrink:0;accent-color:{{ accent }};cursor:pointer;"/>
             <span style="opacity:0.75;">I consent to <a href="pd-consent.html" target="_blank" rel="noopener" style="color:{{ ivory }};text-decoration:underline;">the processing of personal data</a> in accordance with the <a href="privacy-policy.html" target="_blank" rel="noopener" style="color:{{ ivory }};text-decoration:underline;">Privacy Policy</a>.</span>
           </label>
@@ -122,11 +139,7 @@
 
         <div style="border-top:2px solid {{ accentLight }};padding-top:22px;margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;">
           <div style="display:flex;align-items:center;gap:28px;">
-            <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px 26px;white-space:nowrap;transition:transform 0.2s ease, background 0.2s ease, color 0.2s ease;" style-hover="background:{{ ivory }};color:{{ charcoal }};transform:translateX(4px);">PROCEED TO PAYMENT →</button>
-            <a href="https://t.me/lianagini" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};opacity:0.5;white-space:nowrap;" style-hover="opacity:1;color:{{ accentLight }};">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M21.5 4.5L2.5 12.1c-1.1.44-1.1 1.06-.2 1.34l4.9 1.53 1.9 5.83c.23.63.4.88.82.88.4 0 .57-.18.79-.4l2.24-2.16 4.66 3.44c.86.47 1.48.23 1.7-.8l3.06-14.4c.33-1.28-.48-1.85-1.37-1.44z" fill="currentColor"/></svg>
- MESSAGE US ON TELEGRAM →
- </a>
+            <button type="submit" style="font-family:'Manrope',sans-serif;border:none;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ivory }};background:{{ accent }};padding:16px 26px;white-space:nowrap;transition:transform 0.2s ease, background 0.2s ease, color 0.2s ease;" style-hover="background:{{ ivory }};color:{{ charcoal }};transform:translateX(4px);">{{ payLabel }}</button>
           </div>
           <span style="font-size:11px;line-height:1.5;opacity:0.4;max-width:260px;">{{ formNote }}</span>
         </div>
@@ -192,9 +205,16 @@
 }">
 class Component extends DCLogic {
   rootRef = React.createRef();
-  state = { formState: 'idle', revealed: false, pdConsent: false, marketingConsent: false, pdConsentError: false };
+  state = { formState: 'idle', revealed: false, pdConsent: false, marketingConsent: false, pdConsentError: false, consult: 'sell', paidAck: false };
+
+  // 27.11: выбор консультации (карточки выше ставят его через событие lg-pick-consult)
+  onPick = (e) => { if (e.detail) this.setState({ consult: e.detail }); };
+  onConsultChange = (e) => this.setState({ consult: e.target.value });
+  onPaidAckChange = (e) => this.setState({ paidAck: e.target.checked });
 
   componentDidMount() {
+    window.addEventListener('lg-pick-consult', this.onPick);
+    if (window.__lgPick) this.setState({ consult: window.__lgPick });
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
       this.setState({ revealed: true });
@@ -209,6 +229,7 @@ class Component extends DCLogic {
     if (this.rootRef.current) this.io.observe(this.rootRef.current);
   }
   componentWillUnmount() {
+    window.removeEventListener('lg-pick-consult', this.onPick);
     if (this.io) this.io.disconnect();
   }
 
@@ -224,6 +245,7 @@ class Component extends DCLogic {
   onSubmit = async (e) => {
  e.preventDefault();
  if (!this.state.pdConsent) { this.setState({ pdConsentError: true }); return; }
+ if (!this.state.paidAck) { this.setState({ formState: 'invalid' }); return; }
  const form = e.currentTarget;
  const payload = {
  product: form.product?.value || '',
@@ -234,6 +256,8 @@ class Component extends DCLogic {
  contactHandle: form.contactHandle?.value || '',
  messenger: form.elements.namedItem('messenger')?.value || '',
  name: form.elements.namedItem('name')?.value || '',
+ plan: form.elements.namedItem('plan')?.value || '',
+ consult: this.state.consult,
  email: form.elements.namedItem('email')?.value || '',
  pdConsent: this.state.pdConsent,
  marketingConsent: this.state.marketingConsent,
@@ -257,7 +281,7 @@ class Component extends DCLogic {
  const notes = {
  idle: 'After payment, the team will contact you to arrange the consultation time.',
  pending: 'Creating your order and going to payment…',
- invalid: 'Please fill in your task, phone, name and email for the receipt.',
+ invalid: 'Please fill in your task, phone, name and email for the receipt, and confirm that the consultation is paid.',
  error: 'Could not go to payment. Please try again or message us on Telegram.',
  };
  const on = this.state.revealed;
@@ -268,6 +292,15 @@ class Component extends DCLogic {
  accentLight: this.props.accentLight ?? '#8C4457',
  onSubmit: this.onSubmit,
  formState: s,
+ onConsultChange: this.onConsultChange,
+ onPaidAckChange: this.onPaidAckChange,
+ paidAck: this.state.paidAck,
+ c_sell: this.state.consult === 'sell',
+ c_brand: this.state.consult === 'brand',
+ c_company: this.state.consult === 'company',
+ prodDisplay: this.state.consult === 'company' ? 'none' : 'flex',
+ planDisplay: this.state.consult === 'company' ? 'flex' : 'none',
+ payLabel: this.state.consult === 'company' ? 'PAY 20,000 RUB →' : 'PAY 15,000 RUB (≈ $185) →',
  formNote: notes[s] || notes.idle,
  pdConsent: this.state.pdConsent,
  marketingConsent: this.state.marketingConsent,

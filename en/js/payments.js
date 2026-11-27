@@ -15,6 +15,8 @@ export const PRODUCTS = {
   // so the only fields collected before payment are name + a single contact field.
   'personal-consultation': { id: 'personal-consultation', name: 'Personal consultation with Liana Gini', price: 15000, currency: 'RUB',
     kind: 'service', collect: ['name', 'contact'] },
+  'company-consultation': { id: 'company-consultation', name: 'Consultation: how to open and run a company in China', price: 20000, currency: 'RUB',
+    kind: 'service', collect: ['name', 'contact'] },
 };
 
 // Backend endpoints (PHP on the hosting, see /api). Secrets live only on the server.
