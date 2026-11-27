@@ -8,6 +8,8 @@
 export const PRODUCTS = {
   'catalog_collections': { id: 'catalog_collections', name: 'Каталоги готовых трендовых и базовых коллекций', price: 390, currency: 'RUB' },
   'catalog_diamonds':    { id: 'catalog_diamonds',    name: 'Каталоги: лабораторные бриллианты',              price: 390, currency: 'RUB' },
+  'catalog_clothes':     { id: 'catalog_clothes',     name: 'Каталоги: одежда',                               price: 390, currency: 'RUB' },
+  'catalog_furniture':   { id: 'catalog_furniture',   name: 'Каталоги: мебель и декор',                        price: 390, currency: 'RUB' },
   'factory_check_9':     { id: 'factory_check_9',     name: '9 шагов проверки фабрики',                        price: 490, currency: 'RUB' },
   'brand_china_7':       { id: 'brand_china_7',       name: 'Как запустить свой бренд через Китай',            price: 490, currency: 'RUB' },
   'guangzhou_markets':   { id: 'guangzhou_markets',   name: 'Список рынков Гуанчжоу с адресами',                price: 490, currency: 'RUB' },
