@@ -36,7 +36,7 @@ JS_STR = re.compile(r"""'((?:[^'\\\n]|\\.)*)'|"((?:[^"\\\n]|\\.)*)"|`((?:[^`\\]|
 
 # Цены на английской версии (Кристина 09.11.2026)
 # Оплата через Робокассу в рублях (решение Лианы 11.11), поэтому на карточках «≈», а в окне оплаты сумма в рублях.
-PRICES = [('15&nbsp;000&nbsp;₽', '≈ $185'), ('15 000 ₽', '≈ $185'), ('15 000 ₽', '≈ $185'), ('390 ₽', '≈ $5'), ('390 ₽', '≈ $5'), ('490 ₽', '≈ $6'), ('490 ₽', '≈ $6')]
+PRICES = [('20\u00a0000\u00a0₽', '20,000 RUB (≈ $245)'), ('20&nbsp;000&nbsp;₽', '20,000 RUB (≈ $245)'), ('15&nbsp;000&nbsp;₽', '≈ $185'), ('15 000 ₽', '≈ $185'), ('15 000 ₽', '≈ $185'), ('390 ₽', '≈ $5'), ('390 ₽', '≈ $5'), ('490 ₽', '≈ $6'), ('490 ₽', '≈ $6')]
 PRICE_LABEL = ("product.price.toLocaleString('ru-RU') + ' ₽'", "({390:'390 ₽ (≈ $5)',490:'490 ₽ (≈ $6)',15000:'15 000 ₽ (≈ $185)'})[product.price]")
 MOBILE_LABEL = ('this.state.checkoutProduct.priceLabel :', "(({'≈ $5':'390 ₽ (≈ $5)','≈ $6':'490 ₽ (≈ $6)','≈ $185':'15 000 ₽ (≈ $185)'})[this.state.checkoutProduct.priceLabel] || this.state.checkoutProduct.priceLabel) :")
 
@@ -118,7 +118,39 @@ FIXES = {
     'Оплатить 20 000 ₽ →': 'Pay 20,000 RUB',
     'Консультация: как открыть и вести компанию в Китае': 'Consultation: how to open and run a company in China',
     'Каталоги: лабораторные бриллианты': 'Catalogues: lab-grown diamonds',
-    'за направление': 'for all catalogues',
+    'за направление': 'per category',
+    # 27.11: консультация по компании в Китае и каталоги по направлениям на .com (Кристина: «в англ версию всё то же самое»)
+    'ОДЕЖДА / ЛАБОРАТОРНЫЕ БРИЛЛИАНТЫ / МЕБЕЛЬ И ДЕКОР': 'CLOTHING / LAB-GROWN DIAMONDS / FURNITURE & DECOR',
+    'ОДЕЖДА': 'CLOTHING',
+    'ЛАБОРАТОРНЫЕ БРИЛЛИАНТЫ': 'LAB-GROWN DIAMONDS',
+    'МЕБЕЛЬ И ДЕКОР': 'FURNITURE & DECOR',
+    'ВЫБРАТЬ НАПРАВЛЕНИЕ →': 'CHOOSE A CATEGORY',
+    'Выбрать направление →': 'Choose a category',
+    'Консультация · от 60 минут': 'Consultation · from 60 minutes',
+    'Если вы открываете компанию в Китае': 'If you are opening a company in China',
+    'Как открыть и вести компанию в Китае': 'How to open and run a\u00a0company in\u00a0China',
+    'Для тех, кто планирует работать с Китаем через свою компанию: закупать товар, затамаживать его и возвращать НДС.':
+        'For those planning to work with China through their own company: buying goods, clearing them through customs and reclaiming VAT.',
+    'Что разберём на консультации': 'What we will cover',
+    'Регистрация компании': 'Company registration',
+    'Порядок регистрации, импортно-экспортное разрешение, какие документы нужны.': 'The registration process, the import-export licence and the documents you need.',
+    'Офис и аренда': 'Office and lease',
+    'Как выбрать офис и на что смотреть в договоре с арендодателем.': 'How to choose an office and what to check in the lease agreement.',
+    'Счёт в банке': 'Bank account',
+    'Как открыть счёт, который принимает платежи из России, и какие документы собрать.': 'How to open an account that accepts payments from Russia and which documents to prepare.',
+    'Затаможка товара': 'Customs clearance',
+    'Как правильно затамаживать товар и оформить первые документы.': 'How to clear goods through customs correctly and prepare the first documents.',
+    'Возврат НДС': 'VAT refund',
+    'Какие требования налоговая предъявляет к документам. Разберём каждый документ.': 'What the tax authority requires from your documents. We go through each document.',
+    'Ведение компании': 'Running the company',
+    'Отчётность, офис, аренда и штат: что нужно учесть заранее.': 'Reporting, office, lease and staff: what to plan for in advance.',
+    'Пошаговый план открытия компании под вашу задачу: порядок действий, список документов и ответы на все ваши вопросы. Дальнейшую работу обсуждаем индивидуально после консультации.':
+        'A step-by-step plan for opening a company for your case: the order of actions, a list of documents and answers to all your questions. Further work is agreed individually after the consultation.',
+    'Записаться на консультацию →': 'Book a consultation',
+    'Открываю компанию в Китае': 'I am opening a company in China',
+    'от 60 мин · 20,000 RUB (≈ $245)': 'from 60\u00a0min · 20,000\u00a0RUB (≈\u00a0$245)',
+    'Что планируете: открыть компанию, затамаживать товар, вернуть НДС?': 'What are you planning: opening a company, customs clearance, a VAT refund?',
+    'например: открыть компанию и счёт': 'e.g. open a company and a bank account',
     'Каталоги: одежда': 'Catalogues: clothing',
     'Каталоги: мебель и декор': 'Catalogues: furniture and decor',
 }
@@ -382,22 +414,20 @@ RU_PAGES_BLOCKS = {
     'section-03.dc.html': ['step1', 'step2', 'step3', 'step5'],
     'section-05.dc.html': ['team'],
     'section-06.dc.html': ['cases'],
-    'section-07.dc.html': ['catalogs', 'catalogs-buy'],
-    'section-09.dc.html': ['agency', 'company-consult'],
-    'section-10.dc.html': ['company-option', 'company-plan'],
-    'mobile.html': ['services-mobile', 'steps-mobile', 'team-mobile', 'cases-mobile', 'catalogs-mobile', 'catalogs-buy-mobile', 'agency-mobile', 'company-consult-mobile', 'company-option-mobile', 'company-plan-mobile'],
+    'section-07.dc.html': ['catalogs'],
+    'section-09.dc.html': ['agency'],
+    'mobile.html': ['services-mobile', 'steps-mobile', 'team-mobile', 'cases-mobile', 'catalogs-mobile', 'agency-mobile'],
 }
 # Что встаёт на место блока в английской сборке (до перевода, поэтому по-русски).
 RU_PAGES_EN = {
-    # 27.11: на .ru кнопка ведёт на /katalogi/, на .com страницы нет — остаётся прежняя покупка пакета
-    'catalogs-buy': '        <a href="#checkout" onClick="{{ openCheckout }}" data-product-id="catalog_collections" data-product-name="Каталоги готовых трендовых и базовых коллекций" data-price="390" data-currency="RUB" data-payment-trigger="checkout" data-success-target="#order-success" style="font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};border-bottom:2px solid {{ accent }};padding-bottom:4px;white-space:nowrap;display:inline-block;transition:transform 0.2s ease, color 0.2s ease;" style-hover="color:{{ accent }};transform:translateX(4px);">ПОЛУЧИТЬ ПОДБОРКУ →</a>\n',
-    'catalogs-buy-mobile': '            <button type="button" onClick="{{ onBuyMain }}" style="font-family:\'Manrope\',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};background:none;border-bottom:2px solid {{ accent }};padding:12px 2px 3px 2px;">Получить →</button>\n',
     'nav-desktop': '        <a href="#services" style="font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};" style-hover="color:{{ accent }};">Услуги</a>\n',
 }
 
 
 def drop_ru_pages(s, name):
     """Посадочные страницы есть только на .ru: в английской сборке ссылок на них быть не должно."""
+    # 27.11: страница каталогов есть и на .com, там она /catalogues/
+    s = s.replace('href="/katalogi/"', 'href="/catalogues/"')
     for key in RU_PAGES_BLOCKS.get(name, []):
         pat = r'[ \t]*<!-- ru-pages:%s -->.*?<!-- /ru-pages:%s -->\n' % (re.escape(key), re.escape(key))
         s, n = re.subn(pat, lambda m: RU_PAGES_EN.get(key, ''), s, flags=re.S)
@@ -497,12 +527,19 @@ def main():
         s = tr_js(T, (ROOT / rel).read_text(encoding='utf-8'), rel)
         (OUT / 'js' / Path(rel).name).write_text(s, encoding='utf-8')
 
+    # 27.11: страницы, которые есть только в английском виде (каталоги по направлениям): исходник в _tools/en-pages
+    for f in (ROOT / '_tools' / 'en-pages').rglob('*'):
+        if f.is_file():
+            dst = OUT / f.relative_to(ROOT / '_tools' / 'en-pages')
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(f, dst)
+
     s = (ROOT / 'sw.js').read_text(encoding='utf-8').replace('liana-gini-shell-', 'liana-gini-en-shell-')
     (OUT / 'sw.js').write_text(s, encoding='utf-8')
 
     # robots, карта сайта и манифест для lianagini.com
     (OUT / 'robots.txt').write_text('User-agent: *\nDisallow: /api/\n\nSitemap: https://lianagini.com/sitemap.xml\n', encoding='utf-8')
-    pages = ['', 'oferta.html', 'user-agreement.html', 'privacy-policy.html', 'pd-consent.html', 'ad-consent.html', 'cookie-policy.html', 'requisites.html']
+    pages = ['', 'catalogues/', 'oferta.html', 'user-agreement.html', 'privacy-policy.html', 'pd-consent.html', 'ad-consent.html', 'cookie-policy.html', 'requisites.html']
     urls = ''.join(f'  <url><loc>https://lianagini.com/{p}</loc></url>\n' for p in pages)
     (OUT / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n', encoding='utf-8')
     man = json.loads((ROOT / 'manifest.json').read_text(encoding='utf-8'))

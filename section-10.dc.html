@@ -50,9 +50,7 @@
         <div role="radiogroup" aria-label="Выберите консультацию" style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px;">
             <label class="consult-opt"><input type="radio" name="consult" value="sell" checked="{{ c_sell }}" onChange="{{ onConsultChange }}"/><span class="consult-box"><span class="consult-dot"></span><span style="flex:1;min-width:0;"><span style="display:block;font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;opacity:0.7;margin-bottom:3px;">Уже продаю одежду</span><span style="display:block;font-size:14px;font-weight:600;">Формирование ассортимента и расчёт партии</span></span><span style="font-size:12px;opacity:0.7;white-space:nowrap;">30–60 мин · 15 000 ₽</span></span></label>
             <label class="consult-opt"><input type="radio" name="consult" value="brand" checked="{{ c_brand }}" onChange="{{ onConsultChange }}"/><span class="consult-box"><span class="consult-dot"></span><span style="flex:1;min-width:0;"><span style="display:block;font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;opacity:0.7;margin-bottom:3px;">Запускаю первый бренд</span><span style="display:block;font-size:14px;font-weight:600;">Формирование коллекции и расчёт первой партии</span></span><span style="font-size:12px;opacity:0.7;white-space:nowrap;">30–60 мин · 15 000 ₽</span></span></label>
-            <!-- ru-pages:company-option -->
             <label class="consult-opt"><input type="radio" name="consult" value="company" checked="{{ c_company }}" onChange="{{ onConsultChange }}"/><span class="consult-box"><span class="consult-dot"></span><span style="flex:1;min-width:0;"><span style="display:block;font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;opacity:0.7;margin-bottom:3px;">Открываю компанию в Китае</span><span style="display:block;font-size:14px;font-weight:600;">Как открыть и вести компанию в Китае</span></span><span style="font-size:12px;opacity:0.7;white-space:nowrap;">от 60 мин · 20 000 ₽</span></span></label>
-            <!-- /ru-pages:company-option -->
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:48px;row-gap:0;">
 
@@ -88,7 +86,6 @@
             </div>
           </div>
 
-          <!-- ru-pages:company-plan -->
           <div style="grid-column:1 / -1;border-top:1px solid rgba(242,239,232,0.18);padding:16px 0 18px 0;display:{{ planDisplay }};gap:20px;align-items:baseline;">
             <span style="font-size:9px;letter-spacing:1.5px;opacity:0.4;width:18px;flex-shrink:0;">03</span>
             <div style="flex:1;min-width:0;">
@@ -96,7 +93,6 @@
               <input class="brief-input" id="q-plan" name="plan" type="text" placeholder="например: открыть компанию и счёт"/>
             </div>
           </div>
-          <!-- /ru-pages:company-plan -->
 
           <div style="border-top:1px solid rgba(242,239,232,0.18);padding:16px 0 18px 0;display:flex;gap:20px;align-items:baseline;">
             <span style="font-size:9px;letter-spacing:1.5px;opacity:0.4;width:18px;flex-shrink:0;">05</span>
