@@ -118,6 +118,7 @@ FIXES = {
     'Оплатить 20 000 ₽ →': 'Pay 20,000 RUB',
     'Консультация: как открыть и вести компанию в Китае': 'Consultation: how to open and run a company in China',
     'Каталоги: лабораторные бриллианты': 'Catalogues: lab-grown diamonds',
+    'за направление': 'for all catalogues',
     'Каталоги: одежда': 'Catalogues: clothing',
     'Каталоги: мебель и декор': 'Catalogues: furniture and decor',
 }
@@ -381,13 +382,16 @@ RU_PAGES_BLOCKS = {
     'section-03.dc.html': ['step1', 'step2', 'step3', 'step5'],
     'section-05.dc.html': ['team'],
     'section-06.dc.html': ['cases'],
-    'section-07.dc.html': ['catalogs'],
+    'section-07.dc.html': ['catalogs', 'catalogs-buy'],
     'section-09.dc.html': ['agency', 'company-consult'],
     'section-10.dc.html': ['company-option', 'company-plan'],
-    'mobile.html': ['services-mobile', 'steps-mobile', 'team-mobile', 'cases-mobile', 'catalogs-mobile', 'agency-mobile', 'company-consult-mobile', 'company-option-mobile', 'company-plan-mobile'],
+    'mobile.html': ['services-mobile', 'steps-mobile', 'team-mobile', 'cases-mobile', 'catalogs-mobile', 'catalogs-buy-mobile', 'agency-mobile', 'company-consult-mobile', 'company-option-mobile', 'company-plan-mobile'],
 }
 # Что встаёт на место блока в английской сборке (до перевода, поэтому по-русски).
 RU_PAGES_EN = {
+    # 27.11: на .ru кнопка ведёт на /katalogi/, на .com страницы нет — остаётся прежняя покупка пакета
+    'catalogs-buy': '        <a href="#checkout" onClick="{{ openCheckout }}" data-product-id="catalog_collections" data-product-name="Каталоги готовых трендовых и базовых коллекций" data-price="390" data-currency="RUB" data-payment-trigger="checkout" data-success-target="#order-success" style="font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};border-bottom:2px solid {{ accent }};padding-bottom:4px;white-space:nowrap;display:inline-block;transition:transform 0.2s ease, color 0.2s ease;" style-hover="color:{{ accent }};transform:translateX(4px);">ПОЛУЧИТЬ ПОДБОРКУ →</a>\n',
+    'catalogs-buy-mobile': '            <button type="button" onClick="{{ onBuyMain }}" style="font-family:\'Manrope\',sans-serif;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:{{ ink }};background:none;border-bottom:2px solid {{ accent }};padding:12px 2px 3px 2px;">Получить →</button>\n',
     'nav-desktop': '        <a href="#services" style="font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:{{ ivory }};" style-hover="color:{{ accent }};">Услуги</a>\n',
 }
 
