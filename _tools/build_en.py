@@ -117,6 +117,9 @@ FIXES = {
     'ОПЛАТИТЬ 20 000 ₽ →': 'PAY 20,000 RUB',
     'Оплатить 20 000 ₽ →': 'Pay 20,000 RUB',
     'Консультация: как открыть и вести компанию в Китае': 'Consultation: how to open and run a company in China',
+    'Каталоги: лабораторные бриллианты': 'Catalogues: lab-grown diamonds',
+    'Каталоги: одежда': 'Catalogues: clothing',
+    'Каталоги: мебель и декор': 'Catalogues: furniture and decor',
 }
 
 # Turnkey («под ключ») во вкладке обрезалось до «Turnkey Cl…» и читалось как Turkey —

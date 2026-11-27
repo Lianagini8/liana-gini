@@ -7,6 +7,7 @@
 // Canonical product matrix — client-confirmed final IDs/names/prices.
 export const PRODUCTS = {
   'catalog_collections': { id: 'catalog_collections', name: 'Catalogues of ready-made trend-led and core collections', price: 390, currency: 'RUB' },
+  'catalog_diamonds':    { id: 'catalog_diamonds',    name: 'Catalogues: lab-grown diamonds',              price: 390, currency: 'RUB' },
   'factory_check_9':     { id: 'factory_check_9',     name: '9 Steps to Vetting a Factory',                        price: 490, currency: 'RUB' },
   'brand_china_7':       { id: 'brand_china_7',       name: 'How to Launch Your Brand through China',            price: 490, currency: 'RUB' },
   'guangzhou_markets':   { id: 'guangzhou_markets',   name: 'Guangzhou Markets: List and Addresses',                price: 490, currency: 'RUB' },

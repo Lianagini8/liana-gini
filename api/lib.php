@@ -24,6 +24,13 @@ const PRODUCTS = [
       ['key' => 'katalog-brillianty.pdf', 'title' => 'Выращенные бриллианты', 'size' => '5 МБ'],
     ],
   ],
+  // 27.11.2026: каталоги по направлениям, страница /katalogi/ (390 ₽ за направление)
+  'catalog_diamonds' => [
+    'name' => 'Каталоги: лабораторные бриллианты', 'price' => 390, 'object' => 'intellectual_activity',
+    'files' => [
+      ['key' => 'katalog-brillianty.pdf', 'title' => 'Lab-Grown Diamond Catalog', 'size' => '5 МБ'],
+    ],
+  ],
   'factory_check_9' => [
     'name' => '9 шагов проверки фабрики', 'price' => 490, 'object' => 'intellectual_activity',
     'files' => [['key' => 'guide-9-shagov-proverki-fabriki.pdf', 'title' => '9 шагов проверки фабрики', 'size' => '3 МБ']],

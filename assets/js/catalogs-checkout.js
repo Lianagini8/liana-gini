@@ -3,7 +3,7 @@
 import { startCheckout, STATES } from '/assets/js/payments.js';
 
 // Направления, файлы которых уже загружены в хранилище. Пока список пуст, оплата не открывается.
-const AVAILABLE = new Set([]);
+const AVAILABLE = new Set(['catalog_diamonds']);
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const modal = document.getElementById('kat-modal');

@@ -16,6 +16,7 @@ return [
   'Каталог 2' => 'Catalogue 2',
   'Каталог 3' => 'Catalogue 3',
   'Каталоги готовых трендовых и базовых коллекций' => 'Catalogues of ready-made trend-led and core collections',
+  'Каталоги: лабораторные бриллианты' => 'Catalogues: lab-grown diamonds',
   'Команда свяжется с вами для согласования даты и времени консультации.' => 'We’ll get in touch to set a date and time for your consultation.',
   'Консультация: как открыть и вести компанию в Китае' => 'Consultation: how to open and run a company in China',
   'Лимит скачиваний исчерпан' => 'Download limit reached',
