@@ -54,6 +54,8 @@
   .kat-price { margin: 0 0 10px; padding-top: 8px; }
   .kat-price b { font-size: 17px; }
   .kat-card .btn, .kat-soon { min-height: 36px; padding: 8px 10px; font-size: 10.5px; }
+  .kat-preview-soon { padding: 0 8px; }
+  .kat-preview-soon span { font-size: 9px; letter-spacing: 1px; line-height: 1.4; text-align: center; }
   .kat-steps { flex-direction: column; gap: 8px; }
   .kat-cta .wrap { padding: 26px 22px; margin: 0 var(--gutter); max-width: none; width: auto; }
 }
